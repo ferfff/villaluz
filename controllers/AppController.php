@@ -42,6 +42,14 @@ class AppController extends Controller
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function actions()
+    {
+        $this->layout='app';
+    }
+
+    /**
      * Lists all Users models.
      * @return mixed
      */
