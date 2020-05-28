@@ -23,10 +23,10 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['nombre','paterno','materno','username'], 'string', 'max' => 50],
             [['telefono','movil','calle','numero','interior','colonia','ciudad'], 'string', 'max' => 50],
-            [['genero'], 'string', 'max' => 50],
-            [['edad'], 'string', 'max' => 50],
-            [['nacimiento'], 'string', 'max' => 50],
-            [['email'], 'email'],
+            ['genero', 'string', 'max' => 50],
+            ['edad', 'string', 'max' => 50],
+            ['nacimiento', 'string', 'max' => 50],
+            ['email', 'email'],
             [['cp'], 'string', 'max' => 10],
             [['nivel'], 'integer'],
             [['activo'], 'boolean']

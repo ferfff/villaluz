@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use app\models\User;
+use app\models\ChangePasswordForm;
+use Exception;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -111,6 +113,11 @@ class AppController extends Controller
             $model->activo = 1;
             $model->password = $password; //Yii::$app->security->generatePasswordHash($password);
             if ($model->save()) {
+                /*Yii::$app->mailer->compose('@app/mail/newuser', ['password' => $password])
+                    ->setFrom('info@villaluz.com')
+                    ->setTo($model->email)
+                    ->setSubject('Email avanzado desde Villaluz prueba')
+                    ->send();*/
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }  
@@ -157,29 +164,19 @@ class AppController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionChangepassword($id){
-        $model = $this->findModel($id);
+    public function actionChangepassword(){
+        $id = \Yii::$app->user->identity->id;
 
-        /*$model = User::model()->findByAttributes(array('id'=>$id));
-        $model->setScenario('changePwd');
-    
-    
-         if(isset($_POST['User'])){
-                
-            $model->attributes = $_POST['User'];
-            $valid = $model->validate();
-                    
-            if($valid){
-                    
-              $model->password = md5($model->new_password);
-                    
-              if($model->save())
-                 $this->redirect(array('changepassword','msg'=>'successfully changed password'));
-              else
-                 $this->redirect(array('changepassword','msg'=>'password not changed'));
-                }
-            }*/
-    
+        try {
+            $model = new ChangePasswordForm($id);
+        } catch (Exception $e) {
+            throw new \yii\web\BadRequestHttpException($e->getMessage());
+        }
+     
+        if ($model->load(\Yii::$app->request->post()) && $model->validate() && $model->changePassword()) {
+            \Yii::$app->session->setFlash('success', 'Password Changed!');
+        }
+            
         return $this->render('changepassword', [
             'model' => $model,
         ]);
