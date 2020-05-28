@@ -1,0 +1,1122 @@
+/* reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, acronym, address, big,cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small,
+strike,strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, u, input, button, textarea{
+     margin: 0;
+     padding: 0;
+     border: 0;
+     outline: 0;
+     font-weight: normal;
+     font-style: normal;
+     font-size: 100%;
+     font-family: inherit;
+     list-style: none;
+     vertical-align: baseline;
+     text-decoration: none;
+}
+
+
+/* Estilos frecuentes */
+body{
+	font-size: 18px;
+	font-family: 'Muli', sans-serif;
+  line-height: 1.6;
+}
+
+a{
+	outline: none;
+	text-decoration: none;
+	font-weight: bold;
+  color: #82007e;
+}
+
+h1{
+	font-size: 60px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000000;
+}
+
+h2{
+	font-size: 25px;
+  font-weight: 700;
+  color: #5eaead;
+  font-style: italic;
+  font-weight: 700;
+}
+
+h3{
+  font-size: 25px;
+  font-weight: 700;
+  color: #82007e;
+  font-style: italic;
+}
+
+h4{
+  font-size: 25px;
+  font-weight: 700;
+  color: #fff;
+}
+
+b{
+	font-weight: 700;
+}
+
+/* Contenido */
+#barra_contacto{
+  width: 100%;
+  overflow: hidden;
+  background-color: #e6eeed;
+  color: #5eaead;
+  line-height: 50px; 
+}
+
+.social{
+  float: right;
+  margin: 0 10px;
+}
+
+img.icon_social{
+  margin: 0 5px;
+}
+
+.wrapper{
+  width: 90%;
+  max-width: 1000%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.wrapper_2{
+  width: 80%;
+  max-width: 1000%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.wrapper_3{
+  width: 67%;
+  max-width: 1000%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+header{
+  width: 100%;
+  overflow: hidden;;
+  background-color: #5eaead;
+}
+
+header .logo{
+  float: left;
+  padding-top: 25px;
+}
+
+header nav{
+  float: right;
+  line-height: 130px;
+}
+
+.header_galery, .miservice, .nosotros, .servicio{
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 500px;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.header_galery{
+  background-image: url(../img/villaluz_revision.jpg);
+}
+
+.miservice{
+  background-image: url(../img/mi_servicio.jpg);
+}
+
+.nosotros{
+  background-image: url(../img/villaluz_nosotros.jpg);
+}
+
+.servicio{
+  background-image: url(../img/villaluz_servicio.jpg);
+}
+
+.frase{
+  background-image: url(../img/frase_villaluz.jpg);
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 450px;
+  display: block;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.header_map{
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  height: 400px;
+  display: block;
+  overflow: hidden;
+}
+
+.map-container {
+  width: 100%;
+  margin: 0 0 3000px;
+}
+.map-container iframe{
+  width: 100%;
+  display: block;
+  pointer-events: none;
+  position: relative; /* IE needs a position other than static */
+}
+.map-container iframe.clicked{
+  pointer-events: auto;
+}
+.container_block{
+  position: relative;
+  top: 300px;
+}
+
+.frase_block{
+  position: relative;
+  top: 350px;
+  font-size: 40px;
+  font-weight: 700;
+  color: #fff;
+}
+
+span.header_block{
+  font-size: 25px;
+  font-style: italic;
+  background-color: #82007e;
+  padding: 10px;
+  color: #fff;
+  line-height: 50px;
+}
+
+.important{
+  margin: 0 auto;
+  font-size: 18px;
+  background-color: #82007e;
+  padding: 40px 0px;
+  color: #fff;
+  text-align: center;
+  margin-top: 50px;
+  width: 1000px;
+  margin-bottom: 50px;
+}
+
+.heder_title{
+  margin: 0 auto;
+  width: 1000px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#mysernav{
+  float: left;
+  width: 31%;
+  padding: 10px;
+  color: #82007e;
+  font-weight: 700;
+}
+
+.paralax{
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: block;
+  overflow: hidden;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-attachment: fixed;
+  text-align: left;
+  padding: 50px 0; 
+}
+
+.paralax{
+  background-image: url(../img/villaluz_slogan.jpg);
+}
+
+.paralax_miservice{
+  background-image: url(../img/villaluz_mi_servicio.jpg);  
+}
+
+.paralax_miservice{
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 50px;
+  background-attachment: fixed;
+  text-align: left;
+  padding: 50px 0; 
+}
+
+.block_paralax{
+  float: left;
+  width: 44%;
+  text-align: left;
+  font-size: 18px;
+  background-color: #82007e;
+  padding: 40px;
+  color: #fff;
+  margin-right: 40px;
+}
+
+.block_paralax_2{
+  float: left;
+  width: 44%;
+  margin-top: 100px;
+}
+
+.paralax_color{
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  background-color: #f2f2f2;
+  display: block;
+  overflow: hidden;
+  background-attachment: fixed;
+  text-align: left;
+  margin-bottom: 50px;
+  padding: 100px 0;
+}
+
+.paralax_color_2{
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  background-color: #f2f2f2;
+  display: block;
+  overflow: hidden;
+  background-attachment: fixed;
+  text-align: left;
+}
+
+.block_direccion{
+  float: left;
+  width: 47%;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  margin: 50px 15px 0px 15px;
+}
+
+p.direccion{
+  margin-bottom: 20px;
+  background-color: #5eaead;
+  color: #fff;
+  padding: 30px;
+}
+
+.datos_formulario{
+  color: #666666;
+  text-align: left;
+}
+
+footer{
+  width:100%; /* Establecemos que el header abarque el 100% del documento */
+  overflow:hidden; /* Eliminamos errores de float */
+  background:#82007e;
+  padding: 40px 0;
+  position: relative;
+  bottom: 0px;
+  margin-top: 100px;
+}
+
+.menu{
+  color:#f2f2f2;
+  line-height:30px;
+  float: right;
+  font size: 10px;
+
+}
+
+.wrapper footer{
+  width: 90%
+  max-width 1000%;
+  margin: auto;
+  overflow: hidden;
+}
+
+b.footer_tel{
+	color: #fff;
+}
+
+footer nav {
+  float:left;
+  line-height:10px;
+  font-size: 10px;
+  color: #fff;
+}
+
+footer nav a {
+  display:inline-block;
+  color:#fff;
+  text-decoration:none;
+  padding:10px ;
+  line-height:normal;
+  font-size:10px;
+}
+
+.app_villaluz_header{
+  background-color: #82007e;
+  padding: 40px;
+}
+
+.app_villaluz{
+  float: left;
+  color: #fff;
+  text-align: left;
+  padding: 40px;
+  background-color: #5eaead;
+}
+
+.block_app{
+  float: left;
+  text-align: left;
+  color: #fff;
+  width: 50%;
+}
+
+.button_app{
+  background-color: #fff;
+  font-size: 25px;
+  padding: 20px;
+  color: #5eaead;
+  text-align: center;
+}
+
+.nosotros_block{
+  background-color: #f7f8fa;
+  padding: 80px 0;
+  margin-bottom: 50px;
+}
+
+img.enfermera{
+  margin-right: 30px;
+  float: left;
+  width: 600px;
+}
+
+.nosotros_container{
+  margin: 0 auto;
+  width: 950px;
+  display: block;
+  overflow: hidden;
+}
+
+.block_nosotros_2{
+  width: 320px;
+  float: left;
+}
+
+.valores{
+  margin: 0 auto;
+  width: 1000px;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.valores_list{
+  text-align: center;
+  color: #82007e;
+}
+
+.valores_block{
+float: left;
+margin: 0 10px;
+width: 205px;
+}
+
+.villaluz_opcion{
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.frase_verde{
+  margin: 0 auto;
+  text-align: center;
+  width: 1000px;
+  padding: 50px;
+  display: block;
+  overflow: hidden;
+  background-color: #5eaead;
+}
+
+.servicio_container{
+  display: block;
+  overflow: hidden;
+  background-color: #5eaead;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 100px 0;
+}
+
+.caractaeriticas_block{
+  background-color: #f7f8fa;
+  padding: 80px 0;
+  text-align: center;
+  overflow: hidden;
+  display: block;
+  margin-bottom: 50px;
+  /*margin-top: 50px;*/
+}  
+
+.container {
+  width: 950px;
+  margin: 0 auto;
+}
+
+.caractaeriticas_container{
+  margin: 0 auto;
+  width: 950px;
+}
+
+.caracteristicas_list{
+  margin-top: 50px;
+}
+
+.list_caract{
+  float: left;
+  background-color: #5eaead;
+  text-align: center;
+  width: 150px;
+  color: #fff;
+  margin: 0 10px;
+  padding: 40px 10px;
+  height: 70px;
+}
+
+/*.villaluz_opcion{
+  margin-top: 30px;
+  margin-bottom: 100px;
+  clear: left;
+  clear: both;
+}*/
+
+.opciones_list{
+  margin-bottom: 40px;
+}
+
+.opcion{
+  float: left;
+  margin-right: 20px; 
+}
+
+.opcion_one{
+  overflow: hidden;
+  display: block;
+}
+
+.servicios{
+  background-color: #5eaead;
+  padding: 50px 0;
+  height: 450px;
+  display: block;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:1024px){
+  h1{
+    font-size: 45px;
+  }
+
+  h2, h4{
+    font-size: 30px;
+  }
+
+  .wrapper_3{
+  width: 90%;
+  max-width: 1000%;
+  margin: 0 auto;
+  overflow: hidden;
+  }
+
+  /*.social{
+  float: none;
+  margin: 0 10px;
+  text-align: center;
+  }*/
+
+  /*header .logo,
+  header nav {
+    width:100%;
+    text-align:center;
+    line-height:100px;
+  }*/
+  
+  img.logo_villaluz{
+    width: 150px;
+    margin-right: 59px;
+  }
+
+  header nav{
+  float: right;
+  line-height: 90px;
+  }
+
+  header nav a{
+  padding: 10px 20px;
+  }
+
+  .header2 {
+    height:auto;
+  }
+ 
+  .header2 .logo,
+  .header2 nav {
+    /*line-height:50px;*/
+  }
+
+  .header_galery, .miservice, .nosotros, .servicio{
+  height: 400px;
+  }
+
+  span.header_block{
+  font-size: 20px;
+  }
+
+  .paralax, .paralax_miservice{
+  background-attachment: initial;
+  }
+
+  .container_block{
+  position: relative;
+  top: 200px;
+  }
+  
+  .important{
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  }
+  
+  .heder_title{
+  margin-bottom: 50px;
+  width: auto;
+  }
+
+  #mysernav{
+  float: left;
+  width: 30%;
+  padding: 10px;
+  }
+
+  .block_paralax{
+  float: left;
+  width: 38%;
+  text-align: left;
+  font-size: 18px;
+  background-color: #82007e;
+  padding: 40px;
+  color: #fff;
+  margin-bottom: 40px;
+  margin-right: 40px;
+  }
+
+  .block_paralax_2{
+  float: left;
+  width: 43%;
+  }
+
+  .block_direccion{
+  float: left;
+  width: 46%;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  margin: 50px 15px;
+  }
+
+  .menu {
+    color: #f2f2f2;
+    line-height: 30px;
+    float: none;
+  }
+  
+  .nosotros_block{
+    margin: 0 0 50px 0;
+  }
+
+  .valores{
+  width: 900px;
+  }
+
+  .valores_block{
+    width: 182px;
+  }
+
+  .villaluz_opcion{
+  margin: 0 auto;
+  width: 900px;
+  }
+
+  .frase_verde{
+  width: 800px;
+  padding: 50px;
+  }
+
+  .list_caract{
+  float: left;
+  background-color: #5eaead;
+  text-align: center;
+  width: 144px;
+  color: #fff;
+  margin: 0 10px;
+  padding: 40px 10px;
+  }
+
+  .servicios_block {
+  overflow: hidden;
+  display: block;
+  color: #fff;
+  text-align: left;
+  width: 340px;
+  }
+  
+  .servicios{
+  height: 430px;
+  }
+
+  /*footer .logo,
+  footer nav {
+    width:100%;
+    text-align:center;
+  float: left;
+  }*/
+
+}
+
+@media screen and (max-width:768px){
+  .important{
+  margin-top: 50px;
+  padding: 30px 0;
+  width: 100%;
+  margin-bottom: 50px;
+  }
+  
+  .heder_title{
+  margin-bottom: 50px;
+  width: 90%;
+  }
+
+  header nav{
+  float: none;
+  }
+
+  #mysernav{
+  float: left;
+  width: 45%;
+  padding: 10px;
+  }
+  
+  .paralax{
+  padding: 50px 0 0 0;
+  }
+
+  .block_paralax{
+  float: left;
+  width: 89%;
+  text-align: left;
+  font-size: 18px;
+  background-color: #82007e;
+  padding: 40px;
+  color: #fff;
+  }
+
+  .block_paralax_2{
+  margin: auto;
+  float: left;
+  width: 100%;
+  /*margin-top: -100px;*/
+  margin-bottom: 50px;
+  }
+
+  .block_app {
+  width: 100%;
+  }
+
+  .block_direccion{
+  float: left;
+  width: 47%;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  margin: 10px;
+  margin-top: 50px;
+  }
+
+  .frase_block{
+  position: relative;
+  top: 340px;
+  font-size: 30px;
+  }
+
+   img.enfermera{
+  float: left;
+  width: 100%;
+  }
+  
+  .nosotros_container{
+  width: 650px;
+  }
+
+  .block_nosotros_2{
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 50px;
+  }
+
+  .valores{
+  width: 700px;
+  }
+
+  .valores_block{
+  margin-bottom: 20px;
+  width: 295px;
+  }
+
+  .villaluz_opcion{
+  margin: 0 auto;
+  width: 600px;
+  }
+
+  .frase_verde{
+  width: 500px;
+  }
+
+  .caractaeriticas_container{
+  width: 650px;
+  }
+
+  .list_caract{
+  width: 176px;
+  margin: 20px 10px 0 10px;
+  padding: 15px 10px;
+  height: 70px;
+  }
+  
+  .servicios{
+  height: auto;
+  }
+
+  .container {
+  width: 600px;
+  margin: 0 auto;
+  }
+}
+
+
+@media screen and (max-width:736px){
+  header nav {
+    float: right;
+    width: 100%;
+  }
+
+  .logo{
+    width: 100%;
+    text-align: center;
+  }
+
+  img.logo_villaluz {
+    width: 200px;
+    margin: 0;
+  }
+
+  .social {
+  text-align: center;
+  float: none;
+  margin:0;
+  }
+
+  #mysernav {
+    width: 100%;
+  }
+
+  .container {
+    width: 505px;
+    margin: 0 auto;
+  }
+  .block_direccion {
+    width: 100%;
+  }
+
+  .block_direccion{
+  margin: 10px 0;
+  }
+
+  .valores{
+  width: 550px;
+  }
+
+  .valores_block{
+  width: 227px;
+  }
+
+  .villaluz_opcion{
+  margin: 0 auto;
+  width: 450px;
+  }
+
+  .frase_verde{
+  width: auto;
+  }
+
+  .caractaeriticas_container {
+    width: auto;
+  }
+
+  .list_caract {
+  width: 100%;
+  height: auto;
+  padding: 20px 0;
+  margin: 10px 0;
+  }
+
+  footer .menu,
+  header nav {
+    width:100%;
+    text-align:center; /*Centramos el menu y el logotipo*/
+  }
+
+  footer .logo,
+  footer nav {
+    width:100%;
+    text-align:center; /*Centramos el menu y el logotipo*/
+  }
+}
+
+
+@media screen and (max-width:480px){
+  body{
+    font-size: 18px;
+  }
+
+  h1, h2, h3, h4{
+    font-size: 25px;
+  }
+
+  .social{
+  float: none;
+  text-align: center;
+  line-height: 1.7;
+  }
+
+  header .logo,
+  header nav {
+    width:100%;
+    text-align:center;
+    line-height:100px;
+  }
+  
+  header nav {
+  float: right;
+  }
+
+  header nav a{
+  padding: 10px 20px;
+  }
+
+  .header2 {
+    height:auto;
+  }
+ 
+  .header2 .logo,
+  .header2 nav {
+    line-height:50px;
+  }
+
+  .header_galery, .miservice, .nosotros, .servicio{
+  height: 200px;
+  }
+
+  span.header_block{
+  font-size: 13px;
+  }
+
+  b.phone{
+    display: block;
+  }
+
+  .container_block{
+  position: relative;
+  top: 100px;
+  }
+
+  .important{
+  margin-top: 50px;
+  padding: 30px 0;
+  width: 100%;
+  }
+  
+  .heder_title{
+  margin-bottom: 50px;
+  }
+
+  #mysernav{
+  float: left;
+  width: 100%;
+  padding: 10px 0;
+  }
+
+  .block_paralax{
+  float: left;
+  width: 80%;
+  text-align: left;
+  background-color: #82007e;
+  padding: 40px;
+  color: #fff;
+  }
+
+  .paralax{
+    margin-top: 50px;
+  }
+
+  .block_direccion{
+  float: left;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  /* margin: 15px 15px 15px 15px; */
+  margin: 0;
+  margin-top: 50px;
+  }
+
+  .paralax_miservice{
+    margin-top: 40px;
+  }
+
+  .paralax_color {
+  padding: 50px 0;
+  }
+
+  .block_app{
+  float: left;
+  text-align: left;
+  color: #fff;
+  width: 100%;
+  margin-top: 30px;
+  }
+  
+  .villaluz_opcion{
+  margin: 0 auto;
+  width: 80%;
+  }
+
+  .frase_block{
+  position: relative;
+  top: 180px;
+  font-size: 35px;
+  }
+
+  .frase{
+  /*height: 300px;*/
+  margin-top: 0;
+  }
+  
+  .nosotros_container{
+  width: 100%;
+  }
+
+  .block_nosotros_2{
+  width: 100%;
+  }
+
+ .valores{
+  width: 100%;
+  padding: 0;
+  }
+
+  .valores_block {
+  margin: 0;
+  width: 100%;
+  margin-bottom: 20px;
+  }
+
+  .frase_verde{
+  width: auto;
+  }
+
+  .caractaeriticas_container{
+  width: 100%;
+}
+
+.caracteristicas_list{
+  margin-top: 50px;
+}
+
+.list_caract{
+  width: 100%;
+  padding: 10px 0;
+  margin: 0 0 10px 0;
+  height: auto;
+  }
+
+  .villaluz_opcion{
+  margin-bottom: 0;
+  }
+
+  .servicios{
+  height: 900px;
+  }
+
+  .container {
+  width: 280px;
+  margin: 0 auto;
+  }
+
+  .servicios{
+  height: auto;
+  }
+
+  footer .logo,
+  footer nav {
+    width:100%;
+    text-align:center; /*Centramos el menu y el logotipo*/
+  }
+}
