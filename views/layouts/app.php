@@ -34,7 +34,8 @@ AppAsset::register($this);
 
     <!-- Sidebar -->
     <nav id="sidebar">
-        Menu
+        Hola <?= Yii::$app->user->identity->username ?>
+
     </nav>
 
     <div>
