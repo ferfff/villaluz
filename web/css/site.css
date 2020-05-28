@@ -1,6 +1,9 @@
 html,
 body {
-    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    height: 100vh;
+    color: #3C4858;
 }
 
 .wrap {
@@ -113,3 +116,129 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+/*--------------------------------*/
+
+
+.body-content{
+    background-image: url('../img/login_backgroud.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+}
+
+.content-items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+    margin-top: 100px;
+}
+
+.login_style{
+    background-color: #5EAAA9;
+    color: #ffffff;
+    padding: 100px 50px;
+    text-align: center;
+    display: block;
+}
+
+.border-input{
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.input_login{
+    color: #ffffff;
+    background-color: #5EAAA9;
+    border: 0;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    box-shadow: none;
+}
+
+.input_login::placeholder {
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.input_login:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-login {
+    background-color: #80007E;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 700;
+    border-radius: 0;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+  
+.btn-login:hover {
+    background-color: #ffffff;
+    color: #80007E;
+}
+
+.btn-login:active {
+    background-color: #80007E;
+    color: #ffffff;
+}
+
+.mb-5{
+    margin-bottom: 50px;
+}
+
+.log{
+    position: relative;
+}
+
+.log-position{
+    position: absolute;
+    top: 220px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .body-content{
+        height: 400px;
+    }
+
+    .content-items{
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .login_style{
+        display: inline-table;
+    }
+
+    .log-position {
+        position: initial;
+        top: 220px;
+    }
+
+    .mb-5{
+        margin-bottom: 30px;
+    }
+
+    .log{
+        margin-bottom: 40px;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .content-items{
+        height: auto;
+        margin-top: 50px;
+    }
+}
+
