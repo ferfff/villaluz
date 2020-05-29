@@ -65,7 +65,7 @@ AppAsset::register($this);
     ?>
 
 <nav class="navbar navbar-expand-lg bar-style px-3">
-        <a class="navbar-brand my-2" href="#"><img src="img/logo_villaluz_blanco.svg" width="150px"></a>
+        <a class="navbar-brand my-2" href="#"><img src="/img/logo_villaluz_blanco.svg" width="150px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="material-icons text-light menu-ico">menu</span>
         </button>
@@ -105,6 +105,6 @@ AppAsset::register($this);
 </body>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </html>
 <?php $this->endPage() ?>

@@ -15,6 +15,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/site.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -38,58 +39,16 @@ AppAsset::register($this);
   <link rel="shortcut icon" href="/img/villaluz.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli: 400,400i,700,700i" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/tabs.css" />
+  <link rel="stylesheet" type="text/css" href="/css/tabstyles.css" />
   
   <!-- Owl Carousel Assets -->
   <!-- <link href="css/bootstrapTheme.css" rel="stylesheet"> -->
   <link href="/css/owl.carousel.css" rel="stylesheet">
   <link href="/css/owl.theme.css" rel="stylesheet">
 
-  <style>
-  .topnav {
-  overflow: hidden;
-  }
-
-  .topnav a {
-  float: left;
-  display: block;
-  color: #fff;
-  text-align: center;
-  padding: 0 12px;
-  text-decoration: none;
-  }
-
-  .topnav a:hover {
-  background-color: #e6eeed;
-  color: #5eaead;
-  }
-
-  .topnav .icon {
-  display: none;
-  }
-
-  @media screen and (max-width: 736px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 736px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-
-}
-  </style>
+  <script src="js/jquery-1.9.1.min.js"></script> 
+  <script src="js/owl.carousel.js"></script>
 
 </head>
 
@@ -149,7 +108,6 @@ AppAsset::register($this);
         text-align: left;
     }
 }
-
 
 #owl-demo .item{
     margin: 3px;
@@ -230,7 +188,6 @@ AppAsset::register($this);
       </div>
     </div>
   </footer>
-
   
   <script src="/js/jquery-1.9.1.min.js"></script> 
   <script src="/js/owl.carousel.js"></script>

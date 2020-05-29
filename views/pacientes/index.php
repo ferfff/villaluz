@@ -50,9 +50,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php Pjax::end(); ?>
 
-
-
-    
     <div class="container-fluid px-4 mh-100">
         <h5 class="mb-4 font-weight-bold">Escoge un paciente en la lista</h5>
         <div class="card rounded-0 mh-100 border-0">

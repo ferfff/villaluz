@@ -23,8 +23,8 @@ body{
 }
 
 a{
-	outline: none;
-	text-decoration: none;
+	outline: none !important;
+	text-decoration: none !important;
 	font-weight: bold;
   color: #82007e;
 }
@@ -33,7 +33,7 @@ h1{
 	font-size: 60px;
   font-weight: 700;
   color: #fff;
-  text-shadow: 1px 1px 1px #000000;
+  /*text-shadow: 1px 1px 1px #000000;*/
 }
 
 h2{
@@ -344,8 +344,7 @@ footer{
   color:#f2f2f2;
   line-height:30px;
   float: right;
-  font size: 10px;
-
+  font-size: 10px;
 }
 
 .wrapper footer{
@@ -487,22 +486,20 @@ width: 205px;
 
 .caractaeriticas_container{
   margin: 0 auto;
-  width: 950px;
 }
 
 .caracteristicas_list{
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .list_caract{
-  float: left;
   background-color: #5eaead;
-  text-align: center;
   width: 150px;
   color: #fff;
   margin: 0 10px;
   padding: 40px 10px;
-  height: 70px;
 }
 
 /*.villaluz_opcion{
@@ -529,7 +526,7 @@ width: 205px;
 .servicios{
   background-color: #5eaead;
   padding: 50px 0;
-  height: 450px;
+  height: auto !important;
   display: block;
   overflow: hidden;
 }
@@ -604,10 +601,10 @@ width: 205px;
     height:auto;
   }
  
-  .header2 .logo,
+  /*.header2, .logo,
   .header2 nav {
-    /*line-height:50px;*/
-  }
+    line-height:50px;
+  }*/
 
   .header_galery, .miservice, .nosotros, .servicio{
   height: 400px;
@@ -703,9 +700,9 @@ width: 205px;
   float: left;
   background-color: #5eaead;
   text-align: center;
-  width: 144px;
+  width: 100%;
   color: #fff;
-  margin: 0 10px;
+  margin: 5px 10px;
   padding: 40px 10px;
   }
 
@@ -716,7 +713,14 @@ width: 205px;
   text-align: left;
   width: 340px;
   }
-  
+
+  .caracteristicas_list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
   .servicios{
   height: 430px;
   }
@@ -831,13 +835,6 @@ width: 205px;
 
   .caractaeriticas_container{
   width: 650px;
-  }
-
-  .list_caract{
-  width: 176px;
-  margin: 20px 10px 0 10px;
-  padding: 15px 10px;
-  height: 70px;
   }
   
   .servicios{

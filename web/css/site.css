@@ -135,8 +135,19 @@ a.desc:after {
     margin-top: 100px;
 }
 
+.btns{
+    background-color: #80007E;
+    color: #ffffff;
+    border-radius: 0 !important;
+}
+
 .btn{
     box-shadow: none !important;
+}
+
+.btns:hover {
+    color: #ffffff !important;
+    background-color: #5EAAA9 !important;
 }
 
 .btn:focus, .btn:active:focus, .btn.active:focus {
@@ -249,11 +260,6 @@ a.desc:after {
 }
 
 /*--------table-------*/
-.table-hover tbody tr:hover > th {
-    background-color: #80007E;
-    color: #ffffff;
-  }
-
 .search_iput{
     border-bottom: 1px solid #3C4858 !important;
 }
@@ -270,6 +276,17 @@ a.desc:after {
 th{
     padding: 15px !important;
 }
+
+/*----------header color------------------*/
+.header-verde{
+    background-color: #5EAAA9;
+}
+
+.header-morado{
+    background-color: #80007E;
+    color: #ffffff;
+}
+
 
 @media only screen and (max-width: 1024px) {
     .body-content{

@@ -151,36 +151,38 @@
       <p>Permita que nuestra familia cuide de su familia.</p>
     </div>
   </div>
-  
-  <div class="villaluz_opcion">
-	  	<div class="opciones_list">
-	  		<div class="opcion"><img src="/img/villaluz_seguridad_confianza.png" width="40px" alt="villaluz opciones seguridad"></div>
-	  		<div class="opcion_one">
-	  			<h3>Seguridad y Confianza</h3>
-	  			<p>Nuestro personal es seleccionado celosamente, todos cuentan con un perfil confiable y tienen gran vocación de servicio.</p>
-	  		</div>
-	  	</div>
-	  	<div class="opciones_list">
-	  		<div class="opcion"><img src="/img/villaluz_garantia_disponibiliad.png" width="40px" alt="villaluz opciones seguridad"></div>
-	  		<div class="opcion_one">
-	  			<h3>Garantía y Disponibilidad</h3>
-	  			<p>Ofrecemos la opción de cambiar al personal si el paciente o la familia no se encuentran satisfechos. Nuestro servicio está disponible las 24 horas del día los 365 días del año.</p>
-	  		</div>
-	  	</div>
-	  	<div class="opciones_list">
-	  		<div class="opcion"><img src="/img/villaluz_servicio_integral.png" width="40px" alt="villaluz opciones seguridad"></div>
-	  		<div class="opcion_one">
-	  			<h3>Servicio Integral</h3>
-	  			<p>Nuestros planes de atención son creados para satisfacer completamente las necesidades de cada paciente. Los cuidados son complementados con los auxiliares que el paciente necesite.</p>
-	  		</div>
-	  	</div>
-	  	<div class="opciones_list">
-	  		<div class="opcion"><img src="/img/villaluz_registro.png" width="40px" alt="villaluz opciones seguridad"></div>
-	  		<div class="opcion_one">
-	  			<h3>Registro</h3>
-	  			<p>Operamos con protocolos y formatos profesionales en los que se va recopilando la información sobre el estado de salud de cada paciente.</p>
-	  		</div>
-      </div>
+
+  <div class="wrapper">
+    <div class="villaluz_opcion">
+        <div class="opciones_list">
+          <div class="opcion"><img src="/img/villaluz_seguridad_confianza.png" width="40px" alt="villaluz opciones seguridad"></div>
+          <div class="opcion_one">
+            <h3>Seguridad y Confianza</h3>
+            <p>Nuestro personal es seleccionado celosamente, todos cuentan con un perfil confiable y tienen gran vocación de servicio.</p>
+          </div>
+        </div>
+        <div class="opciones_list">
+          <div class="opcion"><img src="/img/villaluz_garantia_disponibiliad.png" width="40px" alt="villaluz opciones seguridad"></div>
+          <div class="opcion_one">
+            <h3>Garantía y Disponibilidad</h3>
+            <p>Ofrecemos la opción de cambiar al personal si el paciente o la familia no se encuentran satisfechos. Nuestro servicio está disponible las 24 horas del día los 365 días del año.</p>
+          </div>
+        </div>
+        <div class="opciones_list">
+          <div class="opcion"><img src="/img/villaluz_servicio_integral.png" width="40px" alt="villaluz opciones seguridad"></div>
+          <div class="opcion_one">
+            <h3>Servicio Integral</h3>
+            <p>Nuestros planes de atención son creados para satisfacer completamente las necesidades de cada paciente. Los cuidados son complementados con los auxiliares que el paciente necesite.</p>
+          </div>
+        </div>
+        <div class="opciones_list">
+          <div class="opcion"><img src="/img/villaluz_registro.png" width="40px" alt="villaluz opciones seguridad"></div>
+          <div class="opcion_one">
+            <h3>Registro</h3>
+            <p>Operamos con protocolos y formatos profesionales en los que se va recopilando la información sobre el estado de salud de cada paciente.</p>
+          </div>
+        </div>
+    </div>
   </div>
 
 

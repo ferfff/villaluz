@@ -93,10 +93,7 @@
 
   
     <div class="heder_title">
-      <div id="demo">
-        <div class="container">
-          <div class="row">
-            <div class="span12">
+      
               <div id="owl-demo" class="owl-carousel">
                 <div class="item">
                   Es una empresa con valores éticos y trato justo, como pocas. Tuve una excelente experiencia al
@@ -128,10 +125,7 @@
                   <b>Alicia Coutinho (Irapuato, Gto.)</b>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            
     </div>
 
   <div class="paralax_color">
