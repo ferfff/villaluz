@@ -43,7 +43,7 @@ class SiteController extends Controller
      */
     public function actions()
     {
-        return [
+        /*return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
@@ -51,7 +51,7 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-        ];
+        ];*/
     }
 
     /**
@@ -133,22 +133,42 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
-
-     /**
-     * Displays about page.
+     * Displays Nosotros page.
      *
      * @return string
      */
     public function actionNosotros()
     {
         return $this->render('nosotros');
+    }
+
+    /**
+     * Displays Servicio page.
+     *
+     * @return string
+     */
+    public function actionServicio()
+    {
+        return $this->render('servicio');
+    }
+
+    /**
+     * Displays miservicio page.
+     *
+     * @return string
+     */
+    public function actionMiservicio()
+    {
+        return $this->render('miservicio');
+    }
+
+    /**
+     * Displays contacto page.
+     *
+     * @return string
+     */
+    public function actionContacto()
+    {
+        return $this->render('contacto');
     }
 }

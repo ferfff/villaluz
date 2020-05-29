@@ -3,11 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -19,7 +15,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="web/favicon.ico" type="image/x-icon">
@@ -30,81 +26,252 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-    
-    <?php
-    /*--
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    --*/
-    ?>
 
-<nav class="navbar navbar-expand-lg bar-style px-3">
-        <a class="navbar-brand my-2" href="#"><img src="img/logo_villaluz_blanco.svg" width="150px"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="material-icons text-light menu-ico">menu</span>
-        </button>
+<!DOCTYPE html>
+<html lang="es">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="description" content="Empresa dedicada al cuidado del adulto mayor en su domicilio"/>
+  <meta name="format-detection" content="telephone=no">
+  <title>Villaluz - <?= Html::encode($this->title) ?></title>
+  <link rel="shortcut icon" href="/img/villaluz.ico">
+  <link href="https://fonts.googleapis.com/css?family=Muli: 400,400i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <!-- Owl Carousel Assets -->
+  <!-- <link href="css/bootstrapTheme.css" rel="stylesheet"> -->
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-active text-none"><a class="text-light d-flex align-items-center text-none" href="#"><span class="material-icons">search</span>  Filtrar Nombre</a></button>
-                </li>
-                <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="#"><span class="material-icons">assignment</span> Pacientes</a></button>
-                </li>
-                <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="#"><span class="material-icons">description</span>Referencias</a></button>
-                </li>
-                <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="#"><span class="material-icons">assignment_ind</span>Empleados</a></button>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active d-flex align-items-center mx-1">
-                    Hola, Oscar Pérez
-                </li>
-                <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="#"><span class="material-icons">exit_to_app</span>Cerrar Sesión</a></button>
-                </li>
-            </ul>
+  <style>
+  .topnav {
+  overflow: hidden;
+  }
+
+  .topnav a {
+  float: left;
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 0 12px;
+  text-decoration: none;
+  }
+
+  .topnav a:hover {
+  background-color: #e6eeed;
+  color: #5eaead;
+  }
+
+  .topnav .icon {
+  display: none;
+  }
+
+  @media screen and (max-width: 736px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+}
+  </style>
+
+</head>
+
+<!DOCTYPE html>
+<html lang="es">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="description" content="Empresa dedicada al cuidado del adulto mayor en su domicilio"/>
+  <meta name="format-detection" content="telephone=no">
+  <title>Villaluz - Nosotros</title>
+   <link rel="shortcut icon" href="/img/villaluz.ico">
+  <link href="https://fonts.googleapis.com/css?family=Muli: 400,400i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <style>
+  .topnav {
+    overflow: hidden;
+  }
+
+  .topnav a {
+  float: left;
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 0 12px;
+  text-decoration: none;
+  }
+
+  .topnav a:hover {
+  background-color: #e6eeed;
+  color: #5eaead;
+  }
+
+  .topnav .icon {
+  display: none;
+  }
+
+@media screen and (max-width: 736px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 736px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+
+#owl-demo .item{
+    margin: 3px;
+    background-color: #5eaead;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    padding: 35px;
+}
+
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+  </style>
+
+</head>
+
+<body>
+  
+  <div id="barra_contacto">
+    <div class="wrapper">
+      <nav class="social">
+        <a href="https://es-la.facebook.com/Porelbienestardevivir"><img class="icon_social" src="/img/facebook.png"></a>
+        <!-- <a href=""><img class="icon_social" src="img/twitter.png"></a> -->
+        <a href="https://login.bluehost.com/cgi/webmail.com" target="blank"><img class="icon_social" src="/img/mail.png"></a>
+      </nav>
+      <div class="social">¿Tienes dudas? <b class="phone">01 (462) 624 5466</b></div>
+    </div>  
+  </div>
+  
+  <header class="header2">
+    <div class="wrapper">
+      <div class="logo"><img class="logo_villaluz" src="/img/logotipo_villaluz.png"></div>
+      <nav>
+        <div class="topnav" id="myTopnav">
+          <a href="/">Inicio</a>
+          <a href="/site/nosotros">Nosotros</a>
+          <a href="/site/servicio">Servicio</a>
+          <a href="/site/miservicio">Mi Servicio</a>
+          <a href="/noticias/">De Inter&eacute;s</a>
+          <a href="/site/contacto">Contacto</a>
+          <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
-    </nav>
-    <div>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+      </nav>
     </div>
-</div>
+  </header>
 
-<?php $this->endBody() ?>
+<?= $content ?>
+
+
+
+<footer>
+    <div class="wrapper">
+      <div class="menu">
+        <nav class="social">
+          <a href="https://es-la.facebook.com/Porelbienestardevivir"><img class="icon_social" src="/img/facebook_white.png"></a>
+          <!-- <a href=""><img class="icon_social" src="img/twitter_white.png"></a> -->
+          <a href="https://login.bluehost.com/cgi/webmail.com" target="blank"><img class="icon_social" src="/img/mail_white.png"></a>
+        </nav>
+        <div class="social" style="font-size:10px;">¿Tienes dudas? <b>01 (462) 624 5466</b></div>
+      </div>
+      <nav>
+        <a href="/">Inicio</a>
+        <a href="/site/nosotros">Nosotros</a>
+        <a href="/site/servicio">Servicio</a>
+        <a href="/site/miservicio">Mi Servicio</a>
+        <a href="/site/contacto">Contacto</a>
+      </nav><br><br>
+      <nav>
+        <div class="logo"><img src="/img/logotipo_villaluz.png" width=100px; style="margin-bottom:10px;"></div>
+        Aviso de privacidad© 2017 Villaluz® Derechos Reservados
+      </nav>
+      <div class="menu">
+        <div class="social" style="font-size:10px;"></b></div>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="/js/jquery-1.9.1.min.js"></script> 
+  <script src="/js/owl.carousel.js"></script>
+
+<script>
+    $(document).ready(function() {
+      $("#owl-demo").owlCarousel({
+        autoPlay: 5000,
+        items : 3,
+        itemsDesktop : [1199,3],
+        itemsDesktopSmall : [979,3]
+      });
+
+    });
+
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+
+    $('.map-container')
+    .click(function(){
+            $(this).find('iframe').addClass('clicked')})
+    .mouseleave(function(){
+            $(this).find('iframe').removeClass('clicked')});
+</script>
+
+<script src="/js/cbpFWTabs.js"></script>
+    <script>
+      (function() {
+
+        [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+          new CBPFWTabs( el );
+        });
+
+      })();
+    </script>
+
 </body>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
 </html>
-<?php $this->endPage() ?>

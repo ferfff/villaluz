@@ -6,39 +6,46 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="container">
+        <div class="row content-items">
+            <div class="col-sm-5 col-lg-7 log">
+                <img src="../img/logo_villaluz_color.svg" width="250px;" alt="villaluz" class="log-position">
+            </div>
+            <div class="col-sm-5 col-lg-5 login_style mb-5">
+            <?php $form = ActiveForm::begin([
+                    'id' => 'login-form',
+                    'layout' => 'horizontal',
+                    'fieldConfig' => [
+                        'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
+                        'labelOptions' => ['class' => 'col-lg-1 control-label'],
+                    ],
+                ]); ?>
 
-    <p>Please fill out the following fields to login:</p>
+                    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
+                    <?= $form->field($model, 'password')->passwordInput() ?>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                    <?= $form->field($model, 'rememberMe')->checkbox([
+                        'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+                    ]) ?>
 
-        <?= $form->field($model, 'password')->passwordInput() ?>
+                    <div class="form-group">
+                        <div class="col-lg-offset-1 col-lg-11">
+                            <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                        </div>
+                    </div>
 
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <?php ActiveForm::end(); ?>
+                <small id="emailHelp" class="text-light text-center">Villaluz Application Website</small>
             </div>
         </div>
+    </div>
 
-    <?php ActiveForm::end(); ?>
+
+    
 </div>
 
 <div class="body-content">
