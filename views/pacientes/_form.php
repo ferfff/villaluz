@@ -93,3 +93,79 @@ use yii\widgets\ActiveForm;
 <?php ActiveForm::end(); ?>
 
 
+
+
+                <div class="row justify-content-center m-5">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="paterno" placeholder="Apellido Paterno">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="materno" placeholder="Apellido Materno">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                            <select id="inputState" class="form-control">
+                                <option selected>Género</option>
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                            </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" class="form-control" id="cumpleanos" placeholder="Cumpleaños">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" class="form-control" id="peso" placeholder="Peso">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" class="form-control" id="altura" placeholder="Altura">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="telefono" placeholder="Teléfono">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="movil" placeholder="Móvil">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="calle" placeholder="Calle">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="numero" placeholder="Número">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="interior" placeholder="Interior">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="colonia" placeholder="Colonia">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="cp" placeholder="Código Postal">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="ciudad" placeholder="Ciudad">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <input type="text" class="form-control" id="diagnostico" placeholder="Diagnóstico">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center my-5">
+                            <button type="submit" class="btn text-center d-flex align-items-center btns btn-lg"><span class="material-icons mr-2">library_add</span> Agregar</button>
+                        </div>
+                    </form>
+                </div>

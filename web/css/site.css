@@ -282,11 +282,47 @@ th{
     background-color: #5EAAA9;
 }
 
-.header-morado{
-    background-color: #80007E;
-    color: #ffffff;
+table {
+	border-collapse: collapse;
+	width: 100%;  
 }
 
+.header-table{
+    background-color: #80007E !important;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.header-table a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+.header-table td,
+th a{ 
+	padding: 4px;
+	overflow: hidden;
+	text-align: left;
+    vertical-align: middle;
+}
+
+th { 
+	font-weight: 400;
+}
+.asc:after {
+    content: ' ↑' !important;
+ }
+
+.desc:after {
+    content: " ↓" !important;
+ }
+ 
+.btn-header a:visited, a:hover, a:active {
+    color: #5EAAA9 !important;
+}
 
 @media only screen and (max-width: 1024px) {
     .body-content{

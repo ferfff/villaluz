@@ -20,7 +20,7 @@ use yii\bootstrap\ActiveForm;
                     'id' => 'login-form',
                     'layout' => 'horizontal',
                     'fieldConfig' => [
-                        'template' => "<div class=\"form-group border-input mb-5\">{input}</div>\n<div class=\"errorform mt-3\">{error}</div>",
+                        'template' => "<div class=\"form-group border-input\">{input}</div>\n<div class=\"errorform mt-3\">{error}</div>",
                         'labelOptions' => ['class' => 'col-lg-1 control-label'],
                     ],
                 ]); ?>

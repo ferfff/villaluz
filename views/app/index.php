@@ -11,7 +11,7 @@ use yii\grid\DataColumn;
 ?>
 <div class="users-index">
     <div class="container-fluid px-4 mh-100">
-        <h5 class="mb-4 font-weight-bold">Escoge un empleado en la lista</h5>
+        <h5 class="my-4 font-weight-bold">Escoge un empleado en la lista</h5>
         <div class="card rounded-0 mh-100 border-0">
             <div class="card-body">
                 <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
@@ -27,8 +27,18 @@ use yii\grid\DataColumn;
                 
                 <?= GridView::widget([ 
                     'dataProvider' => $dataProvider,
-                    'headerRowOptions' => ['class' => 'header-morado'],
+                    'headerRowOptions' => ['class' => 'header-table'],
                     'columns' => [
+                        [
+                            'format' => 'raw',
+                            'label' => '',
+                            'content' => function($model) {
+                                return ($model->nivel == 3) ? Html::a('<span class="material-icons">save_alt</span>', 
+                                    ['update', 'id' => $model->id], 
+                                    ['class' => 'btn btn-secondary d-flex align-items-center',]
+                                ) : '';
+                            }
+                        ],
                         [
                             'format' => 'raw',
                             'label' => '',
