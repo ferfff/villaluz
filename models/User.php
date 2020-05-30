@@ -30,7 +30,6 @@ class User extends ActiveRecord implements IdentityInterface
             [['cp'], 'string', 'max' => 10],
             [['nivel'], 'integer'],
             [['activo'], 'boolean']
-            //[['authKey'], 'string', 'unique', 'max' => 50]
         ];
     }
 
@@ -47,25 +46,6 @@ class User extends ActiveRecord implements IdentityInterface
             'authKey' => Yii::t('app', 'Auth key'),
         ];
     }
-
-    //Define the rules for old_password, new_password and repeat_password with changePwd Scenario.
-	
-	/*public function rules()
-	{
-        return array(
-            array('old_password, new_password, repeat_password', 'required', 'on' => 'changePwd'),
-            array('old_password', 'findPasswords', 'on' => 'changePwd'),
-            array('repeat_password', 'compare', 'compareAttribute'=>'new_password', 'on'=>'changePwd'),
-        );
-    }*/
-
-    //matching the old password with your existing password.
-	/*public function findPasswords($attribute, $params)
-	{
-		$user = User::model()->findByPk(Yii::app()->user->id);
-		if ($user->password != md5($this->old_password))
-			$this->addError($attribute, 'Old password is incorrect.');
-	}*/
 
     public static function findIdentity($id)
     {
@@ -102,5 +82,14 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->password === $password;
         //return Yii::$app->getSecurity()->validatePassword($password, $this->password);
+    }
+
+    public function getEdad() 
+    {
+        $from = new \DateTime($this->nacimiento);
+        $to   = new \DateTime('today');
+        
+        return $from->diff($to)->y;
+    
     }
 }
