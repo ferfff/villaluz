@@ -103,11 +103,11 @@ class AppController extends Controller
             $model->activo = 1;
             $model->password = $password; //Yii::$app->security->generatePasswordHash($password);
             if ($model->save()) {
-                /*Yii::$app->mailer->compose('@app/mail/newuser', ['password' => $password])
-                    ->setFrom('info@villaluz.com')
-                    ->setTo($model->email)
+                Yii::$app->mailer->compose('@app/mail/newuser', ['password' => $password])
+                    ->setFrom('ferfff@yahoo.com.mx')
+                    ->setTo('ferchofff@gmail.com')
                     ->setSubject('Email avanzado desde Villaluz prueba')
-                    ->send();*/
+                    ->send();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }  
@@ -171,6 +171,25 @@ class AppController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionPdf(){
+        Yii::$app->response->format = 'pdf';
+        
+        $query = User::find();
+        $users = $query->orderBy('username')->all();
+
+		// Rotate the page
+		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [
+			'format' => [216, 356], // Legal page size in mm
+			'orientation' => 'Landscape', // This value will be used when 'format' is an array only. Skipped when 'format' is empty or is a string
+			'beforeRender' => function($mpdf, $data) {},
+			]);
+		
+		$this->layout = 'pdflayout';
+		return $this->render('pdf', [
+            'users' => $users,
+        ]);
+	}
 
     /**
      * Finds the Users model based on its primary key value.

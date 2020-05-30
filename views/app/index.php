@@ -20,6 +20,8 @@ use yii\grid\DataColumn;
                         <?php 
                         if ($nivel == 3) {
                             echo Html::a('<span class="material-icons mr-2">library_add</span> Nuevo', ['create'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold']);
+
+                            echo Html::a('<span class="material-icons mr-2">library_add</span> Export', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
                         } ?>
                     </div>
                 </div>
