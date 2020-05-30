@@ -25,6 +25,30 @@ $config = [
             'enableAutoLogin' => true,
             'enableSession' => true,
         ],
+        'response' => [
+			'formatters' => [
+				'pdf' => [
+                    'class' => 'robregonm\pdf\PdfResponseFormatter',
+                    'mode' => '', // Optional
+					'format' => 'A4',  // Optional but recommended. http://mpdf1.com/manual/index.php?tid=184
+					//'defaultFontSize' => 0, // Optional
+					//'defaultFont' => '', // Optional
+					'marginLeft' => 15, // Optional
+					'marginRight' => 15, // Optional
+					'marginTop' => 16, // Optional
+					'marginBottom' => 16, // Optional
+					'marginHeader' => 9, // Optional
+					'marginFooter' => 9, // Optional
+					'orientation' => 'Landscape', // optional. This value will be ignored if format is a string value.
+					/*'options' => [
+						// mPDF Variables
+						// 'fontdata' => [
+							// ... some fonts. http://mpdf1.com/manual/index.php?tid=454
+						// ]
+					]*/
+				],
+			]
+		],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -33,15 +57,15 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => false,
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',  // ej. smtp.mandrillapp.com o smtp.gmail.com
-                'username' => 'info@villaluz.com',
-                'password' => 'pass',
-                'port' => '587', // El puerto 25 es un puerto común también
-                'encryption' => 'tls', // Es usado también a menudo, revise la configuración del servidor
-            ],
+            //'useFileTransport' => false,
+            /*'transport' => [
+                'class' => 'yii\swiftmailer\Mailer',
+                'host' => 'smtp.mail.yahoo.com',  // ej. smtp.mandrillapp.com o smtp.gmail.com
+                'username' => 'ferfff@yahoo.com.mx',
+                'password' => 'MEXICO07fercho',
+                'port' => '25', // El puerto 25 es un puerto común también
+                //'encryption' => 'tls', // Es usado también a menudo, revise la configuración del servidor
+            ],*/
         ],
         'authManager' => [
             'class' => 'yii\rbac\PhpManager',
