@@ -32,7 +32,7 @@ AppAsset::register($this);
     <!-- <link href="css/bootstrapTheme.css" rel="stylesheet"> -->
     <link href="/css/owl.carousel.css" rel="stylesheet">
     <link href="/css/owl.theme.css" rel="stylesheet">
-    <link rel="icon" href="web/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     
     <?php $this->registerCsrfMetaTags() ?>
     <?php $this->head() ?>

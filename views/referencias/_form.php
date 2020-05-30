@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Referencias */
@@ -26,7 +27,14 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'edad')->textInput() ?>
 
-    <?= $form->field($model, 'nacimiento')->textInput() ?>
+    <?= $form->field($model, 'nacimiento')->widget(DatePicker::className(),['language' => 'es',
+            'clientOptions' =>[
+                'dateFormat' => 'php:Y-m-d',
+                'yearRange' => 'c-80:c+0',
+                'changeMonth'=> true,
+                'changeYear'=> true,
+            ]
+        ]) ?> 
 
     <?= $form->field($model, 'telefono')->textInput(['maxlength' => true]) ?>
 

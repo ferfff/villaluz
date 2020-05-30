@@ -21,29 +21,35 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['nombre','paterno','materno','username'], 'string', 'max' => 50],
-            [['telefono','movil','calle','numero','interior','colonia','ciudad'], 'string', 'max' => 50],
-            ['genero', 'string', 'max' => 50],
-            ['edad', 'string', 'max' => 50],
-            ['nacimiento', 'string', 'max' => 50],
+            [['username','nombre','paterno','materno','nacimiento','email','calle','numero','colonia','ciudad','password'], 'required'],
+            [['username','nombre','paterno','materno'], 'string', 'max' => 50],
+            [['username','nombre','paterno','materno','cp','calle','numero','colonia','ciudad'], 'string', 'min' => 5],
+            [['calle','numero','colonia','ciudad'], 'string', 'max' => 20],
+            ['genero', 'in', 'range'=>['masculino','femenino']],
+            ['genero', 'required', 'message' => 'Seleccione un género'],
+            ['nacimiento', 'date'],
             ['email', 'email'],
             [['cp'], 'string', 'max' => 10],
-            [['nivel'], 'integer'],
-            [['activo'], 'boolean']
+            ['nivel', 'in', 'range'=>['1','2','3']],
+            ['nivel', 'required', 'message' => 'Seleccione un nivel'],
+            ['activo', 'in', 'range'=>['0','1']],
         ];
     }
 
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Nombre'),
+            'username' => Yii::t('app', 'ID'),
             'paterno' => Yii::t('app', 'Apellido Paterno'),
             'materno' => Yii::t('app', 'Apellido Materno'),
             'cp' => Yii::t('app', 'Código Postal'),
-            'username' => Yii::t('app', 'Usuario'),
             'password' => Yii::t('app', 'Contraseña'),
             'authKey' => Yii::t('app', 'Auth key'),
+            'email' => Yii::t('app', 'E-mail'),
+            'numero' => Yii::t('app', 'Número'),
+            'telefono' => Yii::t('app', 'Teléfono'),
+            'movil' => Yii::t('app', 'Móvil'),
+            'nacimiento' => Yii::t('app', 'Fecha de Nacimiento'),
         ];
     }
 

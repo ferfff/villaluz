@@ -18,10 +18,14 @@ use yii\grid\DataColumn;
                     <div class="mr-auto font-weight-bold p-2">Empleados</div>
                     <div class="p-2">
                         <?php 
+                        if ($nivel != 1) {
+                            echo Html::a('<span class="material-icons">save_alt</span>', ['pdf'], ['class' => 'btn btn-secondary d-flex align-items-center', 'target' => '_blank',]);
+                        } ?>
+                    </div>
+                    <div class="p-2">
+                        <?php 
                         if ($nivel == 3) {
                             echo Html::a('<span class="material-icons mr-2">library_add</span> Nuevo', ['create'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold']);
-
-                            echo Html::a('<span class="material-icons mr-2">library_add</span> Export', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
                         } ?>
                     </div>
                 </div>
@@ -29,18 +33,10 @@ use yii\grid\DataColumn;
                 
                 <?= GridView::widget([ 
                     'dataProvider' => $dataProvider,
+                    'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-'],
                     'headerRowOptions' => ['class' => 'header-table'],
                     'columns' => [
-                        [
-                            'format' => 'raw',
-                            'label' => '',
-                            'content' => function($model) {
-                                return ($model->nivel == 3) ? Html::a('<span class="material-icons">save_alt</span>', 
-                                    ['update', 'id' => $model->id], 
-                                    ['class' => 'btn btn-secondary d-flex align-items-center',]
-                                ) : '';
-                            }
-                        ],
+                        //['class' => 'yii\grid\SerialColumn'],
                         [
                             'format' => 'raw',
                             'label' => '',
@@ -65,6 +61,7 @@ use yii\grid\DataColumn;
                                 ) : '';
                             }
                         ],
+                        'username',
                         'nombre',
                         'paterno',
                         'materno',
@@ -87,6 +84,7 @@ use yii\grid\DataColumn;
                         'ciudad',
                         'nivel',
                         'activo',
+                        ['class' => 'yii\grid\ActionColumn'],
                     ],
                     'tableOptions' => ['class' => 'table table-striped table-hover table-responsive'],
                     'options' => [

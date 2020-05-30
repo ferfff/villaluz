@@ -58,7 +58,7 @@ class AppController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => User::find()->where(['activo' => 1])->orderBy(['username' => SORT_ASC]),
+            'query' => User::find()->where(['activo' => 0]),
             'pagination' => [
                 'pageSize' => 10,
             ],
@@ -101,7 +101,8 @@ class AppController extends Controller
             //$password = 12345;
             $model->authKey = $str.trim($model->username);
             $model->activo = 1;
-            $model->password = $password; //Yii::$app->security->generatePasswordHash($password);
+            $model->password = $password; 
+            //Yii::$app->security->generatePasswordHash($password);
             if ($model->save()) {
                 Yii::$app->mailer->compose('@app/mail/newuser', ['password' => $password])
                     ->setFrom('ferfff@yahoo.com.mx')

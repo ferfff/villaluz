@@ -17,7 +17,7 @@ use yii\helpers\Html;
                     <?= Html::a('<span class="material-icons">close</span> Cancelar', Yii::$app->request->referrer, ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold']) ?>
                 </div>
             </div>
-            <div class="row justify-content-center px-3 h-100">
+            <div class="row justify-content-center m-5">
                 <?= $this->render('_form', [
                     'model' => $model,
                 ]) ?>
