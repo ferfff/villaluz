@@ -81,16 +81,16 @@ class SiteController extends Controller
             /*$auth = \Yii::$app->authManager;
             switch ($model->nivel) {
                 case 1:
-                    $authorRole = $auth->getRole('cliente');
-                    $auth->assign($authorRole, $model->getId());
+                    $clienteRole = $auth->getRole('cliente');
+                    $auth->assign($clienteRole, $model->getId());
                     break;
                 case 2:
-                    $authorRole = $auth->getRole('empleado');
-                    $auth->assign($authorRole, $model->getId());
+                    $empleadoRole = $auth->getRole('empleado');
+                    $auth->assign($empleadoRole, $model->getId());
                     break;
                 case 3:
-                    $authorRole = $auth->getRole('admin');
-                    $auth->assign($authorRole, $model->getId());
+                    $adminRole = $auth->getRole('admin');
+                    $auth->assign($adminRole, $model->getId());
                     break;
             }*/
             return $this->redirect('../app/index');

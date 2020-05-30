@@ -40,6 +40,14 @@ class ReferenciasController extends Controller
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function actions()
+    {
+        $this->layout='app';
+    }
+
+    /**
      * Lists all Referencias models.
      * @return mixed
      */

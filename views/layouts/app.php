@@ -5,9 +5,6 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -76,18 +73,18 @@ AppAsset::register($this);
                     <button type="submit" class="btn btn-active text-none"><a class="text-light d-flex align-items-center text-none" href="#"><span class="material-icons">search</span>  Filtrar Nombre</a></button>
                 </li>
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/pacientes/"><span class="material-icons">assignment</span> Pacientes</a></button>
+                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/pacientes"><span class="material-icons">assignment</span> Pacientes</a></button>
                 </li>
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="#"><span class="material-icons">description</span>Referencias</a></button>
+                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/referencias"><span class="material-icons">description</span>Referencias</a></button>
                 </li>
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="#"><span class="material-icons">assignment_ind</span>Empleados</a></button>
+                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/app"><span class="material-icons">assignment_ind</span>Empleados</a></button>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active d-flex align-items-center mx-1">
-                    Hola, Oscar Pérez
+                    Hola, <?= Yii::$app->user->identity->username ?>
                 </li>
                 <li class="nav-item mx-1 my-2">
                     <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/site/logout"><span class="material-icons">exit_to_app</span>Cerrar Sesión</a></button>

@@ -40,6 +40,14 @@ class PacientesController extends Controller
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function actions()
+    {
+        $this->layout='app';
+    }
+
+    /**
      * Lists all Pacientes models.
      * @return mixed
      */

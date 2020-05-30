@@ -57,28 +57,18 @@ class AppController extends Controller
      */
     public function actionIndex()
     {
-        /*$dataProvider = new ActiveDataProvider([
-            'query' => Users::find(),
+        $dataProvider = new ActiveDataProvider([
+            'query' => User::find()->where(['activo' => 1])->orderBy(['username' => SORT_ASC]),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
+
+        $user = $this->findModel(\Yii::$app->user->identity->id);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-        ]);*/
-
-        $query = User::find();
-
-        /*$pagination = new Pagination([
-            'defaultPageSize' => 5,
-            'totalCount' => $query->count(),
-        ]);*/
-
-        $users = $query->orderBy('username')
-            ///->offset($pagination->offset)
-            //->limit($pagination->limit)
-            ->all();
-
-        return $this->render('index', [
-            'users' => $users,
+            'nivel' => $user->nivel,
             //'pagination' => $pagination,
         ]);
     }

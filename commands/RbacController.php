@@ -10,11 +10,11 @@ class RbacController extends Controller
     {
         $auth = Yii::$app->authManager;
         $auth->removeAll();
-        
-        // add "changePassword" permission
-        $changePassword = $auth->createPermission('changePassword');
-        $changePassword->description = 'Change passwords';
-        $auth->add($changePassword);
+
+        // agrega el permiso "create"
+        $create = $auth->createPermission('create');
+        $create->description = 'Create';
+        $auth->add($create);
 
         // add "updatePost" permission
         $updatePost = $auth->createPermission('updatePost');
@@ -35,6 +35,6 @@ class RbacController extends Controller
         $admin = $auth->createRole('admin');
         $auth->add($admin);
         $auth->addChild($admin, $empleado);
-        $auth->addChild($cliente, $changePassword);
+        $auth->addChild($cliente, $create);
     }
 }
