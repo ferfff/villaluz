@@ -58,7 +58,7 @@ class AppController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => User::find()->where(['activo' => 0]),
+            'query' => User::find(),
             'pagination' => [
                 'pageSize' => 10,
             ],
