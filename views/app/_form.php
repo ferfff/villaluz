@@ -9,58 +9,80 @@ use yii\jui\DatePicker;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="users-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin([
+    'fieldConfig' => [
+        'template' => "{input}",
+    ],
+]); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'paterno')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'materno')->textInput(['maxlength' => true]) ?>
-
-    <?= $model->ciudad = 'Femenino'; ?>
-    <?= $form->field($model, 'genero')->dropDownList([ 'Masculino' => 'Masculino', 'Femenino' => 'Femenino', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'edad')->textInput() ?>
-
-    <?= $form->field($model, 'nacimiento')->widget(DatePicker::className(),['language' => 'es',
-                                    'clientOptions' =>[
-                                        'dateFormat' => 'php:Y-m-d',
-                                        'yearRange' => 'c-80:c+0',
-                                        'changeMonth'=> true,
-                                        'changeYear'=> true,
-                                    ]
-                            ]) ?> 
-
-    <?= $form->field($model, 'telefono')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'movil')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'calle')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'numero')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'interior')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'colonia')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'cp')->textInput(['maxlength' => true]) ?>
-
-    <?= $model->ciudad = 'León'; ?>
-    <?= $form->field($model, 'ciudad')->dropDownList([ 'León' => 'León', 'Irapuato' => 'Irapuato', 'Salamanca' => 'Salamanca', 'Celaya' => 'Celaya', ], ['prompt' => '']) ?>
-
-    <?= $model->nivel = 1; ?>
-    <?= $form->field($model, 'nivel')->dropDownList([ 1 => '1', 2 => '2', 3 => '3', ], ['prompt' => '']) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <?= $form->field($model, 'nombre')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Nombre"])->label(false) ?>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
+    <div class="form-group col-md-4">
+        <?= $form->field($model, 'paterno')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Apellido Paterno"])->label(false) ?>
+    </div>
+    <div class="form-group col-md-4">
+        <?= $form->field($model, 'materno')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Apellido Materno"])->label(false) ?>
+    </div>
 </div>
+
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <?= $form->field($model, 'genero')->dropDownList([ 'Masculino' => 'Masculino', 'Femenino' => 'Femenino', ], ['prompt' => '']) ?>   
+    </div>
+    <div class="form-group col-md-3">
+        <?= $form->field($model, 'edad')->textInput() ?>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <?= $form->field($model, 'nacimiento')->textInput() ?>
+    </div>
+    <div class="form-group col-md-4">
+        <?= $form->field($model, 'telefono')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Nombre"])->label(false) ?>
+    </div>
+    <div class="form-group col-md-4">
+        <?= $form->field($model, 'movil')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Nombre"])->label(false) ?>
+    </div>
+</div>    
+
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Nombre"])->label(false) ?>
+    </div>
+    <div class="form-group col-md-4">
+        <?= $form->field($model, 'calle')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Nombre"])->label(false) ?>
+    </div>
+    <div class="form-group col-md-4">
+        <?= $form->field($model, 'numero')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Nombre"])->label(false) ?>
+    </div>
+    <div class="form-group col-md-4">
+    <?= $form->field($model, 'interior')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Nombre"])->label(false) ?>
+    </div>
+</div>
+    
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <?= $form->field($model, 'colonia')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Nombre"])->label(false) ?>
+    </div>
+    <div class="form-group col-md-3">
+        <?= $form->field($model, 'cp')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Nombre"])->label(false) ?>
+    </div>
+    <div class="form-group col-md-3">
+        <?= $form->field($model, 'ciudad')->dropDownList([ 'Irapuato' => 'Irapuato', 'Leon' => 'Leon', 'Salamanca' => 'Salamanca', 'Celaya' => 'Celaya', ], ['prompt' => '']) ?>
+    </div>
+    <div class="form-group col-md-3">
+        <?= $form->field($model, 'activo')->textInput() ?>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <?= Html::submitButton('<span class="material-icons mr-2">library_add</span> Agregar', ['class' => 'btn text-center d-flex align-items-center btns btn-lg']) ?>
+</div>
+
+<?php ActiveForm::end(); ?>
+
+
