@@ -62,7 +62,7 @@ $config = [
                 'class' => 'yii\swiftmailer\Mailer',
                 'host' => 'smtp.mail.yahoo.com',  // ej. smtp.mandrillapp.com o smtp.gmail.com
                 'username' => 'ferfff@yahoo.com.mx',
-                'password' => 'MEXICO07fercho',
+                'password' => '',
                 'port' => '25', // El puerto 25 es un puerto común también
                 //'encryption' => 'tls', // Es usado también a menudo, revise la configuración del servidor
             ],*/
