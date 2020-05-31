@@ -313,15 +313,20 @@ th {
 	font-weight: 400;
 }
 .asc:after {
-    content: ' ↑' !important;
+    content: none !important;
  }
 
 .desc:after {
-    content: " ↓" !important;
+    content: none !important;
  }
  
 .btn-header a:visited, a:hover, a:active {
-    color: #5EAAA9 !important;
+    color: #ffffff !important;
+}
+
+.btn-header td a:visited, a:hover, a:active {
+    color: #80007e !important;
+    text-decoration: none !important;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -352,6 +357,14 @@ th {
     }
 }
 
+@media only screen and (max-width: 900px) {
+    .txt-menu{
+        display: none;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
+
 @media only screen and (max-width: 720px) {
     .content-items{
         height: auto;
@@ -360,10 +373,7 @@ th {
 }
 
 div.errorform {
-    background-color: #5EAAA9;
-    border-radius: 4px;
-    padding: 10px;
     font-size: 14px;
     font-weight: bold;
-    color: #ffffff;
+    color: #80007e !important;
 }
