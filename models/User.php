@@ -23,11 +23,11 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['username','nombre','paterno','materno','nacimiento','email','calle','numero','colonia','ciudad','password'], 'required'],
             [['username','nombre','paterno','materno'], 'string', 'max' => 50],
-            [['username','nombre','paterno','materno','cp','calle','numero','colonia','ciudad'], 'string', 'min' => 5],
+            [['username','nombre','paterno','materno','cp','calle','colonia','ciudad'], 'string', 'min' => 5],
             [['calle','numero','colonia','ciudad'], 'string', 'max' => 20],
             ['genero', 'in', 'range'=>['masculino','femenino']],
             ['genero', 'required', 'message' => 'Seleccione un género'],
-            ['nacimiento', 'date'],
+            ['nacimiento', 'date', 'format' => 'php:Y-m-d'],
             ['email', 'email'],
             [['cp'], 'string', 'max' => 10],
             ['nivel', 'in', 'range'=>['1','2','3']],

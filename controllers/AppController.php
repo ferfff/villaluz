@@ -18,6 +18,8 @@ use yii\data\Pagination;
  */
 class AppController extends Controller
 {
+    private $nivel;
+
     /**
      * {@inheritdoc}
      */
@@ -48,7 +50,12 @@ class AppController extends Controller
      */
     public function actions()
     {
+        //Aplicar layout
         $this->layout='app';
+
+        //Declarar nivel de usuario
+        $user = $this->findModel(\Yii::$app->user->identity->id);
+        $this->nivel = $user->nivel;
     }
 
     /**
@@ -60,15 +67,15 @@ class AppController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => User::find(),
             'pagination' => [
-                'pageSize' => 10,
+                'pageSize' => 5,
             ],
         ]);
 
-        $user = $this->findModel(\Yii::$app->user->identity->id);
+        
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'nivel' => $user->nivel,
+            'nivel' => $this->nivel,
             //'pagination' => $pagination,
         ]);
     }

@@ -7,7 +7,7 @@ use yii\grid\DataColumn;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+$GLOBALS['nivel'] = $nivel;
 ?>
 <div class="users-index">
     <div class="container-fluid px-4 mh-100">
@@ -24,14 +24,13 @@ use yii\grid\DataColumn;
                         </div>
                         <div class="p-1">
                             <?php 
-                            if ($nivel != 1) {
-                                echo Html::a('<span class="material-icons">autorenew</span><span class="txt-menu"> Cambiar Contraseña</span>', ['password'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
-                            } ?>
+                                echo Html::a('<span class="material-icons">autorenew</span><span class="txt-menu"> Cambiar Contraseña</span>', ['changepassword'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold',]);
+                             ?>
                         </div>
                         <div class="p-1">
                             <?php 
-                            if ($nivel != 1) {
-                                echo Html::a('<span class="material-icons">group</span><span class="txt-menu"> Asignar Pacientes</span>', ['user'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
+                            if ($nivel == 3) {
+                                echo Html::a('<span class="material-icons">group</span><span class="txt-menu"> Asignar Pacientes</span>', ['user'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold',]);
                             } ?>
                         </div>
                         <div class="p-1">
@@ -46,14 +45,20 @@ use yii\grid\DataColumn;
                 <?= GridView::widget([ 
                     'dataProvider' => $dataProvider,
                     'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-'],
+                    //'layout' => "{summary}\n{items}\n<div align='center'>{pager}</div>",
                     'headerRowOptions' => ['class' => 'header-table'],
+                    'pager' => [
+                        //'firstPageLabel' => 'Primero',
+                        //'lastPageLabel'  => 'Último',
+                        //'options' => ['class' => 'pagination'],
+                    ],
                     'columns' => [
                         //['class' => 'yii\grid\SerialColumn'],
                         [
                             'format' => 'raw',
                             'label' => '',
                             'content' => function($model) {
-                                return ($model->nivel == 3) ? Html::a('<span class="material-icons">create</span>', 
+                                return ($GLOBALS['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
                                     ['update', 'id' => $model->id], 
                                     ['class' => 'btn btn-primary d-flex align-items-center text-light',]
                                 ) : '';
@@ -63,7 +68,7 @@ use yii\grid\DataColumn;
                             'format' => 'raw',
                             'label' => '',
                             'content' => function($model) {
-                                return ($model->nivel == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
+                                return ($GLOBALS['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
                                     ['delete', 'id' => $model->id], 
                                     [
                                         'class' => 'btn btn-danger d-flex align-items-center text-light',
@@ -102,7 +107,9 @@ use yii\grid\DataColumn;
                     'options' => [
                         //'class' => 'header-morado',
                    ],
-                ]);?>
+                ]);
+                
+                ?>
 
                 <?php Pjax::end(); ?>
             </div>

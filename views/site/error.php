@@ -11,17 +11,17 @@ $this->title = $name;
 ?>
 <div class="site-error">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
+    <div id="notfound">
+        <div class="notfound">
+            <div class="notfound-404">
+                <h1>:(</h1>
+            </div>
+            <div>
+                <h2>404 - Página no encontrada</h2>
+                <p>La página que está buscando podría haberse eliminado si se cambia su nombre o no está disponible temporalmente.</p>
+                <a href="#">ir a inicio</a>
+            </div>
+        </div>
     </div>
-
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
 
 </div>

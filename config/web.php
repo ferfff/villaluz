@@ -25,6 +25,9 @@ $config = [
             'enableAutoLogin' => true,
             'enableSession' => true,
         ],
+        'errorHandler'=>[
+            'errorAction'=>'SiteController/error',
+        ],
         'response' => [
 			'formatters' => [
 				'pdf' => [

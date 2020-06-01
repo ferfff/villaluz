@@ -171,4 +171,11 @@ class SiteController extends Controller
     {
         return $this->render('contacto');
     }
+
+    public function actionError()
+    {
+        $error = Yii::$app->errorHandler->error;
+        if ($error)
+            $this->render('error', array('error'=>$error));
+    }
 }
