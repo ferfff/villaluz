@@ -259,6 +259,11 @@ a.desc:after {
     text-decoration: none !important;
 }
 
+.purple_color a:link, a:visited, a:hover, a:active {
+    color: #80007E !important;
+    text-decoration: none !important;
+}
+
 /*--------table-------*/
 .search_iput{
     border-bottom: 1px solid #3C4858 !important;
@@ -329,6 +334,14 @@ th {
     text-decoration: none !important;
 }
 
+@media only screen and (max-width: 1350px) {
+    .menu_paciente{
+        display: none;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     .body-content{
         height: 400px;
@@ -376,4 +389,24 @@ div.errorform {
     font-size: 14px;
     font-weight: bold;
     color: #80007e !important;
+}
+
+.pagination li a{
+    font-weight: bold !important;
+    color: #80007e !important;
+    padding: 0 5px;
+    margin: 0 3px;
+}
+
+.pagination a:hover{
+    background-color: #80007e !important;
+    font-weight: bold !important;
+    color: #ffffff !important;
+    padding: 0 5px;
+
+}
+
+.summary{
+    margin-bottom: 15px;
+    color: #3C4858 !important;
 }

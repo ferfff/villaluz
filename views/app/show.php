@@ -36,7 +36,7 @@ $GLOBALS['nivel'] = $nivel;
                         <div class="p-1">
                             <?php 
                             if ($nivel != 1) {
-                                echo Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['download'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
+                                echo Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
                             } ?>
                         </div>
                 </div>

@@ -18,22 +18,22 @@ AppAsset::register($this);
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
         
         body{
-		font-family: 'Roboto', sans-serif;
+		font-family: 'Roboto', sans-serif !important;
 		color: #3C4858;
 		margin-left:auto;
 		margin-right:auto;
 		max-width:297mm;
 		max-height:210mm;
-		font-size: 16px;
+		font-size: 14px;
 		height: 100vh;
-		padding: 25px 0;
+		padding: 0 0;
         }
         
-        .pdf-header{text-align:center; margin-bottom:5em; padding-bottom: 10px; }
+        .pdf-header{margin-bottom:5em; padding-bottom: 15px; border-bottom: 1px solid #80007E;}
 
         .footer-bottom{
             background-color: #5EAAA9;
-            height: 50px;
+            height: 30px;
             width: 100%;
             border-top:5px solid #80007E;
         }
@@ -43,7 +43,7 @@ AppAsset::register($this);
 
 <body>  
     <header class="pdf-header">
-        <img alt="logo villaluz" src="logo_villaluz_color.svg" width="200px">
+        <img alt="logo villaluz" src="/img/logo_villaluz_color.jpg" width="130px">
     </header>
 
     <?= $content ?>

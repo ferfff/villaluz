@@ -142,4 +142,10 @@ class PacientesController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionTest()
+    {
+        $this->layout = 'pacientes';
+        return $this->render('test');
+    }
 }
