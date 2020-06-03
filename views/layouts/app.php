@@ -51,7 +51,7 @@ AppAsset::register($this);
                     <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/referencias"><span class="material-icons">description</span>Referencias</a></button>
                 </li>
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/app"><span class="material-icons">assignment_ind</span>Empleados</a></button>
+                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/app/show"><span class="material-icons">assignment_ind</span>Empleados</a></button>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

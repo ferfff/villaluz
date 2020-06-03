@@ -71,9 +71,27 @@ class AppController extends Controller
             ],
         ]);
 
-        
-
         return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'nivel' => $this->nivel,
+            //'pagination' => $pagination,
+        ]);
+    }
+
+    /**
+     * Lists all Users models.
+     * @return mixed
+     */
+    public function actionShow()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => User::find(),
+            'pagination' => [
+                'pageSize' => 5,
+            ],
+        ]);
+
+        return $this->render('show', [
             'dataProvider' => $dataProvider,
             'nivel' => $this->nivel,
             //'pagination' => $pagination,
