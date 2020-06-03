@@ -225,18 +225,12 @@ a.desc:after {
 .bar-style{
     background-color: #5EAAA9;
     color: #ffffff;
-    padding: 15px 0 !important;
     border-radius: 0 !important;
     text-align: center !important;
 }
 
 .btn-active{
-    background-color: #80007E;
-    color: #ffffff;
-    border-radius: 0 !important;
-    text-decoration: none !important;
-    padding: 10px !important;
-    width: 100%;
+    background-color: #5EAAA9 !important;
 }
 
 .btn-main {
@@ -244,14 +238,12 @@ a.desc:after {
     color: #ffffff;
     border-radius: 0 !important;
     text-decoration: none !important;
-    padding: 10px !important;
     width: 100%;
+    font-size: 14px !important;
 }
   
 .btn-main:hover {
-    background-color: #80007E;
-    color: #ffffff;
-    padding: 10px !important;
+    color: #5EAAA9 !important;
     width: 100%;
 }
 
@@ -260,8 +252,15 @@ a.desc:after {
 }
 
 .purple_color a:link, a:visited, a:hover, a:active {
-    color: #80007E !important;
+    color: #5EAAA9 !important;
     text-decoration: none !important;
+}
+
+.nav-paciente{
+    background-color: #80007E !important;
+    padding: 10px 0;
+    color: #ffffff;
+    font-weight: bold;
 }
 
 /*--------table-------*/

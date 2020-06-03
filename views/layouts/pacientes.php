@@ -21,42 +21,49 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-active text-none"><a class="text-light d-flex align-items-center text-none" href="#"><span class="material-icons">search</span><span class="menu_paciente"> Inicio</span></a></button>
+                    <button type="submit" class="btn btn-active text-none"><a class="d-flex align-items-center text-none" href="#"><span class="material-icons">home</span><span class="menu_paciente"> Inicio</span></a></button>
                 </li>
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/pacientes"><span class="material-icons">assignment</span><span class="menu_paciente"> Registros</span></a></button>
+                    <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/pacientes"><span class="material-icons">assignment</span><span class="menu_paciente"> Registros</span></a></button>
                 </li>
                 <li class="nav-item dropdown">
-                    <button type="submit" class="btn btn-main text-none">
-                        <a class="nav-link dropdown-toggle text-light d-flex align-items-center text-none" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <span class="material-icons">assignment_ind</span><span class="menu_paciente"> Medicamentos</span>
+                    <button type="submit" class="btn btn-main text-none btn-active">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center text-none" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span class="material-icons">medical_services</span><span class="menu_paciente"> Medicamentos</span>
                         </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item purple_color text-dark" href="#">Base</a>
-                    <a class="dropdown-item purple_color text-dark" href="#">Eventuales</a>
+                    <a class="dropdown-item purple_color" href="#">Base</a>
+                    <a class="dropdown-item purple_color" href="#">Eventuales</a>
                     </div>
                     </button>
                 </li>
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/app/show"><span class="material-icons">assignment_ind</span><span class="menu_paciente"> Citas Medicas</span></a></button>
+                    <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/app/show"><span class="material-icons">event_note</span><span class="menu_paciente"> Citas Medicas</span></a></button>
                 </li>
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/app/show"><span class="material-icons">assignment_ind</span><span class="menu_paciente"> Reporte Semanal</span></a></button>
+                    <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/app/show"><span class="material-icons">text_snippet</span><span class="menu_paciente"> Reporte Semanal</span></a></button>
                 </li>
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/app/show"><span class="material-icons">assignment_ind</span><span class="menu_paciente"> Reloj Checador</span></a></button>
+                    <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/app/show"><span class="material-icons">av_timer</span><span class="menu_paciente"> Reloj Checador</span></a></button>
+                </li>
+                <li class="nav-item mx-1 my-2">
+                    <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/app/show"><span class="material-icons">update</span><span class="menu_paciente"> Tiempos</span></a></button>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active d-flex align-items-center mx-1">
-                    Paciente: <?= Yii::$app->user->identity->username ?>
-                </li>
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/site/logout"><span class="material-icons">exit_to_app</span>Cerrar Sesión</a></button>
+                    <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/site/logout"><span class="material-icons">exit_to_app</span>Cerrar Sesión</a></button>
                 </li>
             </ul>
         </div>
     </nav>
+    <div>
+    <ul class="nav justify-content-center nav-paciente">
+        <li class="nav-item active d-flex align-items-center mx-1">
+            Paciente: <?= Yii::$app->user->identity->username ?>
+        </li>
+    </ul>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
