@@ -52,10 +52,6 @@ class AppController extends Controller
     {
         //Aplicar layout
         $this->layout='app';
-
-        //Declarar nivel de usuario
-        $user = $this->findModel(\Yii::$app->user->identity->id);
-        $this->nivel = $user->nivel;
     }
 
     /**
@@ -64,6 +60,10 @@ class AppController extends Controller
      */
     public function actionIndex()
     {
+        //Declarar nivel de usuario al entrar
+        $user = $this->findModel(\Yii::$app->user->identity->id);
+        $this->nivel = $user->nivel;
+
         $dataProvider = new ActiveDataProvider([
             'query' => User::find(),
             'pagination' => [
