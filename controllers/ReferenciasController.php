@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use app\models\Referencias;
+use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -15,6 +16,8 @@ use yii\filters\VerbFilter;
  */
 class ReferenciasController extends Controller
 {
+    private $nivel;
+
     /**
      * {@inheritdoc}
      */
@@ -45,6 +48,13 @@ class ReferenciasController extends Controller
     public function actions()
     {
         $this->layout='app';
+
+        //Declarar nivel de usuario
+        if (!Yii::$app->user->isGuest) {
+            if (($model = User::findOne(\Yii::$app->user->identity->id)) !== null) {
+                $this->nivel = $model->nivel;
+            }
+        }
     }
 
     /**
@@ -57,8 +67,11 @@ class ReferenciasController extends Controller
             'query' => Referencias::find(),
         ]);
 
+        $dataProvider->setPagination(['pageSize' => 5]);
+
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'nivel' => $this->nivel,
         ]);
     }
 
@@ -85,7 +98,7 @@ class ReferenciasController extends Controller
         $model = new Referencias();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -105,7 +118,7 @@ class ReferenciasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

@@ -6,85 +6,103 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pacientes';
-$this->params['breadcrumbs'][] = $this->title;
+$GLOBALS['nivel'] = $nivel;
 ?>
+
 <div class="pacientes-index">
-    
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Pacientes', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    
-    <?php Pjax::begin(); ?>
-    
-    <?= GridView::widget([ 
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'nombre',
-            'paterno',
-            'materno',
-            'genero',
-            //'edad',
-            //'altura',
-            //'nacimiento',
-            //'telefono',
-            //'movil',
-            //'email:email',
-            //'calle',
-            //'numero',
-            //'interior',
-            //'colonia',
-            //'cp',
-            //'ciudad',
-            //'diagnostico:ntext',
-            //'activo',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
-    <?php Pjax::end(); ?>
-
     <div class="container-fluid px-4 mh-100">
-        <h5 class="mb-4 font-weight-bold">Escoge un paciente en la lista</h5>
+        <h5 class="my-4 font-weight-bold">Administración de Pacientes</h5>
         <div class="card rounded-0 mh-100 border-0">
             <div class="card-body">
-                <form class="form-inline mb-4 d-flex justify-content-center">
-                    <div class="d-flex align-items-center">
-                        <span class="material-icons my-2">search</span>Filtrar por nombre:
-                    </div>
-                    <div class="search_iput mx-2">
-                        <input class="form-control mr-sm-2 border-0 input_search" type="search" aria-label="Search">
-                    </div>
-                    <button class="btn mx-2 my-sm-0" type="submit">Buscar</button>
-                </form>
-                <table class="table table-striped table-hover">
-                    <tbody>
-                        <tr>
-                            <th>Elizabeth Hernández</th>
-                        </tr>
-                        <tr>
-                            <th>Adriana Martinez</th>
-                        </tr>
-                        <tr>
-                            <th>Yolanda González</th>
-                        </tr>
-                        <tr>
-                            <th>Adriana Martinez</th>
-                        </tr>
-                        <tr>
-                            <th>Leonardo Mayorquin</th>
-                        </tr>
-                        <tr>
-                            <th>Eduardo Velazco</th>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
+                    <div class="mr-auto font-weight-bold p-2">Pacientes</div>
+                        <div class="p-1">
+                            <?php 
+                            if ($nivel == 3) {
+                                echo Html::a('<span class="material-icons">library_add</span><span class="txt-menu"> Nuevo</span>', ['create'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold']);
+                            } ?>
+                        </div>
+                        <div class="p-1">
+                            <?php 
+                            if ($nivel != 1) {
+                                echo Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
+                            } ?>
+                        </div>
+                </div>
+                <?php Pjax::begin(['id' => 'pacientesgrid']); ?>
+                
+                <?= GridView::widget([ 
+                    'dataProvider' => $dataProvider,
+                    'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-'],
+                    //'layout' => "{summary}\n{items}\n<div align='center'>{pager}</div>",
+                    'headerRowOptions' => ['class' => 'header-table'],
+                    'pager' => [
+                        //'firstPageLabel' => 'Primero',
+                        //'lastPageLabel'  => 'Último',
+                        //'options' => ['class' => 'pagination'],
+                    ],
+                    'rowOptions'   => function ($model, $key, $index, $grid) {
+                        return ['data-id' => $model->id];
+                    },
+                    'columns' => [
+                        //['class' => 'yii\grid\SerialColumn'],
+                        [
+                            'format' => 'raw',
+                            'label' => '',
+                            'content' => function($model) {
+                                return ($GLOBALS['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
+                                    ['update', 'id' => $model->id], 
+                                    ['class' => 'btn btn-primary d-flex align-items-center text-light',]
+                                ) : '';
+                            }
+                        ],
+                        [
+                            'format' => 'raw',
+                            'label' => '',
+                            'content' => function($model) {
+                                return ($GLOBALS['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
+                                    ['delete', 'id' => $model->id], 
+                                    [
+                                        'class' => 'btn btn-danger d-flex align-items-center text-light',
+                                        'data' => ['confirm' => '¿Estás seguro quieres eliminar este usuario?','method' => 'post'], 
+                                        'data-ajax' => '1',
+                                    ]
+                                ) : '';
+                            }
+                        ],
+                        'nombre',
+                        'paterno',
+                        'materno',
+                        'genero',
+                        [
+                            'label' => 'Edad',
+                            'content' => function($model) {
+                                return $model->getEdad();
+                            }
+                        ],
+                        'peso',
+                        'altura',
+                        'nacimiento',
+                        'telefono',
+                        'movil',
+                        'email:email',
+                        'calle',
+                        'numero',
+                        'interior',
+                        'colonia',
+                        'cp',
+                        'ciudad',
+                        'diagnostico',
+                        'costo',
+                        'pago',
+                        //['class' => 'yii\grid\ActionColumn'],
+                    ],
+                    'tableOptions' => ['class' => 'table table-striped table-hover table-responsive'],
+                    'options' => [
+                        //'class' => 'header-morado',
+                   ],
+                ]);?>
+                <?php Pjax::end(); ?>
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use app\models\Pacientes;
+use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -15,6 +16,8 @@ use yii\filters\VerbFilter;
  */
 class PacientesController extends Controller
 {
+    private $nivel;
+
     /**
      * {@inheritdoc}
      */
@@ -45,6 +48,13 @@ class PacientesController extends Controller
     public function actions()
     {
         $this->layout='app';
+
+        //Declarar nivel de usuario
+        if (!Yii::$app->user->isGuest) {
+            if (($model = User::findOne(\Yii::$app->user->identity->id)) !== null) {
+                $this->nivel = $model->nivel;
+            }
+        }
     }
 
     /**
@@ -57,8 +67,11 @@ class PacientesController extends Controller
             'query' => Pacientes::find(),
         ]);
 
+        $dataProvider->setPagination(['pageSize' => 5]);
+
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'nivel' => $this->nivel,
         ]);
     }
 
@@ -85,7 +98,7 @@ class PacientesController extends Controller
         $model = new Pacientes();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -105,7 +118,7 @@ class PacientesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -126,6 +139,25 @@ class PacientesController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    public function actionPdf(){
+        Yii::$app->response->format = 'pdf';
+        
+        $query = Pacientes::find();
+        $pacientes = $query->orderBy('nombre')->all();
+
+		// Rotate the page
+		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [
+			'format' => [216, 356], // Legal page size in mm
+			'orientation' => 'Landscape', // This value will be used when 'format' is an array only. Skipped when 'format' is empty or is a string
+			'beforeRender' => function($mpdf, $data) {},
+			]);
+		
+		$this->layout = 'pdflayout';
+		return $this->render('pdf', [
+            'pacientes' => $pacientes,
+        ]);
+	}
 
     /**
      * Finds the Pacientes model based on its primary key value.

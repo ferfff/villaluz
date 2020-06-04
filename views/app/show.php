@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-use yii\grid\DataColumn;
+use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -29,18 +29,12 @@ $GLOBALS['nivel'] = $nivel;
                         </div>
                         <div class="p-1">
                             <?php 
-                            if ($nivel == 3) {
-                                echo Html::a('<span class="material-icons">group</span><span class="txt-menu"> Asignar Pacientes</span>', ['user'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold',]);
-                            } ?>
-                        </div>
-                        <div class="p-1">
-                            <?php 
                             if ($nivel != 1) {
                                 echo Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
                             } ?>
                         </div>
                 </div>
-                <?php Pjax::begin(); ?>
+                <?php Pjax::begin(['id' => 'empleadosgrid']); ?>
                 
                 <?= GridView::widget([ 
                     'dataProvider' => $dataProvider,
@@ -52,6 +46,9 @@ $GLOBALS['nivel'] = $nivel;
                         //'lastPageLabel'  => 'Último',
                         //'options' => ['class' => 'pagination'],
                     ],
+                    'rowOptions'   => function ($model, $key, $index, $grid) {
+                        return ['data-id' => $model->id];
+                    },
                     'columns' => [
                         //['class' => 'yii\grid\SerialColumn'],
                         [
@@ -101,131 +98,55 @@ $GLOBALS['nivel'] = $nivel;
                         'ciudad',
                         'nivel',
                         'activo',
-                        ['class' => 'yii\grid\ActionColumn'],
+                        //['class' => 'yii\grid\ActionColumn'],
                     ],
                     'tableOptions' => ['class' => 'table table-striped table-hover table-responsive'],
                     'options' => [
                         //'class' => 'header-morado',
                    ],
-                ]);
-                
-                ?>
-
+                ]);?>
                 <?php Pjax::end(); ?>
             </div>
         </div>
     </div>
 
-
-
-
-
-
-
-    <div class="container-fluid px-4 mh-100 my-4">
-        <div class="card rounded-0 mh-100 border-0">
-            <div class="card-body">
-                <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
-                    <div class="mr-auto font-weight-bold p-2">Asignar Pacientes</div>
-                    <div class="p-2">
-                        <button type="button" class="btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold"><span class="material-icons">close</span> Cancelar</button>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
-                                <div class="mr-auto font-weight-bold p-2">Pacientes Asignados</div>
-                            </div>
-                            <form class="form-inline mb-4 d-flex">
-                                <div class="d-flex align-items-center">
-                                    <span class="material-icons my-2">search</span>Filtrar por nombre:
-                                </div>
-                                <div class="search_iput mx-2">
-                                    <input class="form-control mr-sm-2 border-0 input_search" type="search" aria-label="Search">
-                                </div>
-                                <button class="btn mx-2 my-sm-0" type="submit">Buscar</button>
-                            </form>
-                            <table class="table table-striped table-hover">
-                                <tbody>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-danger btn-sm mr-2"><span class="material-icons">remove</span></button><b>Elizabeth Hernández</b></th>
-                                    </tr>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-danger btn-sm mr-2"><span class="material-icons">remove</span></button><b>Adriana Martinez</b></th>
-                                    </tr>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-danger btn-sm mr-2"><span class="material-icons">remove</span></button><b>Yolanda González</b></th>
-                                    </tr>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-danger btn-sm mr-2"><span class="material-icons">remove</span></button><b>Adriana Martinez</b></th>
-                                    </tr>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-danger btn-sm mr-2"><span class="material-icons">remove</span></button><b>Leonardo Mayorquin</b></th>
-                                    </tr>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-danger btn-sm mr-2"><span class="material-icons">remove</span></button><b>Eduardo Velazco</b></th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
-                                <div class="mr-auto font-weight-bold p-2">Pacientes Disponibles</div>
-                            </div>
-                            <form class="form-inline mb-4 d-flex">
-                                <div class="d-flex align-items-center">
-                                    <span class="material-icons my-2">search</span>Filtrar por nombre:
-                                </div>
-                                <div class="search_iput mx-2">
-                                    <input class="form-control mr-sm-2 border-0 input_search" type="search" aria-label="Search">
-                                </div>
-                                <button class="btn mx-2 my-sm-0" type="submit">Buscar</button>
-                            </form>
-                            <table class="table table-striped table-hover">
-                                <tbody>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-primary btn-sm mr-2"><span class="material-icons">add</span></button><b>Elizabeth Hernández</b></th>
-                                    </tr>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-primary btn-sm mr-2"><span class="material-icons">add</span></button><b>Adriana Martinez</b></th>
-                                    </tr>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-primary btn-sm mr-2"><span class="material-icons">add</span></button><b>Yolanda González</b></th>
-                                    </tr>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-primary btn-sm mr-2"><span class="material-icons">add</span></button><b>Adriana Martinez</b></th>
-                                    </tr>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-primary btn-sm mr-2"><span class="material-icons">add</span></button><b>Leonardo Mayorquin</b></th>
-                                    </tr>
-                                    <tr>
-                                        <th><button type="button" class="btn btn-primary btn-sm mr-2"><span class="material-icons">add</span></button><b>Eduardo Velazco</b></th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-        
-        
-        
-        
-        
-                
-                
-                
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
+    <div class="container-fluid px-4 mh-100 my-4" id="showEmployeeView"></div>
 
 </div>
+<?php
+$jsCode = <<<JAVASCRIPT
+$('body').on('click', 'td', function (e) {
+    var id = $(this).closest('tr').data('id');
+    if(e.target == this) {
+        $.ajax({
+            method: 'GET',
+            url: 'view',
+            data: {'id': id},
+            success:function(data) {
+                $('#showEmployeeView').html(data);
+                window.location.hash = '#showEmployeeView'; 
+            },
+            error: function(exception) { // if error occured
+                console.log(exception);
+            },
+        });
+    }
+});
+
+var desasignar = function (pacientid, userid) {
+    
+    $.ajax({
+        method: 'POST',
+        url: 'asignar',
+        data: {'pacientid': pacientid, 'userid': userid},
+        success:function(data) {
+            console.log(data);
+        },
+        error: function(exception) { // if error occured
+            console.log(exception);
+        },
+    });
+};
+JAVASCRIPT;
+
+$this->registerJs($jsCode, View::POS_END);

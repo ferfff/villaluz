@@ -6,12 +6,13 @@ use Yii;
 use yii\filters\AccessControl;
 use app\models\User;
 use app\models\ChangePasswordForm;
+use app\models\Pacientes;
+use app\models\UsersPacientes;
 use Exception;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\data\Pagination;
 
 /**
  * AppController implements the CRUD actions for Users model.
@@ -52,6 +53,12 @@ class AppController extends Controller
     {
         //Aplicar layout
         $this->layout='app';
+
+        //Declarar nivel de usuario
+        if (!Yii::$app->user->isGuest) {
+            $user = $this->findModel(\Yii::$app->user->identity->id);
+            $this->nivel = $user->nivel;
+        }
     }
 
     /**
@@ -60,10 +67,6 @@ class AppController extends Controller
      */
     public function actionIndex()
     {
-        //Declarar nivel de usuario al entrar
-        $user = $this->findModel(\Yii::$app->user->identity->id);
-        $this->nivel = $user->nivel;
-
         $dataProvider = new ActiveDataProvider([
             'query' => User::find(),
             'pagination' => [
@@ -86,29 +89,70 @@ class AppController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => User::find(),
-            'pagination' => [
-                'pageSize' => 5,
-            ],
         ]);
+
+        $dataProvider->setPagination(['pageSize' => 5]);
 
         return $this->render('show', [
             'dataProvider' => $dataProvider,
             'nivel' => $this->nivel,
-            //'pagination' => $pagination,
-        ]);
+        ], false,true);
     }
 
     /**
-     * Displays a single Users model.
+     * Displays relation between patient and employee
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        $assigned = UsersPacientes::findAll([
+            'pacientes_id' => $id
         ]);
+
+        $notAssigned = Pacientes::find()
+            ->leftJoin('users_pacientes','`users_pacientes`.`pacientes_id` = `pacientes`.`id`')
+            ->andWhere(['or',
+                ['!=','users_pacientes.users_id', $id],
+                ['users_pacientes.users_id' => null]
+            ])
+            ->all();
+
+        if (Yii::$app->request->isAjax) {
+            return $this->renderPartial('view', [
+                'assigned'=>$assigned,
+                'notAssigned'=>$notAssigned,
+                'userid'=>$id,
+            ]);
+        }
+    }
+
+    /**
+     * Asigna pacientes a un usuario
+     * @return json
+     */
+    public function actionAsignar()
+    {
+        $data = Yii::$app->request->post();
+        
+        if (Yii::$app->request->isAjax) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return ['data' => $data];
+        }
+    }
+
+    /**
+     * Desasigna pacientes a un usuario
+     * @return json
+     */
+    public function actionDesasignar()
+    {
+        $data = Yii::$app->request->post();
+        
+        if (Yii::$app->request->isAjax) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return ['data' => $data];
+        }
     }
 
     /**
@@ -134,7 +178,7 @@ class AppController extends Controller
                     ->setTo('ferchofff@gmail.com')
                     ->setSubject('Email avanzado desde Villaluz prueba')
                     ->send();
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['show']);
             }
         }  
 
@@ -157,7 +201,7 @@ class AppController extends Controller
         if ($model->load(Yii::$app->request->post())){
             $model->nacimiento=Yii::$app->formatter->asDate($model->nacimiento, "yyyy-MM-dd");
             if(!$model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['show']);
             }
         }
         
@@ -176,8 +220,11 @@ class AppController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        /*if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ['success' => true];
+        }*/
+        return $this->redirect(['show']);
     }
 
     public function actionChangepassword(){

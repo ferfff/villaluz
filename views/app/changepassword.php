@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
             <div class="d-flex header-verde p-2 text-light align-items-center">
                 <div class="mr-auto font-weight-bold p-2">Cambiar Contraseña</div>
                 <div class="p-2">
-                    <?= Html::a('<span class="material-icons">close</span> Cancelar', 'index', ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold btn-header']) ?>
+                    <?= Html::a('<span class="material-icons">close</span> Cancelar', 'show', ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold btn-header']) ?>
                 </div>
             </div>
             <div class="row justify-content-center my-5">

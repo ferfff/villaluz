@@ -13,7 +13,6 @@ use Yii;
  * @property string $paterno
  * @property string $materno
  * @property string $genero
- * @property int $edad
  * @property string $nacimiento
  * @property string $telefono
  * @property string $movil
@@ -44,8 +43,8 @@ class Referencias extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_paciente', 'nombre', 'paterno', 'materno', 'genero', 'edad', 'nacimiento', 'telefono', 'movil', 'email', 'calle', 'numero', 'interior', 'colonia', 'cp', 'ciudad', 'parentesco'], 'required'],
-            [['id_paciente', 'edad'], 'integer'],
+            [['id_paciente', 'nombre', 'paterno', 'materno', 'genero', 'nacimiento', 'telefono', 'movil', 'email', 'calle', 'numero', 'interior', 'colonia', 'cp', 'ciudad', 'parentesco'], 'required'],
+            [['id_paciente'], 'integer'],
             [['genero', 'ciudad'], 'string'],
             [['nacimiento'], 'safe'],
             [['nombre', 'paterno', 'materno', 'email', 'calle', 'colonia'], 'string', 'max' => 50],
@@ -68,7 +67,6 @@ class Referencias extends \yii\db\ActiveRecord
             'paterno' => 'Paterno',
             'materno' => 'Materno',
             'genero' => 'Genero',
-            'edad' => 'Edad',
             'nacimiento' => 'Nacimiento',
             'telefono' => 'Telefono',
             'movil' => 'Movil',
@@ -91,5 +89,14 @@ class Referencias extends \yii\db\ActiveRecord
     public function getPaciente()
     {
         return $this->hasOne(Pacientes::className(), ['id' => 'id_paciente']);
+    }
+
+    public function getEdad() 
+    {
+        $from = new \DateTime($this->nacimiento);
+        $to   = new \DateTime('today');
+        
+        return $from->diff($to)->y;
+    
     }
 }

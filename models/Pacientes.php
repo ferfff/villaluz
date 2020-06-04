@@ -12,20 +12,24 @@ use Yii;
  * @property string $paterno
  * @property string $materno
  * @property string $genero
- * @property int $edad
+ * @property float $peso
  * @property float $altura
  * @property string $nacimiento
- * @property string $telefono
- * @property string $movil
+ * @property string|null $telefono
+ * @property string|null $movil
  * @property string $email
  * @property string $calle
  * @property string $numero
- * @property string $interior
+ * @property string|null $interior
  * @property string $colonia
  * @property string $cp
  * @property string $ciudad
  * @property string $diagnostico
- * @property int $activo
+ * @property float $costo
+ * @property float $pago
+ *
+ * @property Referencias[] $referencias
+ * @property UsersPacientes[] $usersPacientes
  */
 class Pacientes extends \yii\db\ActiveRecord
 {
@@ -43,10 +47,9 @@ class Pacientes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre', 'paterno', 'materno', 'genero', 'edad', 'altura', 'nacimiento', 'telefono', 'movil', 'email', 'calle', 'numero', 'interior', 'colonia', 'cp', 'ciudad', 'diagnostico', 'activo'], 'required'],
+            [['nombre', 'paterno', 'materno', 'genero', 'peso', 'altura', 'nacimiento', 'email', 'calle', 'numero', 'colonia', 'cp', 'ciudad', 'diagnostico', 'costo', 'pago'], 'required'],
             [['genero', 'ciudad', 'diagnostico'], 'string'],
-            [['edad', 'activo'], 'integer'],
-            [['altura'], 'number'],
+            [['altura', 'peso', 'costo', 'pago'], 'number'],
             [['nacimiento'], 'safe'],
             [['nombre', 'paterno', 'materno', 'telefono', 'movil', 'email', 'colonia'], 'string', 'max' => 50],
             [['calle'], 'string', 'max' => 100],
@@ -63,23 +66,57 @@ class Pacientes extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'paterno' => 'Paterno',
-            'materno' => 'Materno',
-            'genero' => 'Genero',
-            'edad' => 'Edad',
+            'paterno' => 'Apellido Paterno',
+            'materno' => 'Apellido Materno',
+            'genero' => 'Género',
+            'peso' => 'Peso',
             'altura' => 'Altura',
             'nacimiento' => 'Nacimiento',
-            'telefono' => 'Telefono',
-            'movil' => 'Movil',
+            'telefono' => 'Teléfono',
+            'movil' => 'Mévil',
             'email' => 'Email',
             'calle' => 'Calle',
-            'numero' => 'Numero',
+            'numero' => 'Némero',
             'interior' => 'Interior',
             'colonia' => 'Colonia',
-            'cp' => 'Cp',
+            'cp' => 'Código Postal',
             'ciudad' => 'Ciudad',
             'diagnostico' => 'Diagnostico',
-            'activo' => 'Activo',
+            'costo' => 'Costo',
+            'pago' => 'Pago',
         ];
+    }
+
+    /**
+     * Gets query for [[Referencias]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReferencias()
+    {
+        return $this->hasMany(Referencias::className(), ['id_paciente' => 'id']);
+    }
+
+    /**
+     * Gets query for [[UsersPacientes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsersPacientes()
+    {
+        return $this->hasMany(UsersPacientes::className(), ['pacientes_id' => 'id']);
+    }
+
+    public function getNombreCompleto () {
+        return "$this->nombre $this->paterno";
+    }
+
+    public function getEdad() 
+    {
+        $from = new \DateTime($this->nacimiento);
+        $to   = new \DateTime('today');
+        
+        return $from->diff($to)->y;
+    
     }
 }

@@ -39,7 +39,7 @@ use yii\jui\DatePicker;
     <div class="form-group col-md-3">
         <?= $form->field($model, 'nacimiento')->widget(DatePicker::className(),[
             'language' => 'es',
-            'dateFormat' => 'php:yy-m-d',
+            'dateFormat' => 'php:Y-m-d',
             'clientOptions' =>[
                 'yearRange' => 'c-80:c+0',
                 'changeMonth'=> true,
@@ -90,7 +90,7 @@ use yii\jui\DatePicker;
 </div>
 
 <div class="d-flex justify-content-center">
-    <?= Html::submitButton('<span class="material-icons mr-2">library_add</span> Agregar', ['class' => 'btn text-center d-flex align-items-center btns btn-lg font-weight-bold']) ?>
+    <?= Html::submitButton('<span class="material-icons mr-2">library_add</span> Guardar', ['class' => 'btn text-center d-flex align-items-center btns btn-lg font-weight-bold']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>

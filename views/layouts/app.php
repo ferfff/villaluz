@@ -72,6 +72,13 @@ AppAsset::register($this);
 
 <?php $this->endBody() ?>
 </body>
-    
+      
+<script>
+    $(document).ready(function() {
+        //var keys = $('#empleadosgrid').yiiGridView('getSelectedRows');
+        //console.log(keys);
+    });
+</script>
+
 </html>
 <?php $this->endPage() ?>
