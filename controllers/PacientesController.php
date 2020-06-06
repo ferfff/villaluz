@@ -16,8 +16,6 @@ use yii\filters\VerbFilter;
  */
 class PacientesController extends Controller
 {
-    private $nivel;
-
     /**
      * {@inheritdoc}
      */
@@ -48,13 +46,6 @@ class PacientesController extends Controller
     public function actions()
     {
         $this->layout='app';
-
-        //Declarar nivel de usuario
-        if (!Yii::$app->user->isGuest) {
-            if (($model = User::findOne(\Yii::$app->user->identity->id)) !== null) {
-                $this->nivel = $model->nivel;
-            }
-        }
     }
 
     /**
@@ -71,7 +62,6 @@ class PacientesController extends Controller
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'nivel' => $this->nivel,
         ]);
     }
 

@@ -39,45 +39,22 @@ $nivel = Yii::$app->session['nivel'];
                         return ['data-id' => $model->id];
                     },*/
                     'columns' => [
-                        //['class' => 'yii\grid\SerialColumn'],
-                        [
-                            'format' => 'raw',
-                            'label' => '',
-                            'content' => function($model) {
-                                return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
-                                    ['update', 'id' => $model->id], 
-                                    ['class' => 'btn btn-primary d-flex align-items-center text-light',]
-                                ) : '';
-                            }
-                        ],
-                        [
-                            'format' => 'raw',
-                            'label' => '',
-                            'content' => function($model) {
-                                return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
-                                    ['delete', 'id' => $model->id], 
-                                    [
-                                        'class' => 'btn btn-danger d-flex align-items-center text-light',
-                                        'data' => ['confirm' => '¿Estás seguro quieres eliminar este usuario?','method' => 'post'], 
-                                        'data-ajax' => '1',
-                                    ]
-                                ) : '';
-                            }
-                        ],
                         [
                             'label' => 'Usuario',
-                            'value' => 'user.username',
+                            'value' => 'users.username',
                         ],
-                        'fecha',
-                        'glucosa',
-                        'ta',
-                        'fc',
-                        'fr',
-                        'temperatura',
-                        'spo2',
-                        'micciones',
-                        'evacuaciones',
-                        'observaciones',
+                        [
+                            'label' => 'Tiempo Laborado',
+                            'value' => 'tiempo',
+                        ],
+                        [
+                            'label' => 'Costo',
+                            'value' => 'costo',
+                        ],
+                        [
+                            'label' => 'Pago',
+                            'value' => 'pago',
+                        ],
                         //['class' => 'yii\grid\ActionColumn'],
                     ],
                     'tableOptions' => ['class' => 'table table-striped table-hover table-responsive'],

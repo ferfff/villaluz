@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\filters\AccessControl;
 use app\models\Medicamentos;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -20,24 +21,48 @@ class MedicamentosController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+                
             ],
         ];
     }
 
     /**
-     * Lists all Medicamentos models.
-     * @return mixed
+     * {@inheritdoc}
      */
-    public function actionIndex()
+    public function actions()
+    {
+        $this->layout='pacientes';
+    }
+
+    /**
+     * Displays a single Medicamentos model.
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionBase()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Medicamentos::find(),
+            'query' => Medicamentos::find()
+                        ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`')
+                        ->andWhere(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
+                        ->andWhere(['medicamentos.tipo' => 'base'])
         ]);
+
+        $dataProvider->setPagination(['pageSize' => 5]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -46,14 +71,22 @@ class MedicamentosController extends Controller
 
     /**
      * Displays a single Medicamentos model.
-     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionEventual()
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        $dataProvider = new ActiveDataProvider([
+            'query' => Medicamentos::find()
+                        ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`')
+                        ->andWhere(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
+                        ->andWhere(['medicamentos.tipo' => 'eventual'])
+        ]);
+
+        $dataProvider->setPagination(['pageSize' => 5]);
+
+        return $this->render('indexEventual', [
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -66,8 +99,34 @@ class MedicamentosController extends Controller
     {
         $model = new Medicamentos();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->pacientes_id = Yii::$app->session['idPaciente'];
+            $model->users_id = Yii::$app->user->identity->id;
+            $model->save();
+
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Creates a new Medicamentos model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreateEventual()
+    {
+        $model = new Medicamentos();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->pacientes_id = Yii::$app->session['idPaciente'];
+            $model->users_id = Yii::$app->user->identity->id;
+            $model->save();
+
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -87,7 +146,27 @@ class MedicamentosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Updates an existing Medicamentos model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUpdateEventual($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -103,6 +182,20 @@ class MedicamentosController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Deletes an existing Medicamentos model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDeleteEventual($id)
     {
         $this->findModel($id)->delete();
 

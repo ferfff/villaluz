@@ -90,6 +90,10 @@ class User extends ActiveRecord implements IdentityInterface
         //return Yii::$app->getSecurity()->validatePassword($password, $this->password);
     }
 
+    public function getNombreCompleto () {
+        return "$this->nombre $this->paterno";
+    }
+
     public function getEdad() 
     {
         $from = new \DateTime($this->nacimiento);

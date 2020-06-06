@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\ChangePasswordForm */
 /* @var $form ActiveForm */
+
+\yii\web\YiiAsset::register($this);
 ?>
  
 <div class="container-fluid px-4 mh-100">

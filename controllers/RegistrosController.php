@@ -2,8 +2,12 @@
 
 namespace app\controllers;
 
+use app\models\Checador;
+use app\models\Pacientes;
 use Yii;
+use yii\filters\AccessControl;
 use app\models\Registros;
+use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -20,13 +24,40 @@ class RegistrosController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+                
             ],
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function beforeAction($action)
+    {
+        //Aplicar layout
+        $this->layout='pacientes';
+        $session = Yii::$app->session;
+
+        if ($action->id !== 'view') {
+            if (!isset($session['idPaciente'])) {
+                throw new NotFoundHttpException('The requested page does not exist.');
+            }
+        }
+        return parent::beforeAction($action);
     }
 
     /**
@@ -36,8 +67,12 @@ class RegistrosController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Registros::find(),
+            'query' => Registros::find()
+                        ->innerJoin('pacientes','`registros`.`pacientes_id` = `pacientes`.`id`')
+                        ->andWhere(['registros.pacientes_id' => Yii::$app->session['idPaciente']])
         ]);
+
+        $dataProvider->setPagination(['pageSize' => 5]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -45,20 +80,76 @@ class RegistrosController extends Controller
     }
 
     /**
-     * Displays a single Registros model.
+     * Displays Reloj checador.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        // Obtenemos el nombre del paciente para mostrarlo en el layout
+        $pacienteObj = Pacientes::findOne($id);
+        if($pacienteObj){
+            $this->setSession($pacienteObj);
+            return $this->render('view', [
+                'idPaciente' => $id,
+            ]);
+        }
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     /**
-     * Creates a new Registros model.
+     * Reloj checador
+     * @return mixed
+     */
+    public function actionChecador()
+    {
+        $request = Yii::$app->request;
+        $message = '';
+        
+        if (Yii::$app->request->isAjax && Yii::$app->request->post()) {
+            $idUser = Yii::$app->user->identity->id;
+            $datetime = new \DateTime('now');
+            $now = $datetime->format('Y-m-d H:i:s');
+
+            $checador = Checador::findOne([
+                'users_id' => $idUser,
+                'pacientes_id' => $request->post('idPaciente'),
+                'salida' => null,
+            ]);
+
+            switch ($request->post('type')) {
+                case 'checkin':
+                    if (!$checador){
+                        $checador = new Checador();
+                        $checador->entrada = $now;
+                        $checador->users_id = $idUser;
+                        $checador->pacientes_id = $request->post('idPaciente');
+                        $checador->save();
+                        $message = 'Entrada Agregada: '.$now;
+                    } else {
+                        $message = 'Entrada ya registrada, registre la salida';
+                    }
+                    break;
+                case 'checkout':
+                        if ($checador){
+                            $checador->salida = $now;
+                            $checador->save();
+                            $message = 'Salida Agregada: '.$now;
+                        } else {
+                            $message = 'Salida registrada, registre una nueva entrada.';
+                        }
+                        
+                    break;
+            }
+        }
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return ['message' => $message];
+    }
+
+    /**
+     * Creates a new Referencias model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -66,8 +157,12 @@ class RegistrosController extends Controller
     {
         $model = new Registros();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->pacientes_id = Yii::$app->session['idPaciente'];
+            $model->users_id = Yii::$app->user->identity->id;
+            $model->save();
+
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -76,7 +171,7 @@ class RegistrosController extends Controller
     }
 
     /**
-     * Updates an existing Registros model.
+     * Updates an existing Referencias model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +191,7 @@ class RegistrosController extends Controller
     }
 
     /**
-     * Deletes an existing Registros model.
+     * Deletes an existing Pacientes model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -109,6 +204,45 @@ class RegistrosController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionPdf(){
+        Yii::$app->response->format = 'pdf';
+        
+        $query = Pacientes::find();
+        $pacientes = $query->orderBy('nombre')->all();
+
+		// Rotate the page
+		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [
+			'format' => [216, 356], // Legal page size in mm
+			'orientation' => 'Landscape', // This value will be used when 'format' is an array only. Skipped when 'format' is empty or is a string
+			'beforeRender' => function($mpdf, $data) {},
+			]);
+		
+		$this->layout = 'pdflayout';
+		return $this->render('pdf', [
+            'pacientes' => $pacientes,
+        ]);
+    }
+
+    /**
+     * Reloj checador
+     * @return mixed
+     */
+    public function actionTiempos()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Checador::find()
+                        ->innerJoin('users','`checador`.`users_id` = `users`.`id`')
+                        ->innerJoin('pacientes','`checador`.`pacientes_id` = `pacientes`.`id`')
+                        ->andWhere(['checador.pacientes_id' => Yii::$app->session['idPaciente']])
+        ]);
+
+        $dataProvider->setPagination(['pageSize' => 10]);
+
+        return $this->render('tiempos', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    
     /**
      * Finds the Registros model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -123,5 +257,28 @@ class RegistrosController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Finds the User model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return User the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findUserModel($id)
+    {
+        if (($model = User::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    protected function setSession(Pacientes $pacienteObj)
+    {
+        $session = Yii::$app->session;
+        $session['nombrePaciente'] = $pacienteObj->getNombreCompleto();
+        $session['idPaciente'] = $pacienteObj->id;
     }
 }

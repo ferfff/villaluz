@@ -7,7 +7,8 @@ use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-$GLOBALS['nivel'] = $nivel;
+\yii\web\YiiAsset::register($this);
+$nivel = Yii::$app->session['nivel'];
 ?>
 <div class="users-index">
     <div class="container-fluid px-4 mh-100">
@@ -55,7 +56,7 @@ $GLOBALS['nivel'] = $nivel;
                             'format' => 'raw',
                             'label' => '',
                             'content' => function($model) {
-                                return ($GLOBALS['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
+                                return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
                                     ['update', 'id' => $model->id], 
                                     ['class' => 'btn btn-primary d-flex align-items-center text-light',]
                                 ) : '';
@@ -65,7 +66,7 @@ $GLOBALS['nivel'] = $nivel;
                             'format' => 'raw',
                             'label' => '',
                             'content' => function($model) {
-                                return ($GLOBALS['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
+                                return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
                                     ['delete', 'id' => $model->id], 
                                     [
                                         'class' => 'btn btn-danger d-flex align-items-center text-light',

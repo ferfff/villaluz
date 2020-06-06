@@ -34,16 +34,13 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <nav class="navbar navbar-expand-lg bar-style px-3">
-        <a class="navbar-brand my-2" href="#"><img src="/img/logo_villaluz_blanco.svg" width="150px"></a>
+        <a class="navbar-brand my-2" href="/app/"><img src="/img/logo_villaluz_blanco.svg" width="150px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="material-icons text-light menu-ico">menu</span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-active text-none"><a class="text-light d-flex align-items-center text-none" href="#"><span class="material-icons">search</span>  Filtrar Nombre</a></button>
-                </li>
                 <li class="nav-item mx-1 my-2">
                     <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/pacientes"><span class="material-icons">assignment</span> Pacientes</a></button>
                 </li>
@@ -72,13 +69,6 @@ AppAsset::register($this);
 
 <?php $this->endBody() ?>
 </body>
-      
-<script>
-    $(document).ready(function() {
-        //var keys = $('#empleadosgrid').yiiGridView('getSelectedRows');
-        //console.log(keys);
-    });
-</script>
 
 </html>
 <?php $this->endPage() ?>

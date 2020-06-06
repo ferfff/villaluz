@@ -5,8 +5,6 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-$GLOBALS['nivel'] = $nivel;
 ?>
 
 <div class="referencias-index">
@@ -18,7 +16,7 @@ $GLOBALS['nivel'] = $nivel;
                     <div class="mr-auto font-weight-bold p-2">Referencias</div>
                         <div class="p-1">
                             <?php 
-                            if ($nivel == 3) {
+                            if (Yii::$app->session['nivel'] == 3) {
                                 echo Html::a('<span class="material-icons">library_add</span><span class="txt-menu"> Nuevo</span>', ['create'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold']);
                             } ?>
                         </div>
@@ -44,7 +42,7 @@ $GLOBALS['nivel'] = $nivel;
                             'format' => 'raw',
                             'label' => '',
                             'content' => function($model) {
-                                return ($GLOBALS['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
+                                return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
                                     ['update', 'id' => $model->id], 
                                     ['class' => 'btn btn-primary d-flex align-items-center text-light',]
                                 ) : '';
@@ -54,7 +52,7 @@ $GLOBALS['nivel'] = $nivel;
                             'format' => 'raw',
                             'label' => '',
                             'content' => function($model) {
-                                return ($GLOBALS['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
+                                return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
                                     ['delete', 'id' => $model->id], 
                                     [
                                         'class' => 'btn btn-danger d-flex align-items-center text-light',

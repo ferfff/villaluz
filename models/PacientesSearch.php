@@ -17,9 +17,9 @@ class PacientesSearch extends Pacientes
     public function rules()
     {
         return [
-            [['id', 'edad'], 'integer'],
+            [['id'], 'integer'],
             [['nombre', 'paterno', 'materno', 'genero', 'nacimiento', 'telefono', 'movil', 'email', 'calle', 'numero', 'interior', 'colonia', 'cp', 'ciudad', 'diagnostico'], 'safe'],
-            [['altura', 'costo', 'pago'], 'number'],
+            [['altura', 'costo', 'pago', 'peso'], 'number'],
         ];
     }
 
@@ -60,7 +60,7 @@ class PacientesSearch extends Pacientes
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'edad' => $this->edad,
+            'peso' => $this->peso,
             'altura' => $this->altura,
             'nacimiento' => $this->nacimiento,
             'costo' => $this->costo,

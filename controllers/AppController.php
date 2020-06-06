@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use app\models\User;
 use app\models\ChangePasswordForm;
 use app\models\Pacientes;
+use app\models\PacientesSearch;
 use app\models\UsersPacientes;
 use Exception;
 use yii\data\ActiveDataProvider;
@@ -19,8 +20,6 @@ use yii\filters\VerbFilter;
  */
 class AppController extends Controller
 {
-    private $nivel;
-
     /**
      * {@inheritdoc}
      */
@@ -53,12 +52,6 @@ class AppController extends Controller
     {
         //Aplicar layout
         $this->layout='app';
-
-        //Declarar nivel de usuario
-        if (!Yii::$app->user->isGuest) {
-            $user = $this->findModel(\Yii::$app->user->identity->id);
-            $this->nivel = $user->nivel;
-        }
     }
 
     /**
@@ -67,17 +60,18 @@ class AppController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => User::find(),
-            'pagination' => [
-                'pageSize' => 5,
-            ],
-        ]);
+        //Seteamos nivel en session
+        $user = $this->findModel(Yii::$app->user->identity->id);
+        $session = Yii::$app->session;
+        $session['nivel'] = $user->nivel;
+
+        $pacientes = Pacientes::find()
+            ->innerJoin('users_pacientes','`users_pacientes`.`pacientes_id` = `pacientes`.`id`')
+            ->andWhere(['users_pacientes.users_id' => Yii::$app->user->identity->id])
+            ->all();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
-            'nivel' => $this->nivel,
-            //'pagination' => $pagination,
+            'pacientes' => $pacientes
         ]);
     }
 
@@ -95,7 +89,6 @@ class AppController extends Controller
 
         return $this->render('show', [
             'dataProvider' => $dataProvider,
-            'nivel' => $this->nivel,
         ], false,true);
     }
 

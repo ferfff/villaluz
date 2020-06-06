@@ -20,7 +20,7 @@ use yii\jui\DatePicker;
     <div class="form-row">
         <div class="form-group col-md-12">
             <?php $pacientesArray = ArrayHelper::map(\app\models\Pacientes::find()->orderBy('nombre')->all(), 'id', 'nombreCompleto') ?>
-            <?= $form->field($model, 'id_paciente')->dropDownList($pacientesArray, ['prompt' => '---- Selecccione Paciente ----'])->label('paciente') ?>
+            <?= $form->field($model, 'id_paciente')->dropDownList($pacientesArray, ['prompt' => '---- Selecccione Paciente ----','class' => 'form-control'])->label('paciente') ?>
         </div>
     </div>
     <div class="form-row">

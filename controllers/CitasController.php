@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\filters\AccessControl;
 use app\models\Citas;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -20,13 +21,31 @@ class CitasController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+                
             ],
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function actions()
+    {
+        $this->layout='pacientes';
     }
 
     /**
@@ -36,24 +55,15 @@ class CitasController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Citas::find(),
+            'query' => Citas::find()
+            ->innerJoin('pacientes','`citas`.`pacientes_id` = `pacientes`.`id`')
+            ->andWhere(['citas.pacientes_id' => Yii::$app->session['idPaciente']])
         ]);
+
+        $dataProvider->setPagination(['pageSize' => 5]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * Displays a single Citas model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
         ]);
     }
 
@@ -66,8 +76,12 @@ class CitasController extends Controller
     {
         $model = new Citas();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->pacientes_id = Yii::$app->session['idPaciente'];
+            $model->users_id = Yii::$app->user->identity->id;
+            $model->save();
+
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
