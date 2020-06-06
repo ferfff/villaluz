@@ -9,9 +9,9 @@ use yii\widgets\ActiveForm;
 \yii\web\YiiAsset::register($this);
 ?>
  
-<div class="container-fluid px-4 mh-100">
+<div class="container-fluid px-4">
     <h5 class="my-4 font-weight-bold">Administración de Empleados</h5>
-    <div class="card rounded-0 mh-100 border-0">
+    <div class="card rounded-0 border-0 mb-5">
         <div class="card-body">
             <div class="d-flex header-verde p-2 text-light align-items-center">
                 <div class="mr-auto font-weight-bold p-2">Cambiar Contraseña</div>

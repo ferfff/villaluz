@@ -26,7 +26,7 @@
           <div class="app_villaluz">
             <h4>Con nuestra aplicación Web podrás seguir los resultados de tu familiar las 24 horas del día.</h4><br>
             <p>*Disponible para servicios que cuenten con aplicación web y tableta electrónica.</p><br>
-            <div class="button_app"><a href="/app/" target="blank">Iniciar sesión</a></div>
+            <div class="app_button"><a href="/app/" class="link_app" target="blank">Iniciar sesión</a></div>
           </div>
         </div>
       </div>

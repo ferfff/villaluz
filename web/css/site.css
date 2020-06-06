@@ -1,9 +1,28 @@
 html,
 body {
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     height: 100vh;
     color: #3C4858 !important;
+}
+
+::-webkit-scrollbar-track{
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #d4d4d4;
 }
 
 .wrap {
@@ -390,22 +409,204 @@ div.errorform {
     color: #80007e !important;
 }
 
-.pagination li a{
+.summary{
+    margin-bottom: 15px;
+    color: #3C4858 !important;
+}
+
+/*----------------pagination stile-----------------*/
+
+ul.pagination li a{
     font-weight: bold !important;
     color: #80007e !important;
     padding: 0 5px;
     margin: 0 3px;
+    display: inline-block;
 }
 
-.pagination a:hover{
+ul.pagination a:hover{
     background-color: #80007e !important;
     font-weight: bold !important;
     color: #ffffff !important;
-    padding: 0 5px;
+    padding: 0 5px !important;
 
 }
 
-.summary{
-    margin-bottom: 15px;
-    color: #3C4858 !important;
+ul.pagination li a:active{
+    background-color: #80007e !important;
+    font-weight: bold !important;
+    color: #ffffff !important;
+    padding: 0 5px !important;
+} 
+
+/*---------------- tabla vh size ----------------------*/
+
+.cont-vh{
+    max-height: calc(100vh - 150px) !important;
+}
+
+.table-vh{
+    overflow: scroll !important;
+    height: calc(100vh - 360px) !important;
+}
+
+/*------------------------ ancho tabla pacientes--------------------*/
+
+.column-pacientes th:first-child {
+	min-width: auto;
+}
+
+.column-pacientes th:nth-child(3) {
+	min-width: 200px;
+}
+
+.column-pacientes th:nth-child(4) {
+	min-width: 150px;
+}
+
+.column-pacientes th:nth-child(5) {
+	min-width: 150px;
+}
+
+.column-pacientes th:nth-child(11) {
+	min-width: 180px;
+}
+
+.column-pacientes th:nth-child(12) {
+	min-width: 180px;
+}
+
+.column-pacientes th:nth-child(14) {
+	min-width: 200px;
+}
+
+.column-pacientes th:nth-child(17) {
+	min-width: 200px;
+}
+
+.column-pacientes th:nth-child(18) {
+	min-width: 150px;
+}
+
+.column-pacientes th:nth-child(19) {
+	min-width: 150px;
+}
+
+.column-pacientes th:nth-child(20) {
+	min-width: 400px;
+}
+
+.column-pacientes th:nth-child(21) {
+	min-width: 100px;
+}
+
+.column-pacientes th:nth-child(22) {
+	min-width: 100px;
+}
+
+/*------------------------ ancho tabla referencias--------------------*/
+
+.column-referencias th:first-child {
+	min-width: auto;
+}
+
+.column-referencias th:nth-child(3) {
+	min-width: 250px;
+}
+
+.column-referencias th:nth-child(4) {
+	min-width: 150px;
+}
+
+.column-referencias th:nth-child(5) {
+	min-width: 150px;
+}
+
+.column-referencias th:nth-child(6) {
+	min-width: 150px;
+}
+
+.column-referencias th:nth-child(9) {
+	min-width: 200px;
+}
+
+.column-referencias th:nth-child(10) {
+	min-width: 200px;
+}
+
+.column-referencias th:nth-child(12) {
+	min-width: 250px;
+}
+
+.column-referencias th:nth-child(15) {
+	min-width: 200px;
+}
+
+.column-referencias th:nth-child(17) {
+	min-width: 150px;
+}
+
+/*------------------------ ancho tabla empleados--------------------*/
+
+.column-empleados th:first-child {
+	min-width: auto;
+}
+
+.column-empleados th:nth-child(3) {
+	min-width: 250px;
+}
+
+.column-empleados th:nth-child(4) {
+	min-width: 150px;
+}
+
+.column-empleados th:nth-child(5) {
+	min-width: 150px;
+}
+
+.column-empleados th:nth-child(6) {
+	min-width: 150px;
+}
+
+.column-empleados th:nth-child(9) {
+	min-width: 200px;
+}
+
+.column-empleados th:nth-child(10) {
+	min-width: 200px;
+}
+
+.column-empleados th:nth-child(11) {
+	min-width: 200px;
+}
+
+.column-empleados th:nth-child(13) {
+	min-width: 200px;
+}
+
+.column-empleados th:nth-child(16) {
+	min-width: 200px;
+}
+
+.column-empleados th:nth-child(17) {
+	min-width: 200px;
+}
+
+.column-empleados th:nth-child(18) {
+	min-width: 150px;
+}
+
+
+/*------------------------ ancho tabla registros--------------------*/
+
+.column-registros th:first-child {
+	min-width: auto;
+}
+
+.column-registros th:nth-child(3) {
+	min-width: 250px;
+}
+
+.column-registros th:nth-child(13) {
+	min-width: 100% !important;
 }

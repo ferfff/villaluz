@@ -11,13 +11,14 @@ use yii\web\View;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="users-index">
-    <div class="container-fluid px-4 mh-100">
-        <h5 class="mb-4 font-weight-bold">Escoge un paciente en la lista</h5>
-        <div class="card rounded-0 mh-100 border-0">
+    <div class="container-fluid px-4">
+        <h5 class="my-4 font-weight-bold">Escoge un paciente en la lista</h5>
+        <div class="card rounded-0 cont-vh border-0">
             <div class="card-body">
                 <div class="form-inline mb-4 d-flex justify-content-center">
-                    <div class="d-flex align-items-center">
-                        <input type="text" id="myInput" onkeyup="buscarPacientes()" placeholder="Filtrar por nombre:">
+                    <div class="d-flex align-items-center mb-3"> 
+                        <p class="m-0">Filtrar por nombre</p>
+                        <input type="text" id="myInput" class="border border-secondary ml-2" onkeyup="buscarPacientes()">
                     </div>
                     <table id="pacientesIndexTable" class="table table-striped table-hover">
                         <tbody>

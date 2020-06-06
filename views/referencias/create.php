@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model app\models\Referencias */
 
 ?>
-<div class="container-fluid px-4 mh-100">
-    <h5 class="mb-4 font-weight-bold">Administración de Referencias</h5>
-    <div class="card rounded-0 mh-100 border-0">
+<div class="container-fluid px-4">
+    <h5 class="my-4 font-weight-bold">Administración de Referencias</h5>
+    <div class="card rounded-0 border-0 mb-5">
         <div class="card-body">
             <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
                 <div class="mr-auto font-weight-bold p-2">Nueva referencia</div>

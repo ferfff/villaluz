@@ -42,6 +42,9 @@ AppAsset::register($this);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-1 my-2">
+                    <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/app"><span class="material-icons">home</span> Inicio</a></button>
+                </li>
+                <li class="nav-item mx-1 my-2">
                     <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/pacientes"><span class="material-icons">assignment</span> Pacientes</a></button>
                 </li>
                 <li class="nav-item mx-1 my-2">

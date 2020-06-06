@@ -8,10 +8,10 @@ use yii\widgets\Pjax;
 ?>
 
 <div class="referencias-index">
-    <div class="container-fluid px-4 mh-100">
+    <div class="container-fluid px-4">
         <h5 class="my-4 font-weight-bold">Administración de Referencias</h5>
-        <div class="card rounded-0 mh-100 border-0">
-            <div class="card-body">
+        <div class="card rounded-0 border-0">
+            <div class="card-body cont-vh">
                 <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
                     <div class="mr-auto font-weight-bold p-2">Referencias</div>
                         <div class="p-1">
@@ -44,7 +44,7 @@ use yii\widgets\Pjax;
                             'content' => function($model) {
                                 return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
                                     ['update', 'id' => $model->id], 
-                                    ['class' => 'btn btn-primary d-flex align-items-center text-light',]
+                                    ['class' => 'btn btn-primary d-flex align-items-center text-light btn-sm',]
                                 ) : '';
                             }
                         ],
@@ -55,7 +55,7 @@ use yii\widgets\Pjax;
                                 return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
                                     ['delete', 'id' => $model->id], 
                                     [
-                                        'class' => 'btn btn-danger d-flex align-items-center text-light',
+                                        'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm',
                                         'data' => ['confirm' => '¿Estás seguro quieres eliminar este usuario?','method' => 'post'], 
                                         'data-ajax' => '1',
                                     ]
@@ -82,7 +82,7 @@ use yii\widgets\Pjax;
                         'ciudad',
                         //['class' => 'yii\grid\ActionColumn'],
                     ],
-                    'tableOptions' => ['class' => 'table table-striped table-hover table-responsive'],
+                    'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-referencias'],
                 ]);?>
                 <?php Pjax::end(); ?>
             </div>

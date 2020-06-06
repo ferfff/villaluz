@@ -166,7 +166,7 @@ AppAsset::register($this);
         </div>
         </div>
     </footer>
-  
+    
     <script src="/js/jquery-1.9.1.min.js"></script> 
     <script src="/js/owl.carousel.js"></script>
 
@@ -204,6 +204,5 @@ AppAsset::register($this);
             });
         })();
     </script>
-
 </body>
 </html>

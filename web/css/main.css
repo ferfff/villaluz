@@ -18,7 +18,7 @@ strike,strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label,
 /* Estilos frecuentes */
 body{
 	font-size: 18px;
-	font-family: 'Muli', sans-serif;
+	font-family: 'Muli', sans-serif !important;
   line-height: 1.6;
 }
 
@@ -30,31 +30,31 @@ a{
 }
 
 h1{
-	font-size: 60px;
-  font-weight: 700;
-  color: #fff;
-  /*text-shadow: 1px 1px 1px #000000;*/
+	font-size: 60px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 h2{
-	font-size: 25px;
-  font-weight: 700;
-  color: #5eaead;
-  font-style: italic;
-  font-weight: 700;
+	font-size: 30px !important;
+  font-weight: 700 !important;
+  color: #5eaead !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
 }
 
 h3{
-  font-size: 25px;
-  font-weight: 700;
-  color: #82007e;
-  font-style: italic;
+  font-size: 25px !important;
+  font-weight: 700 !important;
+  color: #82007e !important;
+  font-style: italic !important;
 }
 
 h4{
-  font-size: 25px;
-  font-weight: 700;
-  color: #fff;
+  font-size: 25px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
 }
 
 b{
@@ -109,6 +109,10 @@ header{
 header .logo{
   float: left;
   padding-top: 25px;
+}
+
+.topnav a:hover{
+  color: #5eaead !important;
 }
 
 header nav{
@@ -381,7 +385,7 @@ footer nav a {
 
 .app_villaluz{
   float: left;
-  color: #fff;
+  color: #fff !important;
   text-align: left;
   padding: 40px;
   background-color: #5eaead;
@@ -390,16 +394,20 @@ footer nav a {
 .block_app{
   float: left;
   text-align: left;
-  color: #fff;
+  color: #fff !important;
   width: 50%;
 }
 
-.button_app{
-  background-color: #fff;
-  font-size: 25px;
-  padding: 20px;
-  color: #5eaead;
-  text-align: center;
+.app_button {
+  background-color: #82007e !important;
+  font-size: 25px !important;
+  padding: 20px !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.app_button a:hover{
+  color: #ffffff !important;
 }
 
 .nosotros_block{
