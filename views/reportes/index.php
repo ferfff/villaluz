@@ -29,53 +29,52 @@ $nivel = Yii::$app->session['nivel'];
                         </div>
                     </div>
 
-    <?php Pjax::begin(); ?>
+                    <?php Pjax::begin(); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'headerRowOptions' => ['class' => 'header-table'],
-        'columns' => [
-            [
-                'format' => 'raw',
-                'label' => '',
-                'content' => function($model) {
-                    return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
-                        ['update', 'id' => $model->id], 
-                        ['class' => 'btn btn-primary d-flex align-items-center text-light btn-sm',]
-                    ) : '';
-                }
-            ],
-            [
-                'format' => 'raw',
-                'label' => '',
-                'content' => function($model) {
-                    return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
-                        ['delete', 'id' => $model->id], 
-                        [
-                            'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm',
-                            'data' => ['confirm' => '¿Estás seguro quieres eliminar este usuario?','method' => 'post'], 
-                            'data-ajax' => '1',
-                        ]
-                    ) : '';
-                }
-            ],
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'headerRowOptions' => ['class' => 'header-table'],
+                        'columns' => [
+                            [
+                                'format' => 'raw',
+                                'label' => '',
+                                'content' => function($model) {
+                                    return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
+                                        ['update', 'id' => $model->id], 
+                                        ['class' => 'btn btn-primary d-flex align-items-center text-light btn-sm',]
+                                    ) : '';
+                                }
+                            ],
+                            [
+                                'format' => 'raw',
+                                'label' => '',
+                                'content' => function($model) {
+                                    return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
+                                        ['delete', 'id' => $model->id], 
+                                        [
+                                            'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm',
+                                            'data' => ['confirm' => '¿Estás seguro quieres eliminar este reporte?','method' => 'post'], 
+                                            'data-ajax' => '1',
+                                        ]
+                                    ) : '';
+                                }
+                            ],
 
-            ['class' => 'yii\grid\SerialColumn'],
+                            //['class' => 'yii\grid\SerialColumn'],
+                            'id',
+                            'periodo',
+                            'reporte:ntext',
 
-            'id',
-            'periodo',
-            'reporte:ntext',
-            'users_pacientes_id',
+                            //['class' => 'yii\grid\ActionColumn'],
+                            ],
+                            'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-registros'],
+                            'options' => [
+                                //'class' => 'header-morado',
+                        ],
+                    ]); ?>
 
-            //['class' => 'yii\grid\ActionColumn'],
-            ],
-            'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-registros'],
-            'options' => [
-                //'class' => 'header-morado',
-        ],
-    ]); ?>
-
-    <?php Pjax::end(); ?>
+                    <?php Pjax::end(); ?>
+                </div>
             </div>
         </div>
     </div>

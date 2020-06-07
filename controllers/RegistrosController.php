@@ -158,8 +158,11 @@ class RegistrosController extends Controller
         $model = new Registros();
 
         if ($model->load(Yii::$app->request->post())) {
+            $datetime = new \DateTime('now');
+            $now = $datetime->format('Y-m-d H:i:s');
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
+            $model->fecha = $now;
             $model->save();
 
             return $this->redirect(['index']);

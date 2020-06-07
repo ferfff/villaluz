@@ -33,6 +33,7 @@ $nivel = Yii::$app->session['nivel'];
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'headerRowOptions' => ['class' => 'header-table'],
+                        'options' => [ 'style' => 'table-layout:fixed;' ],
                         'columns' => [
                             //['class' => 'yii\grid\SerialColumn'],
                             [
@@ -53,7 +54,7 @@ $nivel = Yii::$app->session['nivel'];
                                         ['delete-eventual', 'id' => $model->id], 
                                         [
                                             'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm',
-                                            'data' => ['confirm' => '¿Estás seguro quieres eliminar este usuario?','method' => 'post'], 
+                                            'data' => ['confirm' => '¿Estás seguro quieres eliminar este medicamento?','method' => 'post'], 
                                             'data-ajax' => '1',
                                         ]
                                     ) : '';
@@ -61,7 +62,7 @@ $nivel = Yii::$app->session['nivel'];
                             ],
                             [
                                 'label' => 'Usuario',
-                                'value' => 'user.username',
+                                'value' => 'users.username',
                             ],
                             'medicamento',
                             'periodo',

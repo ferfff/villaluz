@@ -102,9 +102,10 @@ class MedicamentosController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
+            $model->tipo = 'base';
             $model->save();
 
-            return $this->redirect(['index']);
+            return $this->redirect(['base']);
         }
 
         return $this->render('create', [
@@ -124,12 +125,13 @@ class MedicamentosController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
+            $model->tipo = 'eventual';
             $model->save();
 
-            return $this->redirect(['index']);
+            return $this->redirect(['eventual']);
         }
 
-        return $this->render('create', [
+        return $this->render('createEventual', [
             'model' => $model,
         ]);
     }
@@ -146,7 +148,7 @@ class MedicamentosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['base']);
         }
 
         return $this->render('update', [
@@ -166,7 +168,7 @@ class MedicamentosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['eventual']);
         }
 
         return $this->render('update', [

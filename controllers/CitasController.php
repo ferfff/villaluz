@@ -43,9 +43,18 @@ class CitasController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actions()
+    public function beforeAction($action)
     {
+        //Aplicar layout
         $this->layout='pacientes';
+        $session = Yii::$app->session;
+
+        if ($action->id !== 'view') {
+            if (!isset($session['idPaciente'])) {
+                throw new NotFoundHttpException('The requested page does not exist.');
+            }
+        }
+        return parent::beforeAction($action);
     }
 
     /**
@@ -101,7 +110,7 @@ class CitasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index',]);
         }
 
         return $this->render('update', [
