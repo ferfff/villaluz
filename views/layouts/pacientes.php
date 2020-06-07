@@ -37,13 +37,13 @@ AppAsset::register($this);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-active text-none"><a class="d-flex align-items-center text-none" href="/app/"><span class="material-icons">home</span><span class="menu_paciente"> Inicio</span></a></button>
+                    <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/app/"><span class="material-icons">home</span><span class="menu_paciente"> Inicio</span></a></button>
                 </li>
                 <li class="nav-item mx-1 my-2">
                     <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/registros/"><span class="material-icons">assignment</span><span class="menu_paciente"> Registros</span></a></button>
                 </li>
-                <li class="nav-item dropdown">
-                    <button type="submit" class="btn btn-main text-none btn-active">
+                <li class="nav-item dropdown d-flex align-items-center">
+                    <button type="submit" class="btn btn-main text-none p-0 m-0">
                         <a class="nav-link dropdown-toggle d-flex align-items-center text-none" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         <span class="material-icons">medical_services</span><span class="menu_paciente"> Medicamentos</span>
                         </a>

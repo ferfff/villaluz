@@ -9,12 +9,12 @@ use yii\widgets\Pjax;
 $nivel = Yii::$app->session['nivel'];
 ?>
 <div class="registros-index">
-    <div class="container-fluid px-4 mh-100">
-        <h5 class="my-4 font-weight-bold">Administración de Registros</h5>
-        <div class="card rounded-0 mh-100 border-0">
+    <div class="container-fluid px-4">
+        <h5 class="my-4 font-weight-bold">Medicamentos</h5>
+        <div class="card rounded-0 border-0 mb-5">
             <div class="card-body">
                 <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
-                    <div class="mr-auto font-weight-bold p-2">Registros</div>
+                    <div class="mr-auto font-weight-bold p-2">Medicamentos Eventuales</div>
                         <div class="p-1">
                             <?php 
                             if ($nivel == 3) {
@@ -32,6 +32,7 @@ $nivel = Yii::$app->session['nivel'];
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
+                        'headerRowOptions' => ['class' => 'header-table'],
                         'columns' => [
                             //['class' => 'yii\grid\SerialColumn'],
                             [
@@ -40,7 +41,7 @@ $nivel = Yii::$app->session['nivel'];
                                 'content' => function($model) {
                                     return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
                                         ['update-eventual', 'id' => $model->id], 
-                                        ['class' => 'btn btn-primary d-flex align-items-center text-light',]
+                                        ['class' => 'btn btn-primary d-flex align-items-center text-light btn-sm',]
                                     ) : '';
                                 }
                             ],
@@ -51,7 +52,7 @@ $nivel = Yii::$app->session['nivel'];
                                     return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
                                         ['delete-eventual', 'id' => $model->id], 
                                         [
-                                            'class' => 'btn btn-danger d-flex align-items-center text-light',
+                                            'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm',
                                             'data' => ['confirm' => '¿Estás seguro quieres eliminar este usuario?','method' => 'post'], 
                                             'data-ajax' => '1',
                                         ]
@@ -70,6 +71,10 @@ $nivel = Yii::$app->session['nivel'];
 
                             //['class' => 'yii\grid\ActionColumn'],
                         ],
+                        'tableOptions' => ['class' => 'table table-striped table-hover'],
+                        'options' => [
+                            //'class' => 'header-morado',
+                       ],
                     ]); ?>
 
                     <?php Pjax::end(); ?>

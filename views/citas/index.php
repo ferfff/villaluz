@@ -10,12 +10,12 @@ $nivel = Yii::$app->session['nivel'];
 ?>
 
 <div class="registros-index">
-    <div class="container-fluid px-4 mh-100">
-        <h5 class="my-4 font-weight-bold">Administración de Registros</h5>
-        <div class="card rounded-0 mh-100 border-0">
-            <div class="card-body">
+    <div class="container-fluid px-4">
+        <h5 class="my-4 font-weight-bold">Citas Médicas</h5>
+        <div class="card rounded-0 border-0 mb-5">
+            <div class="card-body cont-vh">
                 <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
-                    <div class="mr-auto font-weight-bold p-2">Registros</div>
+                    <div class="mr-auto font-weight-bold p-2">Citas</div>
                         <div class="p-1">
                             <?php 
                             if ($nivel == 3) {
@@ -30,27 +30,55 @@ $nivel = Yii::$app->session['nivel'];
                         </div>
                 </div>
 
-    <?php Pjax::begin(); ?>
+                <?php Pjax::begin(); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'headerRowOptions' => ['class' => 'header-table'],
+                    'columns' => [
+                        [
+                            'format' => 'raw',
+                            'label' => '',
+                            'content' => function($model) {
+                                return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
+                                    ['update', 'id' => $model->id], 
+                                    ['class' => 'btn btn-primary d-flex align-items-center text-light btn-sm',]
+                                ) : '';
+                            }
+                        ],
+                        [
+                            'format' => 'raw',
+                            'label' => '',
+                            'content' => function($model) {
+                                return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
+                                    ['delete', 'id' => $model->id], 
+                                    [
+                                        'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm',
+                                        'data' => ['confirm' => '¿Estás seguro quieres eliminar este usuario?','method' => 'post'], 
+                                        'data-ajax' => '1',
+                                    ]
+                                ) : '';
+                            }
+                        ],
+                        ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'fecha',
-            'lugar',
-            'especialista',
-            'observaciones:ntext',
-            //'users_pacientes_id',
+                        'id',
+                        'fecha',
+                        'lugar',
+                        'especialista',
+                        'observaciones:ntext',
+                        //'users_pacientes_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                        //['class' => 'yii\grid\ActionColumn'],
+                        ],
+                        'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-pacientes'],
+                        'options' => [
+                            //'class' => 'header-morado',
+                    ],
+                ]); ?>
 
-    <?php Pjax::end(); ?>
-
-    </div>
+                <?php Pjax::end(); ?>
+            </div>
         </div>
     </div>
 </div>

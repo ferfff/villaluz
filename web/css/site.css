@@ -254,15 +254,24 @@ a.desc:after {
 
 .btn-main {
     background-color: #5EAAA9;
-    color: #ffffff;
+    color: #ffffff !important;
     border-radius: 0 !important;
     text-decoration: none !important;
     width: 100%;
     font-size: 14px !important;
 }
   
+a.text-none{
+    color: #ffffff;
+}
+
+a.text-none:hover{
+    color: #ffffff;
+}
+
 .btn-main:hover {
-    color: #5EAAA9 !important;
+    color: #ffffff !important;
+    background-color: #80007E !important;
     width: 100%;
 }
 
@@ -270,15 +279,25 @@ a.desc:after {
     text-decoration: none !important;
 }
 
-.purple_color a:link, a:visited, a:hover, a:active {
-    color: #5EAAA9 !important;
+.text-none:hover{
+    color: #ffffff !important;
+}
+
+a.purple_color{
+    color: #80007E !important;
     text-decoration: none !important;
 }
+
+a.purple_color:hover{
+    background-color: #5EAAA9 !important;
+    color: #ffffff !important;
+}
+
 
 .nav-paciente{
     background-color: #80007E !important;
     padding: 10px 0;
-    color: #ffffff;
+    color: #ffffff !important;
     font-weight: bold;
 }
 
@@ -312,16 +331,21 @@ table {
 
 .header-table{
     background-color: #80007E !important;
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: 14px;
 }
 
-.header-table a:link,
-a:visited,
-a:hover,
-a:active {
-    color: #ffffff !important;
+.header-table a{
+    color: #ffffff;
     text-decoration: none;
+}
+
+.header-table:hover{
+    color: #ffffff !important;
+}
+
+.header-table:hover th a{ 
+    color: #ffffff !important;
 }
 
 .header-table td,
@@ -330,6 +354,7 @@ th a{
 	overflow: hidden;
 	text-align: left;
     vertical-align: middle;
+    color: #ffffff !important;
 }
 
 th { 
@@ -385,6 +410,14 @@ th {
 
     .log{
         margin-bottom: 40px;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .menu_paciente{
+        display: contents;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 }
 
@@ -448,6 +481,34 @@ ul.pagination li a:active{
 .table-vh{
     overflow: scroll !important;
     height: calc(100vh - 360px) !important;
+}
+
+/*---------------boton checador---------------*/
+
+.button_in{
+    background-color: #28a745;
+    font-size: 24px;
+    color: #ffffff;
+    padding: 10px;
+    width: 100%;
+    height: 200px;
+    border: 0;
+    font-weight: bold;
+}
+
+.button_out{
+    background-color: #dc3545;
+    font-size: 24px;
+    color: #ffffff;
+    padding: 10px;
+    width: 100%;
+    height: 200px;
+    border: 0;
+    font-weight: bold;
+}
+
+.btn-fix{
+    width: fit-content;
 }
 
 /*------------------------ ancho tabla pacientes--------------------*/
@@ -607,6 +668,36 @@ ul.pagination li a:active{
 	min-width: 250px;
 }
 
+.column-registros th:nth-child(7) {
+	min-width: 100px;
+}
+
+.column-registros th:nth-child(8) {
+	min-width: 100px;
+}
+
 .column-registros th:nth-child(13) {
-	min-width: 100% !important;
+	min-width: 800px !important;
+}
+
+/*------------------------ ancho tabla tiempos--------------------*/
+
+.column-reportes th:first-child {
+	min-width: auto;
+}
+
+.column-reportes th:nth-child(2) {
+	min-width: 350px;
+}
+
+.column-reportes th:nth-child(3) {
+	min-width: 350px;
+}
+
+.column-reportes th:nth-child(4) {
+	min-width: 350px;
+}
+
+.column-reportes th:nth-child(5) {
+	min-width: 1100px;
 }

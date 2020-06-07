@@ -9,14 +9,40 @@ use yii\web\View;
 
 \yii\web\YiiAsset::register($this);
 ?>
-<div>
-    <input type="hidden" id="pacienteid" value="<?= $idPaciente ?>" />
-    <input type="button" id="checkin" value="Entrada" />
-    <input type="button" id="checkout" value="Salida" />
 
-    <div>
-        <span id="showMessage"></span>
+
+
+<div class="container-fluid px-4">
+    <h5 class="my-4 font-weight-bold">Reloj Checador</h5>
+    <div class="card rounded-0 border-0 mb-5">
+        <div class="card-body cont-vh">
+            <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
+                <div class="mr-auto font-weight-bold p-2">Favor de Registrar la Entrada o Salida</div>
+            </div>
+            <div class="container-fluid">
+                <div class="container text-center">
+                    <div class="col d-flex align-items-center flex-column">
+                        <input type="hidden" id="pacienteid" value="<?= $idPaciente ?>" />
+                        <div class="col-lg-6 text-center my-5">
+                            <input type="button" id="checkin" value="Entrada" class="button_in"/>
+                        </div>
+                        <div class="col-lg-6 text-center">
+                            <input type="button" id="checkout" value="Salida" class="button_out"/>
+                        <div>
+                    <div>
+                </div>
+            </div>
+        </div>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-lg-12 text-center font-weight-bold">
+                    <span id="showMessage"></span>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+    
 </div>
 <?php
 $jsCode = <<<JAVASCRIPT
