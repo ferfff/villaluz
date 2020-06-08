@@ -15,6 +15,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title>Villaluz PDF</title>
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
         
         body{
@@ -24,27 +25,35 @@ AppAsset::register($this);
 		margin-right:auto;
 		max-width:297mm;
 		max-height:210mm;
-		font-size: 14px;
+		font-size: 8px !important;
 		height: 100vh;
 		padding: 0 0;
         }
         
-        .pdf-header{margin-bottom:5em; padding-bottom: 15px; border-bottom: 1px solid #80007E;}
+        .head{margin-bottom:0; padding-bottom: 0;}
 
         .footer-bottom{
+            position:absolute; 
+            bottom:25;
             background-color: #5EAAA9;
             height: 30px;
-            width: 100%;
+            width: 90%;
             border-top:5px solid #80007E;
+            text-align: center;
+        }
+
+        .logo{
+            margin: 0;
+            padding: 0
         }
     </style>
 </head>
 <body>
 
-<body>  
-    <header class="pdf-header">
-        <img alt="logo villaluz" src="/img/logo_villaluz_color.jpg" width="130px">
-    </header>
+<body> 
+    <div id="head">
+		<div class="logo"><img alt="logo villaluz" src="/img/logo_villaluz_color.jpg" width="180px"></div>
+	</div>
 
     <?= $content ?>
 

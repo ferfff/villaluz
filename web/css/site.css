@@ -150,8 +150,7 @@ a.desc:after {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 85vh;
-    margin-top: 100px;
+    min-height: 100vh;
 }
 
 .btns{
@@ -432,7 +431,18 @@ th {
 @media only screen and (max-width: 720px) {
     .content-items{
         height: auto;
-        margin-top: 50px;
+        background-image: none !important;
+        margin-top: 0 !important;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .login_style{
+        margin: 0 !important;
+    }
+
+    .body-content {
+        background-image: none !important;
     }
 }
 
