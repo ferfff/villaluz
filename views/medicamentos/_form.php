@@ -8,26 +8,6 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="medicamentos-form">
-
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'tipo')->dropDownList([ 'base' => 'Base', 'eventual' => 'Eventual', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'medicamento')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'dosis')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'horario')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
-</div>
-
 <div class="container-fluid px-4">
     <h5 class="my-4 font-weight-bold">Medicamentos</h5>
     <div class="card rounded-0 border-0 mb-5">
@@ -42,26 +22,26 @@ use yii\widgets\ActiveForm;
                 <div class="container">
                     <div class="row ">
                         <div class="col-lg-12 text-center">
-                            <form>
+                            <?php $form = ActiveForm::begin(); ?>
                                 <div class="form-row d-flex justify-content-center">
                                     <div class="form-group col-md-4">
-                                        <input type="text" class="form-control" id="inputCity" placeholder="Medicamento">
+                                        <?= $form->field($model, 'medicamento')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Medicamento"])->label(false) ?>
                                     </div>
                                 </div>
                                 <div class="form-row d-flex justify-content-center">
                                     <div class="form-group col-md-4">
-                                        <input type="text" class="form-control" id="inputCity" placeholder="Dosis">
+                                        <?= $form->field($model, 'dosis')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Dosis"])->label(false) ?>
                                     </div>
                                 </div>
                                 <div class="form-row d-flex justify-content-center">
                                     <div class="form-group col-md-4">
-                                        <input type="text" class="form-control" id="inputCity" placeholder="Horario">
+                                        <?= $form->field($model, 'horario')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Horario"])->label(false) ?>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center my-3">
-                                    <button type="submit" class="btn text-center d-flex align-items-center btns btn-lg font-weight-bold"><span class="material-icons mr-2">library_add</span>Guardar</button>
+                                    <?= Html::submitButton('<span class="material-icons mr-2">library_add</span> Guardar', ['class' => 'btn text-center d-flex align-items-center btns btn-lg font-weight-bold']) ?>
                                 </div>
-                            </form>
+                            <?php ActiveForm::end(); ?>
                         </div>
                     <div>
                 </div>

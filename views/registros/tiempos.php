@@ -41,7 +41,7 @@ $nivel = Yii::$app->session['nivel'];
                                     ['delete', 'id' => $model->id], 
                                     [
                                         'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm btn-fix',
-                                        'data' => ['confirm' => '¿Estás seguro quieres eliminar este usuario?','method' => 'post'], 
+                                        'data' => ['confirm' => '¿Estás seguro quieres eliminar este tiempo?','method' => 'post'], 
                                         'data-ajax' => '1',
                                     ]
                                 ) : '';

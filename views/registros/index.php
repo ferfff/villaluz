@@ -34,7 +34,8 @@ $nivel = Yii::$app->session['nivel'];
                 <?= GridView::widget([ 
                     'dataProvider' => $dataProvider,
                     'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-'],
-                    'headerRowOptions' => ['class' => 'header-table'],
+                    'headerRowOptions' => ['class' => 'header-table',],
+                    'options' => [ 'style' => 'table-layout:fixed;' ],
                     /*'rowOptions'   => function ($model, $key, $index, $grid) {
                         return ['data-id' => $model->id];
                     },*/
@@ -58,7 +59,7 @@ $nivel = Yii::$app->session['nivel'];
                                     ['delete', 'id' => $model->id], 
                                     [
                                         'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm',
-                                        'data' => ['confirm' => '¿Estás seguro quieres eliminar este usuario?','method' => 'post'], 
+                                        'data' => ['confirm' => '¿Estás seguro quieres eliminar este registro?','method' => 'post'], 
                                         'data-ajax' => '1',
                                     ]
                                 ) : '';
@@ -66,7 +67,7 @@ $nivel = Yii::$app->session['nivel'];
                         ],
                         [
                             'label' => 'Usuario',
-                            'value' => 'user.username',
+                            'value' => 'users.username',
                         ],
                         'fecha',
                         'glucosa',
@@ -77,7 +78,7 @@ $nivel = Yii::$app->session['nivel'];
                         'spo2',
                         'micciones',
                         'evacuaciones',
-                        'observaciones',
+                        'observaciones:ntext',
                         //['class' => 'yii\grid\ActionColumn'],
                     ],
                     'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-registros'],
