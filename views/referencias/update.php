@@ -4,6 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Referencias */
+\yii\web\YiiAsset::register($this);
 ?>
 <div class="container-fluid px-4">
     <h5 class="my-4 font-weight-bold">Administración de Referencias</h5>

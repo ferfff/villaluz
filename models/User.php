@@ -23,7 +23,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['username','nombre','paterno','materno','nacimiento','email','calle','numero','colonia','ciudad','password'], 'required'],
             [['username','nombre','paterno','materno'], 'string', 'max' => 50],
-            [['username','nombre','paterno','materno','cp','calle','colonia','ciudad'], 'string', 'min' => 5],
+            [['username','nombre','paterno','materno','cp','calle','colonia','ciudad'], 'string', 'min' => 4],
             [['calle','numero','colonia','ciudad'], 'string', 'max' => 20],
             ['genero', 'in', 'range'=>['masculino','femenino']],
             ['genero', 'required', 'message' => 'Seleccione un género'],
@@ -86,8 +86,8 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function validatePassword($password)
     {
-        return $this->password === $password;
-        //return Yii::$app->getSecurity()->validatePassword($password, $this->password);
+        //return $this->password === $password;
+        return Yii::$app->getSecurity()->validatePassword($password, $this->password);
     }
 
     public function getNombreCompleto () {

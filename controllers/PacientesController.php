@@ -88,6 +88,7 @@ class PacientesController extends Controller
         $model = new Pacientes();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('success', 'Paciente creado correctamente');
             return $this->redirect(['index']);
         }
 
@@ -108,6 +109,7 @@ class PacientesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('success', 'Paciente actualizado correctamente');
             return $this->redirect(['index']);
         }
 
@@ -126,7 +128,7 @@ class PacientesController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        \Yii::$app->session->setFlash('success', 'Paciente eliminado correctamente');
         return $this->redirect(['index']);
     }
 
@@ -163,11 +165,5 @@ class PacientesController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    public function actionTest()
-    {
-        $this->layout = 'pacientes';
-        return $this->render('test');
     }
 }

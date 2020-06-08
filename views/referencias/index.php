@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+\yii\web\YiiAsset::register($this);
 ?>
 
 <div class="referencias-index">

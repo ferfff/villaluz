@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pacientes */
-
+\yii\web\YiiAsset::register($this);
 ?>
 
 <div class="container-fluid px-4">

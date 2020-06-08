@@ -5,7 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+\yii\web\YiiAsset::register($this);
 $nivel = Yii::$app->session['nivel'];
 ?>
 
@@ -19,7 +19,7 @@ $nivel = Yii::$app->session['nivel'];
                         <div class="p-1">
                             <?php 
                             if ($nivel != 1) {
-                                echo Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
+                                echo Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf-tiempos'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
                             } ?>
                         </div>
                 </div>

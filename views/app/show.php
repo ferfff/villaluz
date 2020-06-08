@@ -116,38 +116,103 @@ $nivel = Yii::$app->session['nivel'];
 </div>
 <?php
 $jsCode = <<<JAVASCRIPT
-$('body').on('click', 'td', function (e) {
-    var id = $(this).closest('tr').data('id');
-    if(e.target == this) {
+    $('body').on('click', 'td', function (e) {
+        var id = $(this).closest('tr').data('id');
+        if(e.target == this) {
+            $.ajax({
+                method: 'GET',
+                url: 'view',
+                data: {'id': id},
+                success:function(data) {
+                    $('#showEmployeeView').html(data);
+                    window.location.hash = '#showEmployeeView'; 
+                },
+                error: function(exception) { // if error occured
+                    console.log(exception);
+                },
+            });
+        }
+    });
+
+    $('body').on('click', '.agregar', function (e) {
+        var pacienteid = $(this).attr('id');
+        var iduser = $("#iduser").val();
         $.ajax({
-            method: 'GET',
-            url: 'view',
-            data: {'id': id},
-            success:function(data) {
-                $('#showEmployeeView').html(data);
-                window.location.hash = '#showEmployeeView'; 
+            method: 'POST',
+            url: 'asignar',
+            data: {'pacienteid': pacienteid, 'userid': iduser},
+            context: this,
+            success:function() {
+                var row = $(this).closest("tr").clone();
+                $(this).closest("tr").remove();
+                row.appendTo($("#eliminarTable"));
+                row.find('button').removeClass( "btn-primary" ).addClass( "btn-danger" );
+                row.find('span').text('remove');
+            },
+            error: function(exception) { // if error occured
+                console.log(exception);
+            },
+        }); 
+    });
+
+    $('body').on('click', '.eliminar', function (e) {
+        var pacienteid = $(this).attr('id');
+        var iduser = $("#iduser").val();
+        $.ajax({
+            method: 'POST',
+            url: 'desasignar',
+            data: {'pacienteid': pacienteid, 'userid': iduser},
+            context: this,
+            success:function() {
+                var row = $(this).closest("tr").clone();
+                $(this).closest("tr").remove();
+                row.appendTo($("#agregarTable"));
+                row.find('button').removeClass( "btn-danger" ).addClass( "btn-primary" );
+                row.find('span').text('add');
             },
             error: function(exception) { // if error occured
                 console.log(exception);
             },
         });
-    }
-});
-
-var desasignar = function (pacientid, userid) {
-    
-    $.ajax({
-        method: 'POST',
-        url: 'asignar',
-        data: {'pacientid': pacientid, 'userid': userid},
-        success:function(data) {
-            console.log(data);
-        },
-        error: function(exception) { // if error occured
-            console.log(exception);
-        },
     });
-};
+
+    var buscarAsignados = function () {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchAsignados");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblAsignados");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("th")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    var buscarDesasignados = function () {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchDesignados");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblDesasignados");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("th")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
 JAVASCRIPT;
 
 $this->registerJs($jsCode, View::POS_END);

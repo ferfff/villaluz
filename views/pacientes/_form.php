@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\jui\DatePicker;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pacientes */
@@ -40,13 +40,20 @@ use yii\jui\DatePicker;
         <?= $form->field($model, 'altura')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Altura"])->label(false) ?>
     </div>
     <div class="form-group col-md-3">
-        <?= $form->field($model, 'nacimiento')->widget(DatePicker::className(),[
-            'language' => 'es',
-            'dateFormat' => 'php:Y-m-d',
-            'clientOptions' =>[
+        <?= $form->field($model, 'nacimiento')->widget(DateTimePicker::class,[
+            'convertFormat' => true,
+            'type' => DateTimePicker::TYPE_COMPONENT_APPEND,
+            'removeButton' => false,
+            'pluginOptions' => [
+                'minView' => 2,
+                'autoclose' => true,
+                'format' => 'php:Y-m-d',
                 'yearRange' => 'c-80:c+0',
+                'language' => 'es',
                 'changeMonth'=> true,
                 'changeYear'=> true,
+                'maxDate' => '0',
+                'startDate'=>'1980-01-01',
             ],
             'options' =>[
                 'placeholder' => 'Fecha de nacimiento',

@@ -1,24 +1,24 @@
 <?php
-
 use yii\helpers\Html;
 ?> 
 
-<div class="pacientes-index">
-
-
-    <h1>Pacientes</h1>
-    <ul>
-    <?php foreach ($pacientes as $paciente): ?>
-        <li>
-            <p><?= Html::encode("{$paciente->nombre} {$paciente->paterno} {$paciente->materno}") ?></p>
-            <p><?= Html::encode("{$paciente->getEdad()}") ?></p>
-            <p><?= Html::encode("{$paciente->nacimiento}") ?></p>
-            <p><?= Html::encode("{$paciente->genero}") ?></p>
-            <p><?= Html::encode("{$paciente->email}") ?></p>
-            <p><?= Html::encode("{$paciente->ciudad}") ?></p>
-            <p><?= Html::encode("{$paciente->peso}") ?></p>
-            <p><?= Html::encode("{$paciente->altura}") ?></p>
-        </li>
-    <?php endforeach; ?>
-    </ul>
+<div class="container">
+        <div class="titulo"><h5>Medicamentos Base</h5></div>
+		<table id="table">
+			<tr>
+				<th>Usuario</th>
+				<th>Medicamento</th>
+				<th>Dosis</th>
+				<th>Horario</th>					  	
+			</tr>
+			<?php foreach ($medicamentos as $medicamento): ?>
+                <tr>
+                    <td><?= Html::encode("{$medicamento->users->username}") ?></td>
+                    <td><?= Html::encode("{$medicamento->medicamento}") ?></td>
+                    <td><?= Html::encode("{$medicamento->dosis}") ?></td>
+                    <td><?= Html::encode("{$medicamento->horario}") ?></td>
+                </tr>
+            <?php endforeach; ?>
+		</table>
+	</div>
 </div>

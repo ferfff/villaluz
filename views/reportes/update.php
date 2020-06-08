@@ -5,10 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Reportes */
 
-$this->title = 'Update Reportes: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Reportes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+\yii\web\YiiAsset::register($this);
 ?>
 <div class="reportes-update">
 

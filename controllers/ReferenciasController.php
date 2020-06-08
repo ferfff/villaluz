@@ -85,6 +85,7 @@ class ReferenciasController extends Controller
         $model = new Referencias();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('success', 'Referencia creada correctamente');
             return $this->redirect(['index']);
         }
 
@@ -105,6 +106,7 @@ class ReferenciasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('success', 'Referencia actualizada correctamente');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -123,7 +125,7 @@ class ReferenciasController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        \Yii::$app->session->setFlash('success', 'Referencia eliminada correctamente');
         return $this->redirect(['index']);
     }
 

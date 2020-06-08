@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\jui\DatePicker;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Citas */
@@ -27,13 +27,18 @@ use yii\jui\DatePicker;
                             <?php $form = ActiveForm::begin(); ?>
                                 <div class="form-row d-flex justify-content-center">
                                     <div class="form-group col-md-4">
-                                        <?= $form->field($model, 'fecha')->widget(DatePicker::className(),[
-                                            'language' => 'es',
-                                            'dateFormat' => 'php:Y-m-d',
-                                            'clientOptions' =>[
-                                                'yearRange' => 'c-80:c+0',
-                                                'changeMonth'=> true,
-                                                'changeYear'=> true,
+                                        <?= $form->field($model, 'fecha')->widget(DateTimePicker::class,[
+                                            'convertFormat' => true,
+                                            'type' => DateTimePicker::TYPE_COMPONENT_APPEND,
+                                            'removeButton' => false,
+                                            'value' => '01-Ene-1980',
+                                            'pluginOptions' => [
+                                                'autoclose' => true,
+                                                'format' => 'php:Y-m-d g:i A',
+                                                'daysOfWeekDisabled' => [0],
+                                                'hoursDisabled' => '0,1,2,3,4,5,6,7,8,19,20,21,22,23',
+                                                'language' => 'es',
+                                                'minuteStep' => 30,
                                             ],
                                             'options' =>[
                                                 'placeholder' => 'Fecha',

@@ -14,39 +14,8 @@ AppAsset::register($this);
 <head>
     <?php $this->registerCsrfMetaTags() ?>
     <title>Villaluz PDF</title>
-    <style>
 
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-        
-        body{
-		font-family: 'Roboto', sans-serif !important;
-		color: #3C4858;
-		margin-left:auto;
-		margin-right:auto;
-		max-width:297mm;
-		max-height:210mm;
-		font-size: 8px !important;
-		height: 100vh;
-		padding: 0 0;
-        }
-        
-        .head{margin-bottom:0; padding-bottom: 0;}
-
-        .footer-bottom{
-            position:absolute; 
-            bottom:25;
-            background-color: #5EAAA9;
-            height: 30px;
-            width: 90%;
-            border-top:5px solid #80007E;
-            text-align: center;
-        }
-
-        .logo{
-            margin: 0;
-            padding: 0
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/pdf.css">
 </head>
 <body>
 

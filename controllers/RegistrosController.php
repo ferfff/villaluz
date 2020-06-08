@@ -125,9 +125,14 @@ class RegistrosController extends Controller
                         $checador->entrada = $now;
                         $checador->users_id = $idUser;
                         $checador->pacientes_id = $request->post('idPaciente');
-                        $checador->save();
+                        if($checador->save()) {
+                            \Yii::$app->session->setFlash('success', 'Entrada Agregada: '.$now);
+                        }else {
+                            
+                        }
                         $message = 'Entrada Agregada: '.$now;
                     } else {
+                        \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
                         $message = 'Entrada ya registrada, registre la salida';
                     }
                     break;
@@ -163,7 +168,11 @@ class RegistrosController extends Controller
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
             $model->fecha = $now;
-            $model->save();
+            if($model->save()) {
+                \Yii::$app->session->setFlash('success', 'Registro creado correctamente');
+            }else {
+                \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+            }
 
             return $this->redirect(['index']);
         }
@@ -185,6 +194,7 @@ class RegistrosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('success', 'Registro actualizado correctamente');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -203,15 +213,15 @@ class RegistrosController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        \Yii::$app->session->setFlash('success', 'Registro eliminado correctamente');
         return $this->redirect(['index']);
     }
 
     public function actionPdf(){
         Yii::$app->response->format = 'pdf';
         
-        $query = Pacientes::find();
-        $pacientes = $query->orderBy('nombre')->all();
+        $query = Registros::find();
+        $registros = $query->all();
 
 		// Rotate the page
 		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [
@@ -222,7 +232,7 @@ class RegistrosController extends Controller
 		
 		$this->layout = 'pdflayout';
 		return $this->render('pdf', [
-            'pacientes' => $pacientes,
+            'registros' => $registros,
         ]);
     }
 
@@ -243,6 +253,28 @@ class RegistrosController extends Controller
 
         return $this->render('tiempos', [
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionPdfTiempos(){
+        Yii::$app->response->format = 'pdf';
+        
+        $query = Checador::find();
+        $tiempos = $query->innerJoin('users','`checador`.`users_id` = `users`.`id`')
+                    ->innerJoin('pacientes','`checador`.`pacientes_id` = `pacientes`.`id`')
+                    ->andWhere(['checador.pacientes_id' => Yii::$app->session['idPaciente']])
+                    ->all();
+
+		// Rotate the page
+		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [
+			'format' => [216, 356], // Legal page size in mm
+			'orientation' => 'Landscape', // This value will be used when 'format' is an array only. Skipped when 'format' is empty or is a string
+			'beforeRender' => function($mpdf, $data) {},
+			]);
+		
+		$this->layout = 'pdflayout';
+		return $this->render('pdfTiempos', [
+            'tiempos' => $tiempos,
         ]);
     }
     

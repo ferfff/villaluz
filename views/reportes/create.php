@@ -4,10 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Reportes */
-
-$this->title = 'Create Reportes';
-$this->params['breadcrumbs'][] = ['label' => 'Reportes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+\yii\web\YiiAsset::register($this);
 ?>
 <div class="reportes-create">
 

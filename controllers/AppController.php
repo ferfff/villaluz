@@ -100,7 +100,7 @@ class AppController extends Controller
     public function actionView($id)
     {
         $assigned = UsersPacientes::findAll([
-            'pacientes_id' => $id
+            'users_id' => $id,
         ]);
 
         $notAssigned = Pacientes::find()
@@ -127,10 +127,23 @@ class AppController extends Controller
     public function actionAsignar()
     {
         $data = Yii::$app->request->post();
+
         
         if (Yii::$app->request->isAjax) {
-            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return ['data' => $data];
+            $model = new UsersPacientes();
+            $model->users_id = $data['userid'];
+            $model->pacientes_id = $data['pacienteid'];
+
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            try {
+                $model->save();
+                Yii::$app->response->statusCode = 200;
+                
+            } catch (\Exception $e) {
+                throw new \yii\web\HttpException(405, $e);
+                Yii::$app->response->statusCode = 405;
+            }
         }
     }
 
@@ -143,8 +156,19 @@ class AppController extends Controller
         $data = Yii::$app->request->post();
         
         if (Yii::$app->request->isAjax) {
-            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return ['data' => $data];
+            $model = UsersPacientes::findOne(['users_id' => $data['userid'], 'pacientes_id' => $data['pacienteid']]);
+
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            try {
+                $model->delete();
+                Yii::$app->response->statusCode = 200;
+                
+            } catch (\Exception $e) {
+                throw new \yii\web\HttpException(405, $e);
+                Yii::$app->response->statusCode = 405;
+                return ['data' => $e];
+            }
         }
     }
 
@@ -159,18 +183,18 @@ class AppController extends Controller
 
         if ($model->load(Yii::$app->request->post())){
             $str=rand(); 
-            $password = md5($str);
-            //$password = 12345;
+            $password = uniqid();
             $model->authKey = $str.trim($model->username);
             $model->activo = 1;
-            $model->password = $password; 
+            $model->password = Yii::$app->getSecurity()->generatePasswordHash($password);
             //Yii::$app->security->generatePasswordHash($password);
             if ($model->save()) {
-                Yii::$app->mailer->compose('@app/mail/newuser', ['password' => $password])
+                /*Yii::$app->mailer->compose('@app/mail/newuser', ['password' => $password])
                     ->setFrom('ferfff@yahoo.com.mx')
                     ->setTo('ferchofff@gmail.com')
                     ->setSubject('Email avanzado desde Villaluz prueba')
-                    ->send();
+                    ->send();*/
+                \Yii::$app->session->setFlash('success', 'Usuario Creado correctamente');
                 return $this->redirect(['show']);
             }
         }  
@@ -194,6 +218,7 @@ class AppController extends Controller
         if ($model->load(Yii::$app->request->post())){
             $model->nacimiento=Yii::$app->formatter->asDate($model->nacimiento, "yyyy-MM-dd");
             if(!$model->save()){
+                \Yii::$app->session->setFlash('success', 'Usuario modificado correctamente');
                 return $this->redirect(['show']);
             }
         }
@@ -217,6 +242,7 @@ class AppController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ['success' => true];
         }*/
+        \Yii::$app->session->setFlash('success', 'Usuario eliminado correctamente');
         return $this->redirect(['show']);
     }
 
@@ -230,7 +256,7 @@ class AppController extends Controller
         }
      
         if ($model->load(\Yii::$app->request->post()) && $model->validate() && $model->changePassword()) {
-            \Yii::$app->session->setFlash('success', 'Password Changed!');
+            \Yii::$app->session->setFlash('success', 'Password cambiado!');
         }
             
         return $this->render('changepassword', [

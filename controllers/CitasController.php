@@ -88,7 +88,11 @@ class CitasController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
-            $model->save();
+            if($model->save()) {
+                \Yii::$app->session->setFlash('success', 'Cita creada correctamente');
+            }else {
+                \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+            }
 
             return $this->redirect(['index']);
         }
@@ -110,6 +114,7 @@ class CitasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('success', 'Cita actualizada correctamente');
             return $this->redirect(['index',]);
         }
 
@@ -128,8 +133,27 @@ class CitasController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        \Yii::$app->session->setFlash('success', 'Cita eliminada correctamente');
         return $this->redirect(['index']);
+    }
+
+    public function actionPdf(){
+        Yii::$app->response->format = 'pdf';
+        
+        $query = Citas::find();
+        $citas = $query->all();
+
+		// Rotate the page
+		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [
+			'format' => [216, 356], // Legal page size in mm
+			'orientation' => 'Landscape', // This value will be used when 'format' is an array only. Skipped when 'format' is empty or is a string
+			'beforeRender' => function($mpdf, $data) {},
+			]);
+		
+		$this->layout = 'pdflayout';
+		return $this->render('pdf', [
+            'citas' => $citas,
+        ]);
     }
 
     /**

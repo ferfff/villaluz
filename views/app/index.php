@@ -16,10 +16,14 @@ use yii\web\View;
         <div class="card rounded-0 cont-vh border-0">
             <div class="card-body">
                 <div class="form-inline mb-4 d-flex justify-content-center">
-                    <div class="d-flex align-items-center mb-3"> 
-                        <p class="m-0">Filtrar por nombre</p>
-                        <input type="text" id="myInput" class="border border-secondary ml-2" onkeyup="buscarPacientes()">
-                    </div>
+                    <form class="form-inline mb-3 d-flex">
+                        <div class="d-flex align-items-center">
+                            <span class="material-icons my-2">search</span>Filtrar por nombre:
+                        </div>
+                        <div class="search_iput mx-2">
+                            <input id="findPacients" class="form-control mr-sm-2 border-0 input_search" type="search" aria-label="Search" onkeyup="buscarPacientes()">
+                        </div>
+                    </form>
                     <table id="pacientesIndexTable" class="table table-striped table-hover">
                         <tbody>
                             <?php foreach ($pacientes as $key => $paciente) { ?>
@@ -46,7 +50,7 @@ $jsCode = <<<JAVASCRIPT
 
     var buscarPacientes = function () {
         var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
+        input = document.getElementById("findPacients");
         filter = input.value.toUpperCase();
         table = document.getElementById("pacientesIndexTable");
         tr = table.getElementsByTagName("tr");

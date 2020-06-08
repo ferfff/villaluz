@@ -34,7 +34,7 @@ use yii\jui\DatePicker;
 
 <div class="form-row">
     <div class="form-group col-md-3">
-        <?= $form->field($model, 'genero')->dropDownList([ 'Masculino' => 'Masculino', 'Femenino' => 'Femenino', ], ['prompt' => 'Género', 'placeholder' => "Género"]) ?>   
+        <?= $form->field($model, 'genero')->dropDownList([ 'masculino' => 'Masculino', 'femenino' => 'Femenino', ], ['prompt' => 'Género', 'placeholder' => "Género"]) ?>   
     </div>
     <div class="form-group col-md-3">
         <?= $form->field($model, 'nacimiento')->widget(DatePicker::className(),[

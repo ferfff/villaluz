@@ -5,7 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+\yii\web\YiiAsset::register($this);
 $nivel = Yii::$app->session['nivel'];
 ?>
 
@@ -64,7 +64,6 @@ $nivel = Yii::$app->session['nivel'];
                                 ) : '';
                             }
                         ],
-                        'id',
                         'fecha',
                         'lugar',
                         'especialista',

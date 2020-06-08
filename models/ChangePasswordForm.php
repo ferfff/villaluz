@@ -59,8 +59,9 @@ class ChangePasswordForm extends Model
     public function changePassword()
     {
         $user = $this->_user;
-        $user->setPassword($this->password);
+        $hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+        $user->password = $hash;
  
-        return $user->save(false);
+        return $user->save();
     }
 }
