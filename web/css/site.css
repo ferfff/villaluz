@@ -339,6 +339,10 @@ table {
     text-decoration: none;
 }
 
+.nombre_empleado{
+    color: #80007E !important;
+}
+
 .header-table:hover{
     color: #ffffff !important;
 }
