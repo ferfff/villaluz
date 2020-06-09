@@ -9,6 +9,10 @@ use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface
 {
+    const ROLE_USER = 1;
+    const ROLE_EMPLEADO = 2;
+    const ROLE_ADMIN = 3;
+
     public $old_password;
 	public $new_password;
     public $repeat_password;
@@ -30,9 +34,11 @@ class User extends ActiveRecord implements IdentityInterface
             ['nacimiento', 'date', 'format' => 'php:Y-m-d'],
             ['email', 'email'],
             [['cp'], 'string', 'max' => 10],
-            ['nivel', 'in', 'range'=>['1','2','3']],
+            //['nivel', 'in', 'range'=>['1','2','3']],
             ['nivel', 'required', 'message' => 'Seleccione un nivel'],
             ['activo', 'in', 'range'=>['0','1']],
+            ['nivel', 'default', 'value' => 1],
+            ['nivel', 'in', 'range' => [self::ROLE_USER, self::ROLE_EMPLEADO, self::ROLE_ADMIN]],
         ];
     }
 
@@ -100,6 +106,23 @@ class User extends ActiveRecord implements IdentityInterface
         $to   = new \DateTime('today');
         
         return $from->diff($to)->y;
-    
+    }
+
+    public static function isUserAdmin($username)
+    {
+        if (static::findOne(['username' => $username, 'nivel' => self::ROLE_ADMIN])){            
+            return true;
+        } else {                   
+            return false;
+        }    
+    }
+
+    public static function isUserEmpleado($username)
+    {
+        if (static::findOne(['username' => $username, 'nivel' => self::ROLE_EMPLEADO])){            
+            return true;
+        } else {                   
+            return false;
+        }    
     }
 }

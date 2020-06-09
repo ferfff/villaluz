@@ -79,22 +79,6 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            //Assign role
-            /*$auth = \Yii::$app->authManager;
-            switch ($model->nivel) {
-                case 1:
-                    $clienteRole = $auth->getRole('cliente');
-                    $auth->assign($clienteRole, $model->getId());
-                    break;
-                case 2:
-                    $empleadoRole = $auth->getRole('empleado');
-                    $auth->assign($empleadoRole, $model->getId());
-                    break;
-                case 3:
-                    $adminRole = $auth->getRole('admin');
-                    $auth->assign($adminRole, $model->getId());
-                    break;
-            }*/
             return $this->redirect('../app/index');
         }
 
@@ -113,7 +97,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect('login');
     }
 
     /**

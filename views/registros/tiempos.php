@@ -1,12 +1,12 @@
 <?php
 
+use app\models\User;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 \yii\web\YiiAsset::register($this);
-$nivel = Yii::$app->session['nivel'];
 ?>
 
 <div class="registros-index">
@@ -17,10 +17,7 @@ $nivel = Yii::$app->session['nivel'];
                 <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
                     <div class="mr-auto font-weight-bold p-2">Tiempos</div>
                         <div class="p-1">
-                            <?php 
-                            if ($nivel != 1) {
-                                echo Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf-tiempos'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
-                            } ?>
+                            <?= Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf-tiempos'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]) ?>
                         </div>
                 </div>
                 <?php Pjax::begin(['id' => 'pacientesgrid']); ?>
@@ -52,16 +49,26 @@ $nivel = Yii::$app->session['nivel'];
                             'value' => 'users.username',
                         ],
                         [
+                            'label' => 'Entrada',
+                            'value' => 'entrada',
+                        ],
+                        [
+                            'label' => 'Salida',
+                            'value' => 'salida',
+                        ],
+                        [
                             'label' => 'Tiempo Laborado',
                             'value' => 'tiempo',
                         ],
                         [
                             'label' => 'Costo',
                             'value' => 'costo',
+                            'visible' => User::isUserAdmin(Yii::$app->user->identity->username),
                         ],
                         [
                             'label' => 'Pago',
                             'value' => 'pago',
+                            'visible' => User::isUserAdmin(Yii::$app->user->identity->username),
                         ],
                         //['class' => 'yii\grid\ActionColumn'],
                     ],

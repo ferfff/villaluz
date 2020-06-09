@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Checador;
 use app\models\Pacientes;
-use Yii;
 use yii\filters\AccessControl;
 use app\models\Registros;
 use app\models\User;
@@ -28,8 +28,25 @@ class RegistrosController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
+                        'actions' => ['index','pdf','view','tiempos','pdf-tiempos'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['create','checador'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return User::isUserEmpleado(Yii::$app->user->identity->username) || User::isUserAdmin(Yii::$app->user->identity->username);
+                        }
+                    ],
+                    [
+                        'actions' => ['update','delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                        }
                     ],
                 ],
             ],

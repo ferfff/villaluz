@@ -7,6 +7,8 @@ use yii\helpers\Html;
 		<table id="table">
 			<tr>
 				<th>Usuario</th>
+				<th>Entrada</th>
+				<th>Salida</th>
 				<th>Tiempo Laborado</th>
 				<th>Costo</th>
 				<th>Pago</th>
@@ -14,9 +16,11 @@ use yii\helpers\Html;
 			<?php foreach ($tiempos as $tiempo): ?>
                 <tr>
                     <td><?= Html::encode("{$tiempo->users->username}") ?></td>
+                    <td><?= Html::encode("{$tiempo->entrada}") ?></td>
+                    <td><?= Html::encode("{$tiempo->salida}") ?></td>
                     <td><?= Html::encode("{$tiempo->tiempo}") ?></td>
-                    <td><?= Html::encode("{$tiempo->costo}") ?></td>
-                    <td><?= Html::encode("{$tiempo->pago}") ?></td>
+                    <td><?= (Yii::$app->session['nivel'] == 3) ? Html::encode("{$tiempo->costo}") : '-' ?></td>
+                    <td><?= (Yii::$app->session['nivel'] == 3) ? Html::encode("{$tiempo->pago}") : '-' ?></td>
                 </tr>
             <?php endforeach; ?>
 		</table>

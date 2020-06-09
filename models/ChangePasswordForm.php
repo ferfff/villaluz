@@ -46,7 +46,7 @@ class ChangePasswordForm extends Model
     {
         return [
             [['password','confirm_password'], 'required'],
-            [['password','confirm_password'], 'string', 'min' => 6],
+            [['password','confirm_password'], 'string', 'min' => 5],
             ['confirm_password', 'compare', 'compareAttribute' => 'password'],
         ];
     }

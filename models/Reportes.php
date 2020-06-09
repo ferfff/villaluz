@@ -50,6 +50,7 @@ class Reportes extends \yii\db\ActiveRecord
             'id' => 'ID',
             'periodo' => 'Periodo',
             'reporte' => 'Reporte',
+            'fecha' => 'Fecha',
             'users_id' => 'Users ID',
             'pacientes_id' => 'Pacientes ID',
         ];
