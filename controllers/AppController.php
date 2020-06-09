@@ -255,8 +255,13 @@ class AppController extends Controller
             throw new \yii\web\BadRequestHttpException($e->getMessage());
         }
      
-        if ($model->load(\Yii::$app->request->post()) && $model->validate() && $model->changePassword()) {
-            \Yii::$app->session->setFlash('success', 'Password cambiado!');
+        if ($model->load(\Yii::$app->request->post())) {
+            if($model->validate() && $model->changePassword()){
+                \Yii::$app->session->setFlash('success', 'Password cambiado!');
+                return $this->redirect(['show']);
+            }else{
+                \Yii::$app->session->setFlash('error', 'Algo falló, intente as tarde!');
+            }
         }
             
         return $this->render('changepassword', [
