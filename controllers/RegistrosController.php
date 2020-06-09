@@ -28,12 +28,12 @@ class RegistrosController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','pdf','view','tiempos','pdf-tiempos'],
+                        'actions' => ['index','pdf','tiempos','pdf-tiempos','verify'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['create','checador'],
+                        'actions' => ['create','checador','view',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -69,7 +69,7 @@ class RegistrosController extends Controller
         $this->layout='pacientes';
         $session = Yii::$app->session;
 
-        if ($action->id !== 'view') {
+        if ($action->id !== 'verify') {
             if (!isset($session['idPaciente'])) {
                 throw new NotFoundHttpException('The requested page does not exist.');
             }
@@ -96,6 +96,20 @@ class RegistrosController extends Controller
         ]);
     }
 
+    public function actionVerify($id){
+        // Obtenemos el nombre del paciente para mostrarlo en el layout
+        $pacienteObj = Pacientes::findOne($id);
+        if($pacienteObj){
+            $this->setSession($pacienteObj);
+            if (User::isUserEmpleado(Yii::$app->user->identity->username) || User::isUserAdmin(Yii::$app->user->identity->username)) {
+                return $this->redirect(['view', 'id' => $id]);
+            } else {
+                return $this->redirect(['index']);
+            }
+        }
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
     /**
      * Displays Reloj checador.
      * @param integer $id
@@ -104,15 +118,9 @@ class RegistrosController extends Controller
      */
     public function actionView($id)
     {
-        // Obtenemos el nombre del paciente para mostrarlo en el layout
-        $pacienteObj = Pacientes::findOne($id);
-        if($pacienteObj){
-            $this->setSession($pacienteObj);
-            return $this->render('view', [
-                'idPaciente' => $id,
-            ]);
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->render('view', [
+            'idPaciente' => $id,
+        ]);
     }
 
     /**

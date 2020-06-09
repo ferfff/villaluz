@@ -6,6 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use app\models\Reportes;
 use app\models\User;
+use DateTime;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -97,6 +98,8 @@ class ReportesController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
+            $datetime = new \DateTime('now');
+            $model->fecha = $datetime->format('Y-m-d H:i:s');
             if($model->save()) {
                 \Yii::$app->session->setFlash('success', 'Reporte creado correctamente');
             }else {

@@ -9,8 +9,6 @@ use yii\web\View;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 \yii\web\YiiAsset::register($this);
-$session = Yii::$app->session;
-$nivel = $session['nivel'];
 ?>
 <div class="users-index">
     <div class="container-fluid px-4">
@@ -46,11 +44,7 @@ $nivel = $session['nivel'];
 $jsCode = <<<JAVASCRIPT
     $('body').on('click', 'tr', function (e) {
         var pacienteid = $(this).find('td:last-child').text();
-        var nivel = "$nivel";
-        if (nivel == 2 || nivel == 3){
-            window.location.href = "/registros/view?id="+pacienteid;
-        }
-        window.location.href = "/registros/";
+        window.location.href = "/registros/verify?id="+pacienteid;
         //$.redirect('/checador/', {'pacienteid': pacienteid,});    
     });
 
