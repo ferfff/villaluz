@@ -10,7 +10,7 @@ use yii\helpers\Html;
         <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
             <div class="mr-auto font-weight-bold p-2">Asignar Pacientes</div>
             <div class="p-2">
-                <button type="button" class="btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold"><span class="material-icons">close</span> Cancelar</button>
+                <span><?= $user->username ?></span>
             </div>
         </div>
         <div class="container">
@@ -18,7 +18,7 @@ use yii\helpers\Html;
                 <div class="col-lg-6">
                     <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
                         <div class="mr-auto font-weight-bold p-2">Pacientes Asignados</div>
-                        <input type="hidden" id="iduser" value="<?= $userid ?>" />
+                        <input type="hidden" id="iduser" value="<?= $user->id ?>" />
                     </div>
                     <form class="form-inline mb-4 d-flex">
                         <div class="d-flex align-items-center">

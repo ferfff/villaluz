@@ -130,11 +130,12 @@ class AppController extends Controller
             ])
             ->all();
 
+        $user = $this->findModel($id);
         if (Yii::$app->request->isAjax) {
             return $this->renderPartial('view', [
                 'assigned'=>$assigned,
                 'notAssigned'=>$notAssigned,
-                'userid'=>$id,
+                'user'=>$user,
             ]);
         }
     }
