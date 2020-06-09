@@ -146,7 +146,7 @@ $jsCode = <<<JAVASCRIPT
                 var row = $(this).closest("tr").clone();
                 $(this).closest("tr").remove();
                 row.appendTo($("#eliminarTable"));
-                row.find('button').removeClass( "btn-primary" ).addClass( "btn-danger" );
+                row.find('button').removeClass( "btn-primary agregar" ).addClass( "btn-danger eliminar" );
                 row.find('span').text('remove');
             },
             error: function(exception) { // if error occured
@@ -167,7 +167,7 @@ $jsCode = <<<JAVASCRIPT
                 var row = $(this).closest("tr").clone();
                 $(this).closest("tr").remove();
                 row.appendTo($("#agregarTable"));
-                row.find('button').removeClass( "btn-danger" ).addClass( "btn-primary" );
+                row.find('button').removeClass( "btn-danger eliminar" ).addClass( "btn-primary agregar" );
                 row.find('span').text('add');
             },
             error: function(exception) { // if error occured

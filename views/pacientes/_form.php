@@ -43,17 +43,18 @@ use kartik\datetime\DateTimePicker;
         <?= $form->field($model, 'nacimiento')->widget(DateTimePicker::class,[
             'convertFormat' => true,
             'type' => DateTimePicker::TYPE_COMPONENT_APPEND,
+            //'value' => '08-Apr-2004 10:20 AM',
             'removeButton' => false,
             'pluginOptions' => [
                 'minView' => 2,
                 'autoclose' => true,
                 'format' => 'php:Y-m-d',
-                'yearRange' => 'c-80:c+0',
                 'language' => 'es',
                 'changeMonth'=> true,
                 'changeYear'=> true,
                 'maxDate' => '0',
-                'startDate'=>'1980-01-01',
+                'startDate'=>'1920-Jan-01',
+                'endDate'=> date('Y-m-d'),
             ],
             'options' =>[
                 'placeholder' => 'Fecha de nacimiento',
