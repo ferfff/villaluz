@@ -20,7 +20,7 @@ class SeedController extends Controller
             $user->id = null;
 
             $user->username = $faker->userName;
-            $user->password = $faker->password;
+            $user->password = '$2y$13$tWyHQsw.Ao56mFZjbjj6VO6VRtQZK5RW3hzQCUnBo5Q7VzNSY./X2';
             $user->authKey = \Yii::$app->getSecurity()->generateRandomString();
             $user->nombre = $faker->name;
             $user->paterno = $faker->lastName;
