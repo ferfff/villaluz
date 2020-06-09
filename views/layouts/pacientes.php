@@ -91,6 +91,9 @@ AppAsset::register($this);
     <?= $content ?>
 
 <?php $this->endBody() ?>
+
+<script src="/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
