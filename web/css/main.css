@@ -17,7 +17,7 @@ strike,strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label,
 
 /* Estilos frecuentes */
 body{
-	font-size: 18px;
+	font-size: 18px !important;
 	font-family: 'Muli', sans-serif !important;
   line-height: 1.6;
 }
@@ -398,17 +398,23 @@ footer nav a {
   width: 50%;
 }
 
-.app_button {
+.app_button{
   background-color: #82007e !important;
+  color: #ffffff !important;
   font-size: 25px !important;
   padding: 20px !important;
   text-align: center !important;
-  width: 100% !important;
+  min-width: 100% !important;
 }
 
-.app_button a:hover{
+a.app_login:hover{
   color: #ffffff !important;
 }
+
+a.app_login{
+  color: #ffffff !important;
+}
+
 
 .nosotros_block{
   background-color: #f7f8fa;
