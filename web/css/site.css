@@ -190,14 +190,14 @@ a.desc:after {
     background-color: #5EAAA9 !important;
     border: 0 !important;
     width: 100%;
-    font-size: 16px;
+    font-size: 24px !important;
     outline: none;
     box-shadow: none;
 }
 
 .input_login::placeholder {
     color: #ffffff !important;
-    font-size: 16px !important;
+    font-size: 24px !important;
     outline: none !important;
     box-shadow: none !important;
     border-radius: 0 !important;
@@ -438,6 +438,11 @@ th {
 
 @media only screen and (max-width: 576px) {
     .login_style{
+        margin: 0 !important;
+        padding: 55px 30px !important;
+    }
+
+    .content-items{
         margin: 0 !important;
     }
 
