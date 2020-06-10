@@ -35,7 +35,7 @@ class AppController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['view','asignar','desasignar','show','pdf','changepassword',],
+                        'actions' => ['view','asignar','desasignar','show','pdf','changepassword','create'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -214,7 +214,7 @@ class AppController extends Controller
                     ->setTo('ferchofff@gmail.com')
                     ->setSubject('Email avanzado desde Villaluz prueba')
                     ->send();*/
-                \Yii::$app->session->setFlash('success', 'Usuario Creado correctamente');
+                //\Yii::$app->session->setFlash('success', 'Usuario Creado correctamente');
                 return $this->redirect(['show']);
             }
         }  
@@ -237,8 +237,8 @@ class AppController extends Controller
 
         if ($model->load(Yii::$app->request->post())){
             $model->nacimiento=Yii::$app->formatter->asDate($model->nacimiento, "yyyy-MM-dd");
-            if(!$model->save()){
-                \Yii::$app->session->setFlash('success', 'Usuario modificado correctamente');
+            if($model->save()){
+                //\Yii::$app->session->setFlash('success', 'Usuario modificado correctamente');
                 return $this->redirect(['show']);
             }
         }
@@ -257,12 +257,23 @@ class AppController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-        /*if (Yii::$app->request->isAjax) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return ['success' => true];
-        }*/
-        \Yii::$app->session->setFlash('success', 'Usuario eliminado correctamente');
+        $connection = Yii::$app->db;
+        $transaction = $connection->beginTransaction();
+        try {
+            $connection->createCommand()
+            ->delete('users_pacientes', ['users_id' => $id])
+            ->execute();
+            $connection->createCommand()
+            ->delete('users', ['id' => $id])
+            ->execute();
+            $transaction->commit();
+        } catch (\Exception $e) {
+            $transaction->rollBack();
+            throw $e;
+        } catch (\Throwable $e) {
+            $transaction->rollBack();
+            throw $e;
+        }
         return $this->redirect(['show']);
     }
 
@@ -277,10 +288,10 @@ class AppController extends Controller
      
         if ($model->load(\Yii::$app->request->post())) {
             if($model->validate() && $model->changePassword()){
-                \Yii::$app->session->setFlash('success', 'Password cambiado!');
+                //\Yii::$app->session->setFlash('success', 'Password cambiado!');
                 return $this->redirect(['show']);
             }else{
-                \Yii::$app->session->setFlash('error', 'Algo falló, intente as tarde!');
+                //\Yii::$app->session->setFlash('error', 'Algo falló, intente as tarde!');
             }
         }
             

@@ -26,12 +26,12 @@ class MedicamentosController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['base','pdf','eventual','pdfEventual',],
+                        'actions' => ['base','pdf','eventual','pdf-eventual',],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['create','createEventual',],
+                        'actions' => ['create','create-eventual',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -39,7 +39,7 @@ class MedicamentosController extends Controller
                         }
                     ],
                     [
-                        'actions' => ['update','delete','updateEventual','deleteEventual'],
+                        'actions' => ['update','delete','update-eventual','delete-eventual'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -123,9 +123,9 @@ class MedicamentosController extends Controller
             $model->tipo = 'base';
             
             if($model->save()) {
-                \Yii::$app->session->setFlash('success', 'Medicamento creado correctamente');
+                //\Yii::$app->session->setFlash('success', 'Medicamento creado correctamente');
             }else {
-                \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+                //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
             }
             return $this->redirect(['base']);
         }
@@ -149,9 +149,9 @@ class MedicamentosController extends Controller
             $model->users_id = Yii::$app->user->identity->id;
             $model->tipo = 'eventual';
             if($model->save()) {
-                \Yii::$app->session->setFlash('success', 'Medicamento creado correctamente');
+                //\Yii::$app->session->setFlash('success', 'Medicamento creado correctamente');
             }else {
-                \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+                //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
             }
 
             return $this->redirect(['eventual']);
@@ -174,11 +174,11 @@ class MedicamentosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('success', 'Medicamento actualizado correctamente');
+            //\Yii::$app->session->setFlash('success', 'Medicamento actualizado correctamente');
             return $this->redirect(['base']);
         }
 
-        \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+        //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
         return $this->render('update', [
             'model' => $model,
         ]);
@@ -196,11 +196,11 @@ class MedicamentosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('success', 'Medicamento actualizado correctamente');
+            //\Yii::$app->session->setFlash('success', 'Medicamento actualizado correctamente');
             return $this->redirect(['eventual']);
         }
 
-        \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+        //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
         return $this->render('update', [
             'model' => $model,
         ]);
@@ -216,7 +216,7 @@ class MedicamentosController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        \Yii::$app->session->setFlash('success', 'Medicamento eliminado correctamente');
+        //\Yii::$app->session->setFlash('success', 'Medicamento eliminado correctamente');
         return $this->redirect(['index']);
     }
 
@@ -230,7 +230,7 @@ class MedicamentosController extends Controller
     public function actionDeleteEventual($id)
     {
         $this->findModel($id)->delete();
-        \Yii::$app->session->setFlash('success', 'Medicamento eliminado correctamente');
+        //\Yii::$app->session->setFlash('success', 'Medicamento eliminado correctamente');
         return $this->redirect(['index']);
     }
 

@@ -35,7 +35,7 @@ use yii\widgets\Pjax;
                             'label' => '',
                             'content' => function($model) {
                                 return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
-                                    ['delete', 'id' => $model->id], 
+                                    ['tiempos-delete', 'id' => $model->id], 
                                     [
                                         'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm btn-fix',
                                         'data' => ['confirm' => '¿Estás seguro quieres eliminar este tiempo?','method' => 'post'], 

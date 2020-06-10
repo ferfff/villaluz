@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use yii\jui\DatePicker;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Referencias */
@@ -39,19 +39,27 @@ use yii\jui\DatePicker;
             <?= $form->field($model, 'genero')->dropDownList([ 'Masculino' => 'Masculino', 'Femenino' => 'Femenino', ], ['prompt' => 'Género', 'placeholder' => "Género"]) ?>
         </div>
         <div class="form-group col-md-3">
-            <?= $form->field($model, 'nacimiento')->widget(DatePicker::className(),[
+        <?= $form->field($model, 'nacimiento')->widget(DateTimePicker::class,[
+            'convertFormat' => true,
+            'type' => DateTimePicker::TYPE_COMPONENT_APPEND,
+            //'value' => '08-Apr-2004 10:20 AM',
+            'removeButton' => false,
+            'pluginOptions' => [
+                'minView' => 2,
+                'autoclose' => true,
+                'format' => 'php:Y-m-d',
                 'language' => 'es',
-                'dateFormat' => 'php:Y-m-d',
-                'clientOptions' =>[
-                    'yearRange' => 'c-80:c+0',
-                    'changeMonth'=> true,
-                    'changeYear'=> true,
-                ],
-                'options' =>[
-                    'placeholder' => 'Fecha de nacimiento',
-                    'class' => 'form-control'
-                ],
-            ]) ?> 
+                'changeMonth'=> true,
+                'changeYear'=> true,
+                'maxDate' => '0',
+                'startDate'=>'1920-Jan-01',
+                'endDate'=> date('Y-m-d'),
+            ],
+            'options' =>[
+                'placeholder' => 'Fecha de nacimiento',
+                'class' => 'form-control'
+            ],
+        ]) ?> 
         </div>
         <div class="form-group col-md-3">
             <?= $form->field($model, 'telefono')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Teléfono"])->label(false) ?>

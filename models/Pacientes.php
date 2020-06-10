@@ -48,7 +48,9 @@ class Pacientes extends \yii\db\ActiveRecord
     {
         return [
             [['nombre', 'paterno', 'materno', 'genero', 'peso', 'altura', 'nacimiento', 'email', 'calle', 'numero', 'colonia', 'cp', 'ciudad', 'diagnostico', 'costo', 'pago'], 'required'],
-            [['genero', 'ciudad', 'diagnostico'], 'string'],
+            [['ciudad', 'diagnostico'], 'string'],
+            ['genero', 'in', 'range'=>['Masculino','Femenino']],
+            ['genero', 'required', 'message' => 'Seleccione un género'],
             [['altura', 'peso', 'costo', 'pago'], 'number'],
             [['nacimiento'], 'safe'],
             [['nombre', 'paterno', 'materno', 'telefono', 'movil', 'email', 'colonia'], 'string', 'max' => 50],

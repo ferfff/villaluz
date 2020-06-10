@@ -45,7 +45,9 @@ class Referencias extends \yii\db\ActiveRecord
         return [
             [['id_paciente', 'nombre', 'paterno', 'materno', 'genero', 'nacimiento', 'telefono', 'movil', 'email', 'calle', 'numero', 'interior', 'colonia', 'cp', 'ciudad', 'parentesco'], 'required'],
             [['id_paciente'], 'integer'],
-            [['genero', 'ciudad'], 'string'],
+            [['ciudad'], 'string'],
+            ['genero', 'in', 'range'=>['Masculino','Femenino']],
+            ['genero', 'required', 'message' => 'Seleccione un género'],
             [['nacimiento'], 'safe'],
             [['nombre', 'paterno', 'materno', 'email', 'calle', 'colonia'], 'string', 'max' => 50],
             [['telefono', 'movil'], 'string', 'max' => 20],

@@ -107,9 +107,9 @@ class CitasController extends Controller
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
             if($model->save()) {
-                \Yii::$app->session->setFlash('success', 'Cita creada correctamente');
+                //\Yii::$app->session->setFlash('success', 'Cita creada correctamente');
             }else {
-                \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+                //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
             }
 
             return $this->redirect(['index']);
@@ -132,7 +132,7 @@ class CitasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('success', 'Cita actualizada correctamente');
+            //\Yii::$app->session->setFlash('success', 'Cita actualizada correctamente');
             return $this->redirect(['index',]);
         }
 
@@ -151,7 +151,7 @@ class CitasController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        \Yii::$app->session->setFlash('success', 'Cita eliminada correctamente');
+        //\Yii::$app->session->setFlash('success', 'Cita eliminada correctamente');
         return $this->redirect(['index']);
     }
 

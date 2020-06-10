@@ -41,7 +41,7 @@ class RegistrosController extends Controller
                         }
                     ],
                     [
-                        'actions' => ['update','delete'],
+                        'actions' => ['update','delete','tiempos-delete'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -151,13 +151,13 @@ class RegistrosController extends Controller
                         $checador->users_id = $idUser;
                         $checador->pacientes_id = $request->post('idPaciente');
                         if($checador->save()) {
-                            \Yii::$app->session->setFlash('success', 'Entrada Agregada: '.$now);
-                        }else {
-                            
+                            //\Yii::$app->session->setFlash('success', 'Entrada Agregada: '.$now);
+                            $message = 'Entrada Agregada: '.$now;
+                        }else{
+                            $message = 'Ocurrió un error, intente más tarde';
                         }
-                        $message = 'Entrada Agregada: '.$now;
                     } else {
-                        \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+                        //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
                         $message = 'Entrada ya registrada, registre la salida';
                     }
                     break;
@@ -194,9 +194,9 @@ class RegistrosController extends Controller
             $model->users_id = Yii::$app->user->identity->id;
             $model->fecha = $now;
             if($model->save()) {
-                \Yii::$app->session->setFlash('success', 'Registro creado correctamente');
+                //\Yii::$app->session->setFlash('success', 'Registro creado correctamente');
             }else {
-                \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+                //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
             }
 
             return $this->redirect(['index']);
@@ -219,8 +219,8 @@ class RegistrosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('success', 'Registro actualizado correctamente');
-            return $this->redirect(['view', 'id' => $model->id]);
+            //\Yii::$app->session->setFlash('success', 'Registro actualizado correctamente');
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -238,8 +238,23 @@ class RegistrosController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        \Yii::$app->session->setFlash('success', 'Registro eliminado correctamente');
+        //\Yii::$app->session->setFlash('success', 'Registro eliminado correctamente');
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Deletes an existing Pacientes model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionTiemposDelete($id)
+    {
+        $tiempos = Checador::findOne($id);
+        $tiempos->delete();
+        //\Yii::$app->session->setFlash('success', 'Registro eliminado correctamente');
+        return $this->redirect(['tiempos']);
     }
 
     public function actionPdf(){

@@ -17,16 +17,10 @@ $nivel = Yii::$app->session['nivel'];
                 <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
                     <div class="mr-auto font-weight-bold p-2">Pacientes</div>
                         <div class="p-1">
-                            <?php 
-                            if ($nivel == 3) {
-                                echo Html::a('<span class="material-icons">library_add</span><span class="txt-menu"> Nuevo</span>', ['create'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold']);
-                            } ?>
+                            <?= Html::a('<span class="material-icons">library_add</span><span class="txt-menu"> Nuevo</span>', ['create'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold']) ?>
                         </div>
                         <div class="p-1">
-                            <?php 
-                            if ($nivel != 1) {
-                                echo Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
-                            } ?>
+                            <?= Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]) ?>
                         </div>
                 </div>
                 <?php Pjax::begin(['id' => 'pacientesgrid']); ?>

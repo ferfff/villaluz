@@ -2,13 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\jui\DatePicker;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
 /* @var $form yii\widgets\ActiveForm */
+$model->genero = $model->isNewRecord ? 'masculino' : $model->genero;
 ?>
-
 
 <?php $form = ActiveForm::begin([
     'id' => 'create-form',
@@ -34,16 +34,24 @@ use yii\jui\DatePicker;
 
 <div class="form-row">
     <div class="form-group col-md-3">
-        <?= $form->field($model, 'genero')->dropDownList([ 'masculino' => 'Masculino', 'femenino' => 'Femenino', ], ['prompt' => 'Género', 'placeholder' => "Género"]) ?>   
+        <?= $form->field($model, 'genero')->dropDownList([ 'Masculino' => 'Masculino', 'Femenino' => 'Femenino', ], ['prompt' => 'Género', 'placeholder' => "Género",]) ?>   
     </div>
     <div class="form-group col-md-3">
-        <?= $form->field($model, 'nacimiento')->widget(DatePicker::className(),[
-            'language' => 'es',
-            'dateFormat' => 'php:Y-m-d',
-            'clientOptions' =>[
-                'yearRange' => 'c-80:c+0',
+        <?= $form->field($model, 'nacimiento')->widget(DateTimePicker::class,[
+            'convertFormat' => true,
+            'type' => DateTimePicker::TYPE_COMPONENT_APPEND,
+            //'value' => '08-Apr-2004 10:20 AM',
+            'removeButton' => false,
+            'pluginOptions' => [
+                'minView' => 2,
+                'autoclose' => true,
+                'format' => 'php:Y-m-d',
+                'language' => 'es',
                 'changeMonth'=> true,
                 'changeYear'=> true,
+                'maxDate' => '0',
+                'startDate'=>'1920-Jan-01',
+                'endDate'=> date('Y-m-d'),
             ],
             'options' =>[
                 'placeholder' => 'Fecha de nacimiento',

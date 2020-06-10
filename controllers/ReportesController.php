@@ -101,9 +101,9 @@ class ReportesController extends Controller
             $datetime = new \DateTime('now');
             $model->fecha = $datetime->format('Y-m-d H:i:s');
             if($model->save()) {
-                \Yii::$app->session->setFlash('success', 'Reporte creado correctamente');
+                //\Yii::$app->session->setFlash('success', 'Reporte creado correctamente');
             }else {
-                \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+                //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
             }
 
             return $this->redirect(['index']);
@@ -126,7 +126,7 @@ class ReportesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('success', 'Reporte actualizado correctamente');
+            //\Yii::$app->session->setFlash('success', 'Reporte actualizado correctamente');
             return $this->redirect(['index',]);
         }
 
@@ -145,7 +145,7 @@ class ReportesController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        \Yii::$app->session->setFlash('success', 'Reporte eliminado correctamente');
+        //\Yii::$app->session->setFlash('success', 'Reporte eliminado correctamente');
         return $this->redirect(['index']);
     }
 
