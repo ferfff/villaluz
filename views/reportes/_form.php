@@ -28,8 +28,8 @@ use yii\widgets\ActiveForm;
                                         <?= $form->field($model, 'periodo')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Periodo"])->label(false) ?>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
+                                <div class="form-row d-flex justify-content-center">
+                                    <div class="form-group col-md-4">
                                         <?= $form->field($model, 'reporte')->textarea(['rows' => 6]) ?>
                                     </div>
                                 </div>

@@ -44,8 +44,8 @@ use kartik\datetime\DateTimePicker;
                                         <?= $form->field($model, 'especialista')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Especialista"])->label(false) ?>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
+                                <div class="form-row d-flex justify-content-center">
+                                    <div class="form-group col-md-4">
                                         <?= $form->field($model, 'observaciones')->textarea(['rows' => 6]) ?>
                                     </div>
                                 </div>

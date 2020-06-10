@@ -15,7 +15,7 @@ $nivel = Yii::$app->session['nivel'];
         <div class="card rounded-0 border-0 mb-5">
             <div class="card-body cont-vh">
                 <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
-                    <div class="mr-auto font-weight-bold p-2">Reporte Semanal</div>
+                    <div class="mr-auto font-weight-bold p-2">Reportes Semanales</div>
                         <div class="p-1">
                             <?php 
                             if ($nivel != 1) {
@@ -70,7 +70,7 @@ $nivel = Yii::$app->session['nivel'];
 
                             //['class' => 'yii\grid\ActionColumn'],
                             ],
-                            'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-registros'],
+                            'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-report'],
                             'options' => [
                                 //'class' => 'header-morado',
                         ],
