@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
     <div class="card rounded-0 border-0 mb-5">
         <div class="card-body">
             <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
-                <div class="mr-auto font-weight-bold p-2">Nuevo Medicamento Base</div>
+                <div class="mr-auto font-weight-bold p-2">Nuevo Medicamento</div>
                 <div class="p-2">
                     <?= Html::a('<span class="material-icons">close</span> Cancelar', Yii::$app->request->referrer, ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold']) ?>
                 </div>

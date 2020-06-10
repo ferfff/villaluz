@@ -39,7 +39,7 @@ $nivel = Yii::$app->session['nivel'];
                                 'content' => function($model) {
                                     return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">create</span>', 
                                         ['update-eventual', 'id' => $model->id], 
-                                        ['class' => 'btn btn-primary d-flex align-items-center text-light btn-sm',]
+                                        ['class' => 'btn btn-primary d-flex align-items-center text-light btn-sm btn-fix',]
                                     ) : '';
                                 }
                             ],
@@ -50,7 +50,7 @@ $nivel = Yii::$app->session['nivel'];
                                     return (Yii::$app->session['nivel'] == 3) ? Html::a('<span class="material-icons">delete_forever</span>', 
                                         ['delete-eventual', 'id' => $model->id], 
                                         [
-                                            'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm',
+                                            'class' => 'btn btn-danger d-flex align-items-center text-light btn-sm btn-fix',
                                             'data' => ['confirm' => '¿Estás seguro quieres eliminar este medicamento?','method' => 'post'], 
                                             'data-ajax' => '1',
                                         ]
