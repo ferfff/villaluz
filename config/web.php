@@ -62,14 +62,14 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             //'useFileTransport' => false,
-            /*'transport' => [
+            'transport' => [
                 'class' => 'yii\swiftmailer\Mailer',
-                'host' => 'smtp.mail.yahoo.com',  // ej. smtp.mandrillapp.com o smtp.gmail.com
-                'username' => 'ferfff@yahoo.com.mx',
-                'password' => '',
-                'port' => '25', // El puerto 25 es un puerto común también
+                'host' => 'smtp.mail.villaluz.com.mx',  // ej. smtp.mandrillapp.com o smtp.gmail.com
+                'username' => 'temp@villaluz.com.mx',
+                'password' => 'temp01villaluz',
+                'port' => '465', // El puerto 25 es un puerto común también
                 //'encryption' => 'tls', // Es usado también a menudo, revise la configuración del servidor
-            ],*/
+            ],
         ],
         'authManager' => [
             'class' => 'yii\rbac\PhpManager',

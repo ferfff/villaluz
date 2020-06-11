@@ -203,17 +203,17 @@ class AppController extends Controller
 
         if ($model->load(Yii::$app->request->post())){
             $str=rand(); 
-            $password = uniqid();
+            $passwordnormal = uniqid();
             $model->authKey = $str.trim($model->username);
             $model->activo = 1;
-            $model->password = Yii::$app->getSecurity()->generatePasswordHash($password);
+            $model->password = Yii::$app->getSecurity()->generatePasswordHash($passwordnormal);
             //Yii::$app->security->generatePasswordHash($password);
             if ($model->save()) {
-                /*Yii::$app->mailer->compose('@app/mail/newuser', ['password' => $password])
-                    ->setFrom('ferfff@yahoo.com.mx')
+                Yii::$app->mailer->compose('@app/mail/email01', ['password' => $passwordnormal ])
+                    ->setFrom('contacto@villaluz.com.mx')
                     ->setTo('ferchofff@gmail.com')
                     ->setSubject('Email avanzado desde Villaluz prueba')
-                    ->send();*/
+                    ->send();
                 //\Yii::$app->session->setFlash('success', 'Usuario Creado correctamente');
                 return $this->redirect(['show']);
             }
