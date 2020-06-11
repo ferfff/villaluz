@@ -236,6 +236,7 @@ class AppController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())){
+            //exit(var_dump(Yii::$app->request->post()));
             $model->nacimiento=Yii::$app->formatter->asDate($model->nacimiento, "yyyy-MM-dd");
             if($model->save()){
                 //\Yii::$app->session->setFlash('success', 'Usuario modificado correctamente');

@@ -201,7 +201,7 @@ class MedicamentosController extends Controller
         }
 
         //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
-        return $this->render('update', [
+        return $this->render('updateEventual', [
             'model' => $model,
         ]);
     }
@@ -217,7 +217,7 @@ class MedicamentosController extends Controller
     {
         $this->findModel($id)->delete();
         //\Yii::$app->session->setFlash('success', 'Medicamento eliminado correctamente');
-        return $this->redirect(['index']);
+        return $this->redirect(['base']);
     }
 
     /**
@@ -231,7 +231,7 @@ class MedicamentosController extends Controller
     {
         $this->findModel($id)->delete();
         //\Yii::$app->session->setFlash('success', 'Medicamento eliminado correctamente');
-        return $this->redirect(['index']);
+        return $this->redirect(['eventual']);
     }
 
     public function actionPdf(){
