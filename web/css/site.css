@@ -713,11 +713,11 @@ ul.pagination li.active li a:active{
 /*------------------------ ancho tabla base--------------------*/
 
 .column-base th:first-child {
-	min-width: 250px;
+	min-width: auto;
 }
 
 .column-base th:nth-child(2) {
-	min-width: 250px;
+	min-width: auto;
 }
 
 .column-base th:nth-child(3) {
@@ -739,11 +739,11 @@ ul.pagination li.active li a:active{
 /*------------------------ ancho tabla eventuales--------------------*/
 
 .column-eventuales th:first-child {
-	min-width: 100px;
+	min-width: auto;
 }
 
 .column-eventuales th:nth-child(2) {
-	min-width: 100px;
+	min-width: auto;
 }
 
 .column-eventuales th:nth-child(3) {
@@ -826,11 +826,11 @@ ul.pagination li.active li a:active{
 /*------------------------ ancho tabla tiempos--------------------*/
 
 .column-time th:first-child {
-	min-width: 100px;
+	min-width: auto;
 }
 
 .column-time th:nth-child(2) {
-	min-width: 270px;
+	min-width: auto;
 }
 
 .column-time th:nth-child(3) {
