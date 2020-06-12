@@ -64,6 +64,10 @@ $nivel = Yii::$app->session['nivel'];
                                 ) : '';
                             }
                         ],
+                        [
+                            'label' => 'Usuario',
+                            'value' => 'users.username',
+                        ],
                         'fecha',
                         'lugar',
                         'especialista',

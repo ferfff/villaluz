@@ -71,7 +71,14 @@ use yii\widgets\Pjax;
                         'paterno',
                         'materno',
                         'genero',
+                        [
+                            'label' => 'Edad',
+                            'content' => function($model) {
+                                return $model->getEdad();
+                            }
+                        ],
                         'nacimiento',
+                        'parentesco',
                         'telefono',
                         'movil',
                         'email:email',

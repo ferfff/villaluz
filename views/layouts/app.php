@@ -40,7 +40,7 @@ AppAsset::register($this);
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <?php if(Yii::$app->session['nivel'] != 1) { ?>
+            <?php if(Yii::$app->session['nivel'] == 3) { ?>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-1 my-2">
                     <button type="submit" class="btn btn-main text-none"><a class="text-light d-flex align-items-center text-none" href="/app"><span class="material-icons">home</span> Inicio</a></button>

@@ -35,15 +35,7 @@ class AppController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['view','asignar','desasignar','show','pdf','changepassword','create'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                            return User::isUserEmpleado(Yii::$app->user->identity->username) || User::isUserAdmin(Yii::$app->user->identity->username);
-                        }
-                    ],
-                    [
-                        'actions' => ['update','delete'],
+                        'actions' => ['update','delete','view','asignar','desasignar','show','pdf','changepassword','create'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -209,11 +201,11 @@ class AppController extends Controller
             $model->password = Yii::$app->getSecurity()->generatePasswordHash($passwordnormal);
             //Yii::$app->security->generatePasswordHash($password);
             if ($model->save()) {
-                Yii::$app->mailer->compose('@app/mail/email01', ['password' => $passwordnormal ])
+                /*Yii::$app->mailer->compose('@app/mail/email01', ['password' => $passwordnormal ])
                     ->setFrom('contacto@villaluz.com.mx')
                     ->setTo('ferchofff@gmail.com')
                     ->setSubject('Email avanzado desde Villaluz prueba')
-                    ->send();
+                    ->send();*/
                 //\Yii::$app->session->setFlash('success', 'Usuario Creado correctamente');
                 return $this->redirect(['show']);
             }

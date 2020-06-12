@@ -98,7 +98,12 @@ $nivel = Yii::$app->session['nivel'];
                         'cp',
                         'ciudad',
                         'nivel',
-                        'activo',
+                        [
+                            'label' => 'Activo',
+                            'content' => function($model) {
+                                return $model->activo == 0 ? 'No' : 'Sí';
+                            }
+                        ]
                         //['class' => 'yii\grid\ActionColumn'],
                     ],
                     'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-empleados'],

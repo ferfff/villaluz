@@ -89,6 +89,12 @@ $nivel = Yii::$app->session['nivel'];
                         'diagnostico',
                         'costo',
                         'pago',
+                        [
+                            'label' => 'Activo',
+                            'content' => function($model) {
+                                return $model->activo == 0 ? 'No' : 'Sí';
+                            }
+                        ]
                         //['class' => 'yii\grid\ActionColumn'],
                     ],
                     'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-pacientes'],

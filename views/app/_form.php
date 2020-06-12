@@ -100,7 +100,7 @@ $model->genero = $model->isNewRecord ? 'masculino' : $model->genero;
 
 <div class="d-flex justify-content-center align-items-center">
     <div class="mr-5">
-        Activo <input type="checkbox" aria-label="Checkbox">
+        <?= $form->field($model, 'activo')->checkbox(['aria-label'=>"Checkbox"])->label('Activo'); ?>
     </div>
     <?= Html::submitButton('<span class="material-icons mr-2">library_add</span> Guardar', ['class' => 'btn text-center d-flex align-items-center btns btn-lg font-weight-bold']) ?>
 </div>

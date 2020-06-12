@@ -27,6 +27,7 @@ use Yii;
  * @property string $diagnostico
  * @property float $costo
  * @property float $pago
+ * @property bool $activo
  *
  * @property Referencias[] $referencias
  * @property UsersPacientes[] $usersPacientes
@@ -53,6 +54,7 @@ class Pacientes extends \yii\db\ActiveRecord
             ['genero', 'required', 'message' => 'Seleccione un género'],
             [['altura', 'peso', 'costo', 'pago'], 'number'],
             [['nacimiento'], 'safe'],
+            ['activo', 'in', 'range'=>['0','1']],
             [['nombre', 'paterno', 'materno', 'telefono', 'movil', 'email', 'colonia'], 'string', 'max' => 50],
             [['calle'], 'string', 'max' => 100],
             [['numero', 'cp'], 'string', 'max' => 10],
@@ -86,6 +88,7 @@ class Pacientes extends \yii\db\ActiveRecord
             'diagnostico' => 'Diagnostico',
             'costo' => 'Costo',
             'pago' => 'Pago',
+            'activo' => 'Activo',
         ];
     }
 
