@@ -34,6 +34,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['nivel', 'required', 'message' => 'Seleccione un nivel'],
             ['genero', 'required', 'message' => 'Seleccione un género'],
             ['nacimiento', 'date', 'format' => 'php:Y-m-d'],
+            ['username', 'unique'], 
             ['email', 'email'],
             ['nivel', 'default', 'value' => 1],
             ['activo', 'in', 'range'=>['0','1']],
