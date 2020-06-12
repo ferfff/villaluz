@@ -77,7 +77,7 @@ class Referencias extends \yii\db\ActiveRecord
             'numero' => 'Numero',
             'interior' => 'Interior',
             'colonia' => 'Colonia',
-            'cp' => 'Cp',
+            'cp' => 'Código Postal',
             'ciudad' => 'Ciudad',
             'parentesco' => 'Parentesco',
         ];
