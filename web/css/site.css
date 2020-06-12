@@ -598,43 +598,55 @@ ul.pagination li.active li a:active{
 
 /*------------------------ ancho tabla referencias--------------------*/
 
-.column-referencias th:first-child {
+.column-referencias2 th:first-child {
 	min-width: auto;
 }
 
-.column-referencias th:nth-child(3) {
+.column-referencias2 th:nth-child(3) {
 	min-width: 250px;
 }
 
-.column-referencias th:nth-child(4) {
+.column-referencias2 th:nth-child(4) {
 	min-width: 150px;
 }
 
-.column-referencias th:nth-child(5) {
+.column-referencias2 th:nth-child(5) {
 	min-width: 150px;
 }
 
-.column-referencias th:nth-child(6) {
+.column-referencias2 th:nth-child(6) {
 	min-width: 150px;
 }
 
-.column-referencias th:nth-child(9) {
+.column-referencias2 th:nth-child(9) {
 	min-width: 200px;
 }
 
-.column-referencias th:nth-child(10) {
+.column-referencias2 th:nth-child(10) {
 	min-width: 200px;
 }
 
-.column-referencias th:nth-child(12) {
+.column-referencias2 th:nth-child(11) {
+	min-width: 250px !important;
+}
+
+.column-referencias2 th:nth-child(12) {
 	min-width: 250px;
 }
 
-.column-referencias th:nth-child(15) {
+.column-referencias2 th:nth-child(14) {
+	min-width: 250px;
+}
+
+.column-referencias2 th:nth-child(15) {
 	min-width: 200px;
 }
 
-.column-referencias th:nth-child(17) {
+.column-referencias2 th:nth-child(17) {
+	min-width: 200px;
+}
+
+.column-referencias2 th:nth-child(19) {
 	min-width: 150px;
 }
 

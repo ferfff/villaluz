@@ -90,7 +90,7 @@ use yii\widgets\Pjax;
                         'ciudad',
                         //['class' => 'yii\grid\ActionColumn'],
                     ],
-                    'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-referencias'],
+                    'tableOptions' => ['class' => 'table table-striped table-hover table-responsive table-vh column-referencias2'],
                 ]);?>
                 <?php Pjax::end(); ?>
             </div>
