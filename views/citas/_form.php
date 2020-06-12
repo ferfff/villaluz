@@ -12,7 +12,7 @@ use kartik\datetime\DateTimePicker;
 
                             <?php $form = ActiveForm::begin(); ?>
                                 <div class="form-row d-flex justify-content-center">
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-lg-4">
                                         <?= $form->field($model, 'fecha')->widget(DateTimePicker::class,[
                                             'convertFormat' => true,
                                             'type' => DateTimePicker::TYPE_COMPONENT_APPEND,
@@ -26,6 +26,7 @@ use kartik\datetime\DateTimePicker;
                                                 'minuteStep' => 30,
                                                 'startDate'=>date('Y-m-d'),
                                                 'endDate'=> '2040-Dec-31 11:30 PM',
+                                                'pickerPosition'=> 'bottom-left'
                                             ],
                                             'options' =>[
                                                 'placeholder' => 'Fecha',
@@ -35,17 +36,17 @@ use kartik\datetime\DateTimePicker;
                                     </div>
                                 </div>
                                 <div class="form-row d-flex justify-content-center">
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-lg-4">
                                         <?= $form->field($model, 'lugar')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Lugar"])->label(false) ?>
                                     </div>
                                 </div>
                                 <div class="form-row d-flex justify-content-center">
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-lg-4">
                                         <?= $form->field($model, 'especialista')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Especialista"])->label(false) ?>
                                     </div>
                                 </div>
                                 <div class="form-row d-flex justify-content-center">
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-lg-4">
                                         <?= $form->field($model, 'observaciones')->textarea(['rows' => 6]) ?>
                                     </div>
                                 </div>

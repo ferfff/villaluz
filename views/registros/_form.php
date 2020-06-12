@@ -16,7 +16,7 @@ use yii\jui\DatePicker;
             <div class="col-lg-12">
                 <?php $form = ActiveForm::begin(); ?>
                     <div class="form-row">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-lg-3">
                             <?= $form->field($model, 'glucosa')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Glucosa"])->label(false) ?>
                         </div>
                         <div class="form-group col-md-3">

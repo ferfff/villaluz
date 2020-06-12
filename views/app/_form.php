@@ -52,10 +52,11 @@ $model->genero = $model->isNewRecord ? 'masculino' : $model->genero;
                 'maxDate' => '0',
                 'startDate'=>'1920-Jan-01',
                 'endDate'=> date('Y-m-d'),
+                'pickerPosition'=> 'bottom-left'
             ],
             'options' =>[
-                'placeholder' => 'Fecha de nacimiento',
-                'class' => 'form-control'
+                'class' => 'form-control',
+                'placeholder' => 'Fecha de nacimiento'
             ],
         ]) ?> 
     </div>
@@ -97,7 +98,10 @@ $model->genero = $model->isNewRecord ? 'masculino' : $model->genero;
     </div>
 </div>
 
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center align-items-center">
+    <div class="mr-5">
+        Activo <input type="checkbox" aria-label="Checkbox">
+    </div>
     <?= Html::submitButton('<span class="material-icons mr-2">library_add</span> Guardar', ['class' => 'btn text-center d-flex align-items-center btns btn-lg font-weight-bold']) ?>
 </div>
 

@@ -471,6 +471,11 @@ div.errorform {
     color: #3C4858 !important;
 }
 
+.calendario.min{
+    margin: 0 auto;
+    width: fit-content;
+}
+
 /*----------------pagination stile-----------------*/
 
 ul.pagination li a{
@@ -885,4 +890,16 @@ div.errorform {
     font-weight: bold;
     font-size: 12px;
     text-align: center;
+}
+
+.datetimepicker {
+    font-size: 12px !important;
+}
+
+.navbar:before{
+    content: none !important;
+}
+
+.navbar:before{
+    content: none !important;
 }

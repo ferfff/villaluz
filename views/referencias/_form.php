@@ -54,6 +54,7 @@ use kartik\datetime\DateTimePicker;
                 'maxDate' => '0',
                 'startDate'=>'1920-Jan-01',
                 'endDate'=> date('Y-m-d'),
+                'pickerPosition'=> 'bottom-left'
             ],
             'options' =>[
                 'placeholder' => 'Fecha de nacimiento',
