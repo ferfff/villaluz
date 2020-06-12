@@ -62,12 +62,16 @@ use yii\widgets\Pjax;
                         ],
                         [
                             'label' => 'Costo',
-                            'value' => 'costo',
+                            'value' => function ($model) {
+                                return "$ ".$model->costo;
+                            },
                             'visible' => User::isUserAdmin(Yii::$app->user->identity->username),
                         ],
                         [
                             'label' => 'Pago',
-                            'value' => 'pago',
+                            'value' => function ($model) {
+                                return "$ ".$model->pago;
+                            },
                             'visible' => User::isUserAdmin(Yii::$app->user->identity->username),
                         ],
                         //['class' => 'yii\grid\ActionColumn'],
