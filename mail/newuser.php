@@ -13,11 +13,41 @@ use yii\helpers\Html;
     <title><?= Html::encode('Mail') ?></title>
     <?php $this->head() ?>
 </head>
+
+    <style>
+        #header{
+            text-align: center;
+            margin-bottom: 250px;
+        }
+
+        .footer-bottom{
+            background-color: #80007e;
+            border-top: 5px solid #5EAAA9;
+            height: 80px;
+            margin-top: 250px;
+        }
+    </style>
+
 <body>
+    <div id="header">
+		<div class="logo"><img alt="logo villaluz" src="/img/logo_villaluz_color.jpg" width="180px"></div>
+	</div>
+
     <?php $this->beginBody() ?>
         Hola!! 
         Tu password es <?= $password ?>
     <?php $this->endBody() ?>
+
+    <footer class="footer-bottom"></footer>
 </body>
 </html>
 <?php $this->endPage() ?>
+
+
+
+
+    
+
+    
+
+    
