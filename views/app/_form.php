@@ -94,7 +94,7 @@ $model->genero = $model->isNewRecord ? 'masculino' : $model->genero;
         <?= $form->field($model, 'ciudad')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Ciudad"])->label(false) ?>
     </div>
     <div class="form-group col-md-3">
-        <?= $form->field($model, 'nivel')->dropDownList([ '1' => '1', '2' => '2', '3' => '3', ], ['prompt' => 'Nivel']) ?>
+        <?= $form->field($model, 'nivel')->dropDownList([ '1' => 'Cliente', '2' => 'Empleado', '3' => 'Administrador', ], ['prompt' => 'Nivel']) ?>
     </div>
 </div>
 

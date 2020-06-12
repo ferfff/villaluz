@@ -34,12 +34,12 @@ use yii\bootstrap4\ActiveForm;
                     'id' => 'login-form',
                     'layout' => 'horizontal',
                     'fieldConfig' => [
-                        'template' => "<div class=\"form-group border-input\">{input}</div>\n<div class=\"errorform mt-3\">{error}</div>",
+                        'template' => "<div class=\"form-group center-form border-input\">{input}</div>\n<div class=\"errorform mt-3\">{error}</div>",
                         'labelOptions' => ['class' => 'col-lg-1 control-label'],
                     ],
                 ]); ?>
-                    <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class' => 'form-control input_login py-3', 'placeholder' => "Usuario"]) ?>
-                    <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control input_login py-3', 'placeholder' => "Contraseña"]) ?>
+                    <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class' => 'form-control input_login', 'placeholder' => "Usuario"]) ?>
+                    <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control input_login p-3', 'placeholder' => "Contraseña"]) ?>
                     <?= Html::submitButton('Entrar', ['class' => 'btn btn-block btn-lg btn-login my-5 font-weight-bold', 'name' => 'login-button']) ?>
                 <?php ActiveForm::end(); ?>
                 <small id="emailHelp" class="text-light text-center">Villaluz Application Website</small>

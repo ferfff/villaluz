@@ -915,3 +915,9 @@ div.errorform {
 .navbar:before{
     content: none !important;
 }
+
+.center-form{
+    margin-right: 15px !important;
+    margin-left: 15px !important;
+    width: 100% !important;
+}
