@@ -35,7 +35,7 @@ class AppController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['update','delete','view','asignar','desasignar','show','pdf','changepassword','create'],
+                        'actions' => ['update','delete','view','asignar','desasignar','show','changepassword','create'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -123,13 +123,12 @@ class AppController extends Controller
             ->all();
 
         $user = $this->findModel($id);
-        if (Yii::$app->request->isAjax) {
-            return $this->renderPartial('view', [
-                'assigned'=>$assigned,
-                'notAssigned'=>$notAssigned,
-                'user'=>$user,
-            ]);
-        }
+
+        return $this->render('view', [
+            'assigned'=>$assigned,
+            'notAssigned'=>$notAssigned,
+            'user'=>$user,
+        ]);
     }
 
     /**
@@ -293,7 +292,7 @@ class AppController extends Controller
         ]);
     }
 
-    public function actionPdf(){
+    /*public function actionPdf(){
         Yii::$app->response->format = 'pdf';
         
         $query = User::find();
@@ -310,7 +309,7 @@ class AppController extends Controller
 		return $this->render('pdf', [
             'users' => $users,
         ]);
-	}
+	}*/
 
     /**
      * Finds the Users model based on its primary key value.

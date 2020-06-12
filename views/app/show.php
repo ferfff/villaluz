@@ -28,12 +28,6 @@ $nivel = Yii::$app->session['nivel'];
                                 echo Html::a('<span class="material-icons">autorenew</span><span class="txt-menu"> Cambiar Contraseña</span>', ['changepassword'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold',]);
                              ?>
                         </div>
-                        <div class="p-1">
-                            <?php 
-                            if ($nivel != 1) {
-                                echo Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
-                            } ?>
-                        </div>
                 </div>
                 <?php Pjax::begin(['id' => 'empleadosgrid']); ?>
                 
@@ -124,7 +118,9 @@ $jsCode = <<<JAVASCRIPT
     $('body').on('click', 'td', function (e) {
         var id = $(this).closest('tr').data('id');
         if(e.target == this) {
-            $.ajax({
+            window.location.href = "/app/view?id="+id;
+
+            /*$.ajax({
                 method: 'GET',
                 url: 'view',
                 data: {'id': id},
@@ -135,89 +131,9 @@ $jsCode = <<<JAVASCRIPT
                 error: function(exception) { // if error occured
                     console.log(exception);
                 },
-            });
+            });*/
         }
     });
-
-    $('body').on('click', '.agregar', function (e) {
-        var pacienteid = $(this).attr('id');
-        var iduser = $("#iduser").val();
-        $.ajax({
-            method: 'POST',
-            url: 'asignar',
-            data: {'pacienteid': pacienteid, 'userid': iduser},
-            context: this,
-            success:function() {
-                var row = $(this).closest("tr").clone();
-                $(this).closest("tr").remove();
-                row.appendTo($("#eliminarTable"));
-                row.find('button').removeClass( "btn-primary agregar" ).addClass( "btn-danger eliminar" );
-                row.find('span').text('remove');
-            },
-            error: function(exception) { // if error occured
-                console.log(exception);
-            },
-        }); 
-    });
-
-    $('body').on('click', '.eliminar', function (e) {
-        var pacienteid = $(this).attr('id');
-        var iduser = $("#iduser").val();
-        $.ajax({
-            method: 'POST',
-            url: 'desasignar',
-            data: {'pacienteid': pacienteid, 'userid': iduser},
-            context: this,
-            success:function() {
-                var row = $(this).closest("tr").clone();
-                $(this).closest("tr").remove();
-                row.appendTo($("#agregarTable"));
-                row.find('button').removeClass( "btn-danger eliminar" ).addClass( "btn-primary agregar" );
-                row.find('span').text('add');
-            },
-            error: function(exception) { // if error occured
-                console.log(exception);
-            },
-        });
-    });
-
-    var buscarAsignados = function () {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("searchAsignados");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblAsignados");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("th")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-
-    var buscarDesasignados = function () {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("searchDesignados");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblDesasignados");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("th")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
 JAVASCRIPT;
 
 $this->registerJs($jsCode, View::POS_END);

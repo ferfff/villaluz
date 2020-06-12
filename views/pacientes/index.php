@@ -87,8 +87,18 @@ $nivel = Yii::$app->session['nivel'];
                         'cp',
                         'ciudad',
                         'diagnostico',
-                        'costo',
-                        'pago',
+                        [
+                            'label'=>'Costo',
+                            'content' => function($model) {
+                                return "$ ".$model->costo;
+                            }
+                        ],
+                        [
+                            'label'=>'Pago',
+                            'content' => function($model) {
+                                return "$ ".$model->pago;
+                            }
+                        ],
                         [
                             'label' => 'Activo',
                             'content' => function($model) {
