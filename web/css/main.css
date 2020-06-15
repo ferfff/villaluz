@@ -134,6 +134,14 @@ header nav{
 }
 
 .header_galery{
+  background-position: top center;
+}
+
+.servicio{
+  background-position: bottom center;
+}
+
+.header_galery{
   background-image: url(../img/villaluz_revision.jpg);
 }
 

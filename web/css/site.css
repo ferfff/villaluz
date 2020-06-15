@@ -806,6 +806,10 @@ ul.pagination li.active li a:active{
 }
 
 .column-citas th:nth-child(6) {
+	min-width: 200px !important;
+}
+
+.column-citas th:nth-child(7) {
 	min-width: 800px !important;
 }
 

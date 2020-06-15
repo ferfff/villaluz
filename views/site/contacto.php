@@ -36,7 +36,7 @@
 
   <div class='header_map'>
     <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d466.59760588035675!2d-101.35034651996725!3d20.678493140555133!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfccde9759efb81bc!2sVillaluz+Servicios+Integrales+de+Salud!5e0!3m2!1ses-419!2smx!4v1494291465135" width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.780268056999!2d-101.35237598507317!3d20.678516686189084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842c7fd1206cc945%3A0xfccde9759efb81bc!2sVillaluz%20Servicios%20Integrales%20de%20Salud!5e0!3m2!1ses-419!2smx!4v1592257406616!5m2!1ses-419!2smx" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
     </div>
   </div>
 

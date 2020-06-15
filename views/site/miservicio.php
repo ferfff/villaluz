@@ -35,7 +35,7 @@
 
   <div class='frase'>
     <div class="frase_block">
-      <b>“Acuérdate de ellos, respétalos y cuidalos”</b>
+      <span class="header_block"><b>“Acuérdate de ellos, respétalos y cuidalos”</b></span>
     </div>
   </div>
 
