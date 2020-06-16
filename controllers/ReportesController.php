@@ -27,20 +27,28 @@ class ReportesController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','pdf',],
+                        'actions' => ['index',],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['pdf',],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return !User::isUserEmpleado(Yii::$app->user->identity->username);
+                        }
                     ],
                     [
                         'actions' => ['create',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return User::isUserEmpleado(Yii::$app->user->identity->username) || User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserEmpleado(Yii::$app->user->identity->username);
                         }
                     ],
                     [
-                        'actions' => ['update','delete'],
+                        'actions' => ['update','delete','create',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -152,7 +160,9 @@ class ReportesController extends Controller
     public function actionPdf(){
         Yii::$app->response->format = 'pdf';
         
-        $query = Reportes::find();
+        $query = Reportes::find()
+        ->innerJoin('pacientes','`reportes`.`pacientes_id` = `pacientes`.`id`')
+        ->andWhere(['reportes.pacientes_id' => Yii::$app->session['idPaciente']]);
         $reportes = $query->all();
 
 		// Rotate the page

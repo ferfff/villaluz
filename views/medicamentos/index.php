@@ -22,7 +22,10 @@ $nivel = Yii::$app->session['nivel'];
                             } ?>
                         </div>
                         <div class="p-1">
-                            <?= Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]) ?>
+                        <?php 
+                            if ($nivel != 2) {
+                                echo Html::a('<span class="material-icons">save_alt</span><span class="txt-menu"> Descargar</span>', ['pdf'], ['class' => 'btn btn-outline-light border-0 rounded-0 d-flex align-items-center font-weight-bold', 'target' => '_blank',]);
+                            } ?>
                         </div>
                 </div>
                     <?php Pjax::begin(); ?>

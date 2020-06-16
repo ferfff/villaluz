@@ -26,20 +26,28 @@ class MedicamentosController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['base','pdf','eventual','pdf-eventual',],
+                        'actions' => ['base','eventual',],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['pdf','pdf-eventual',],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return !User::isUserEmpleado(Yii::$app->user->identity->username);
+                        }
                     ],
                     [
                         'actions' => ['create','create-eventual',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return User::isUserEmpleado(Yii::$app->user->identity->username) || User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserEmpleado(Yii::$app->user->identity->username);
                         }
                     ],
                     [
-                        'actions' => ['update','delete','update-eventual','delete-eventual'],
+                        'actions' => ['update','delete','update-eventual','delete-eventual','create','create-eventual',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -237,8 +245,12 @@ class MedicamentosController extends Controller
     public function actionPdf(){
         Yii::$app->response->format = 'pdf';
         
-        $query = Medicamentos::find();
-        $medicamentos = $query->where(['tipo' => 'base'])->all();
+        $query = Medicamentos::find()
+            ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`');
+        $medicamentos = $query->where(['tipo' => 'base'])
+            ->andWhere(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
+            ->andWhere(['medicamentos.tipo' => 'base'])
+            ->all();
 
 		// Rotate the page
 		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [
@@ -256,8 +268,11 @@ class MedicamentosController extends Controller
     public function actionPdfEventual(){
         Yii::$app->response->format = 'pdf';
         
-        $query = Medicamentos::find();
-        $medicamentos = $query->where(['tipo' => 'eventual'])->all();
+        $query = Medicamentos::find()
+        ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`');
+        $medicamentos = $query->where(['tipo' => 'eventual'])
+        ->andWhere(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
+        ->andWhere(['medicamentos.tipo' => 'eventual'])->all();
 
 		// Rotate the page
 		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [

@@ -26,20 +26,28 @@ class CitasController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','pdf',],
+                        'actions' => ['index',],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['pdf',],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return !User::isUserEmpleado(Yii::$app->user->identity->username);
+                        }
                     ],
                     [
                         'actions' => ['create',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return User::isUserEmpleado(Yii::$app->user->identity->username) || User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserEmpleado(Yii::$app->user->identity->username);
                         }
                     ],
                     [
-                        'actions' => ['update','delete'],
+                        'actions' => ['update','delete','create',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -158,7 +166,9 @@ class CitasController extends Controller
     public function actionPdf(){
         Yii::$app->response->format = 'pdf';
         
-        $query = Citas::find();
+        $query = Citas::find()
+            ->innerJoin('pacientes','`citas`.`pacientes_id` = `pacientes`.`id`')
+            ->andWhere(['citas.pacientes_id' => Yii::$app->session['idPaciente']]);
         $citas = $query->all();
 
 		// Rotate the page

@@ -28,20 +28,28 @@ class RegistrosController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','pdf','tiempos','pdf-tiempos','verify'],
+                        'actions' => ['index','verify',],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['pdf','pdf-tiempos','tiempos',],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return !User::isUserEmpleado(Yii::$app->user->identity->username);
+                        }
                     ],
                     [
                         'actions' => ['create','checador','view',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return User::isUserEmpleado(Yii::$app->user->identity->username) || User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserEmpleado(Yii::$app->user->identity->username);
                         }
                     ],
                     [
-                        'actions' => ['update','delete','tiempos-delete'],
+                        'actions' => ['update','delete','tiempos-delete','create','checador','view',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {

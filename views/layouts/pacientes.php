@@ -61,13 +61,15 @@ AppAsset::register($this);
                     <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/reportes"><span class="material-icons">text_snippet</span><span class="menu_paciente"> Reporte Semanal</span></a></button>
                 </li>
                 <?php if(isset(Yii::$app->session['nivel']) AND Yii::$app->session['nivel'] != 1) { ?>
-                <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/registros/view?id=<?= Yii::$app->session['idPaciente'] ?>"><span class="material-icons">av_timer</span><span class="menu_paciente"> Reloj Checador</span></a></button>
-                </li>
+                    <li class="nav-item mx-1 my-2">
+                        <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/registros/view?id=<?= Yii::$app->session['idPaciente'] ?>"><span class="material-icons">av_timer</span><span class="menu_paciente"> Reloj Checador</span></a></button>
+                    </li>
                 <?php } ?>
-                <li class="nav-item mx-1 my-2">
-                    <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/registros/tiempos"><span class="material-icons">update</span><span class="menu_paciente"> Tiempos</span></a></button>
-                </li>
+                <?php if(isset(Yii::$app->session['nivel']) AND Yii::$app->session['nivel'] != 2) { ?>
+                    <li class="nav-item mx-1 my-2">
+                        <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/registros/tiempos"><span class="material-icons">update</span><span class="menu_paciente"> Tiempos</span></a></button>
+                    </li>
+                <?php } ?>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active d-flex align-items-center mx-1">
