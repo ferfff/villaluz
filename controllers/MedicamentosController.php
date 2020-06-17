@@ -104,8 +104,8 @@ class MedicamentosController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => MedicamentosEventual::find()
-                        ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`')
-                        ->andWhere(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
+                        ->innerJoin('pacientes','`medicamentos_eventuales`.`pacientes_id` = `pacientes`.`id`')
+                        ->andWhere(['medicamentos_eventuales.pacientes_id' => Yii::$app->session['idPaciente']])
         ]);
 
         $dataProvider->setPagination(['pageSize' => 5]);
@@ -260,10 +260,8 @@ class MedicamentosController extends Controller
         Yii::$app->response->format = 'pdf';
         
         $query = MedicamentosEventual::find()
-        ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`');
-        $medicamentos = $query->where(['tipo' => 'eventual'])
-        ->andWhere(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
-        ->andWhere(['medicamentos.tipo' => 'eventual'])->all();
+            ->innerJoin('pacientes','`medicamentos_eventuales`.`pacientes_id` = `pacientes`.`id`');
+        $medicamentos = $query->where(['medicamentos_eventuales.pacientes_id' => Yii::$app->session['idPaciente']])->all();
 
 		// Rotate the page
 		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [

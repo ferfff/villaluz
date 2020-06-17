@@ -30,7 +30,7 @@ use yii\helpers\Html;
 
 <body>
     <div id="header">
-		<div class="logo"><img alt="logo villaluz" src="/img/logo_villaluz_color.jpg" width="180px"></div>
+		<div class="logo"><img alt="logo villaluz" src="img/logo_villaluz_color.jpg" width="180px"></div>
 	</div>
 
     <?php $this->beginBody() ?>

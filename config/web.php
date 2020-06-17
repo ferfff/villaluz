@@ -58,7 +58,7 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'viewPath' => '@common/mail',
+            //'viewPath' => '@common/mail',
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
@@ -66,8 +66,8 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'mail.villaluz.com.mx',  // ej. smtp.mandrillapp.com o smtp.gmail.com
-                'username' => 'temp@villaluz.com.mx',
-                'password' => 'temp01villaluz',
+                'username' => 'contacto@villaluz.com.mx',
+                'password' => 'c0nt4ct0VILLALUZ',
                 'port' => '587', // El puerto 25 es un puerto común también
                 'encryption' => 'tls', // Es usado también a menudo, revise la configuración del servidor
             ],

@@ -202,7 +202,7 @@ class AppController extends Controller
             if ($model->save()) {
                 try {
                     Yii::$app->mailer->compose(['html' => '@app/mail/newuser'], ['password' => $passwordnormal, 'id' => $model->id, ])
-                        ->setFrom('temp@villaluz.com.mx')
+                        ->setFrom('contacto@villaluz.com.mx')
                         ->setTo($model->email)
                         ->setSubject('Email avanzado desde Villaluz prueba')
                         ->send();
