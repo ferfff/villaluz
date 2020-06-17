@@ -19,7 +19,7 @@ $model->genero = $model->isNewRecord ? 'masculino' : $model->genero;
 
 <div class="form-row">
     <div class="form-group col-md-3">
-        <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "ID"])->label(false) ?>
+        <?= $form->field($model, 'id')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "ID"])->label(false) ?>
     </div>
     <div class="form-group col-md-3">
         <?= $form->field($model, 'nombre')->textInput(['maxlength' => true, 'class' => 'form-control', 'placeholder' => "Nombre"])->label(false) ?>

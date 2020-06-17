@@ -10,7 +10,7 @@ use yii\web\View;
 <div class="card rounded-0 mh-100 border-0">
     <div class="card-body">
         <div class="d-flex header-verde p-2 text-light mb-4 align-items-center">
-            <div class="mr-auto font-weight-bold p-2">Asignar Pacientes a: <span class="font-weight-bold nombre_empleado"><?= $user->username ?></span></div>
+            <div class="mr-auto font-weight-bold p-2">Asignar Pacientes a: <span class="font-weight-bold nombre_empleado"><?= $user->id ?></span></div>
         </div>
         <div class="container">
             <div class="row">

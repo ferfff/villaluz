@@ -34,7 +34,7 @@ class Reportes extends \yii\db\ActiveRecord
         return [
             [['periodo', 'reporte', 'users_id', 'pacientes_id'], 'required'],
             [['reporte'], 'string'],
-            [['users_id', 'pacientes_id'], 'integer'],
+            [['pacientes_id'], 'integer'],
             [['periodo'], 'string', 'max' => 50],
             [['pacientes_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pacientes::className(), 'targetAttribute' => ['pacientes_id' => 'id']],
             [['users_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['users_id' => 'id']],

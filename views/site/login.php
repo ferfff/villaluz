@@ -38,7 +38,7 @@ use yii\bootstrap4\ActiveForm;
                         'labelOptions' => ['class' => 'col-lg-1 control-label'],
                     ],
                 ]); ?>
-                    <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class' => 'form-control input_login', 'placeholder' => "Usuario"]) ?>
+                    <?= $form->field($model, 'id')->textInput(['autofocus' => true, 'class' => 'form-control input_login', 'placeholder' => "Usuario"]) ?>
                     <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control input_login p-3', 'placeholder' => "Contraseña"]) ?>
                     <?= Html::submitButton('Entrar', ['class' => 'btn btn-block btn-lg btn-login my-5 font-weight-bold', 'name' => 'login-button']) ?>
                 <?php ActiveForm::end(); ?>

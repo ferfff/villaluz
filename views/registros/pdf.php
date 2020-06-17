@@ -16,11 +16,11 @@ use yii\helpers\Html;
 				<th>SPO2(%)</th>
 				<th>Micciones</th>
 				<th>Evacuaciones</th>
-				<th>Observaciones</th>							  	
+				<th>Observaciones</th>  	
 			</tr>
 			<?php foreach ($registros as $registro): ?>
                 <tr>
-                    <td><?= Html::encode("{$registro->users->username}") ?></td>
+                    <td><?= Html::encode("{$registro->users->id}") ?></td>
                     <td><?= Html::encode("{$registro->fecha}") ?></td>
                     <td><?= Html::encode("{$registro->glucosa}") ?></td>
                     <td><?= Html::encode("{$registro->ta}") ?></td>

@@ -46,7 +46,7 @@ use yii\widgets\Pjax;
                         ],
                         [
                             'label' => 'Usuario',
-                            'value' => 'users.username',
+                            'value' => 'users.id',
                         ],
                         [
                             'label' => 'Entrada',
@@ -65,14 +65,14 @@ use yii\widgets\Pjax;
                             'value' => function ($model) {
                                 return "$ ".$model->costo;
                             },
-                            'visible' => User::isUserAdmin(Yii::$app->user->identity->username),
+                            'visible' => User::isUserAdmin(Yii::$app->user->identity->id),
                         ],
                         [
                             'label' => 'Pago',
                             'value' => function ($model) {
                                 return "$ ".$model->pago;
                             },
-                            'visible' => User::isUserAdmin(Yii::$app->user->identity->username),
+                            'visible' => User::isUserAdmin(Yii::$app->user->identity->id),
                         ],
                         //['class' => 'yii\grid\ActionColumn'],
                     ],

@@ -33,7 +33,7 @@ class Checador extends \yii\db\ActiveRecord
     {
         return [
             [['entrada', 'users_id', 'pacientes_id'], 'required'],
-            [['users_id', 'pacientes_id'], 'integer'],
+            [['pacientes_id'], 'integer'],
             [['pacientes_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pacientes::className(), 'targetAttribute' => ['pacientes_id' => 'id']],
             [['users_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['users_id' => 'id']],
         ];

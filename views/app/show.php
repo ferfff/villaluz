@@ -70,7 +70,7 @@ $nivel = Yii::$app->session['nivel'];
                                 ) : '';
                             }
                         ],
-                        'username',
+                        'id',
                         'nombre',
                         'paterno',
                         'materno',

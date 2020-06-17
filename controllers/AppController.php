@@ -39,7 +39,7 @@ class AppController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin(Yii::$app->user->identity->id);
                         }
                     ],
                 ],
@@ -195,7 +195,7 @@ class AppController extends Controller
         if ($model->load(Yii::$app->request->post())){
             $str=rand(); 
             $passwordnormal = uniqid();
-            $model->authKey = $str.trim($model->username);
+            $model->authKey = $str.trim($model->id);
             $model->activo = 1;
             $model->password = Yii::$app->getSecurity()->generatePasswordHash($passwordnormal);
             //Yii::$app->security->generatePasswordHash($password);
@@ -300,7 +300,7 @@ class AppController extends Controller
         Yii::$app->response->format = 'pdf';
         
         $query = User::find();
-        $users = $query->orderBy('username')->all();
+        $users = $query->orderBy('id')->all();
 
 		// Rotate the page
 		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [

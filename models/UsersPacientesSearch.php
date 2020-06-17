@@ -17,7 +17,7 @@ class UsersPacientesSearch extends UsersPacientes
     public function rules()
     {
         return [
-            [['id', 'users_id', 'pacientes_id'], 'integer'],
+            [['pacientes_id'], 'integer'],
         ];
     }
 
@@ -57,7 +57,6 @@ class UsersPacientesSearch extends UsersPacientes
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
             'users_id' => $this->users_id,
             'pacientes_id' => $this->pacientes_id,
         ]);

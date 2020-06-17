@@ -14,7 +14,7 @@ use yii\helpers\Html;
 			</tr>
 			<?php foreach ($medicamentos as $medicamento): ?>
                 <tr>
-                    <td><?= Html::encode("{$medicamento->users->username}") ?></td>
+                    <td><?= Html::encode("{$medicamento->users->id}") ?></td>
                     <td><?= Html::encode("{$medicamento->medicamento}") ?></td>
                     <td><?= Html::encode("{$medicamento->periodo}") ?></td>
                     <td><?= Html::encode("{$medicamento->dosis}") ?></td>

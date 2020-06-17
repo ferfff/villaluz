@@ -61,7 +61,7 @@ $nivel = Yii::$app->session['nivel'];
                             ],
                             [
                                 'label' => 'Usuario',
-                                'value' => 'users.username',
+                                'value' => 'users.id',
                             ],
                             'medicamento',
                             'dosis',

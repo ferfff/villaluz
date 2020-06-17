@@ -73,7 +73,7 @@ AppAsset::register($this);
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active d-flex align-items-center mx-1">
-                    Hola, <?= Yii::$app->user->identity->username ?>
+                    Hola, <?= Yii::$app->user->identity->id ?>
                 </li>
                 <li class="nav-item mx-1 my-2">
                     <button type="submit" class="btn btn-main text-none"><a class="d-flex align-items-center text-none" href="/site/logout"><span class="material-icons">exit_to_app</span>Cerrar Sesión</a></button>

@@ -25,16 +25,16 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username','nombre','paterno','materno','nacimiento','email','calle','numero','colonia','ciudad','password'], 'required'],
-            [['username','nombre','paterno','materno'], 'string', 'max' => 50],
+            [['id','nombre','paterno','materno','nacimiento','email','calle','numero','colonia','ciudad','password'], 'required'],
+            [['id','nombre','paterno','materno'], 'string', 'max' => 50],
             [['calle','numero','colonia','ciudad','telefono','movil'], 'string', 'max' => 20],
             [['cp'], 'string', 'max' => 10],
             [['interior'], 'string', 'max' => 5],
-            [['username','nombre','paterno','materno','telefono','movil','cp','calle','colonia','ciudad'], 'string', 'min' => 4],
+            [['id','nombre','paterno','materno','telefono','movil','cp','calle','colonia','ciudad'], 'string', 'min' => 4],
             ['nivel', 'required', 'message' => 'Seleccione un nivel'],
             ['genero', 'required', 'message' => 'Seleccione un género'],
             ['nacimiento', 'date', 'format' => 'php:Y-m-d'],
-            ['username', 'unique'], 
+            ['id', 'unique'], 
             ['email', 'email'],
             ['nivel', 'default', 'value' => 1],
             ['activo', 'in', 'range'=>['0','1']],
@@ -46,7 +46,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'username' => Yii::t('app', 'ID'),
+            'id' => Yii::t('app', 'ID'),
             'paterno' => Yii::t('app', 'Apellido Paterno'),
             'materno' => Yii::t('app', 'Apellido Materno'),
             'cp' => Yii::t('app', 'Código Postal'),
@@ -86,11 +86,6 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->authKey === $authKey;
     }
 
-    public static function findByUsername($username)
-    {
-        return self::findOne(['username' => $username]);
-    }
-
     public function validatePassword($password)
     {
         //return $this->password === $password;
@@ -109,18 +104,18 @@ class User extends ActiveRecord implements IdentityInterface
         return $from->diff($to)->y;
     }
 
-    public static function isUserAdmin($username)
+    public static function isUserAdmin($id)
     {
-        if (static::findOne(['username' => $username, 'nivel' => self::ROLE_ADMIN])){            
+        if (static::findOne(['id' => $id, 'nivel' => self::ROLE_ADMIN])){            
             return true;
         } else {                   
             return false;
         }    
     }
 
-    public static function isUserEmpleado($username)
+    public static function isUserEmpleado($id)
     {
-        if (static::findOne(['username' => $username, 'nivel' => self::ROLE_EMPLEADO])){            
+        if (static::findOne(['id' => $id, 'nivel' => self::ROLE_EMPLEADO])){            
             return true;
         } else {                   
             return false;

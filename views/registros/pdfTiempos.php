@@ -15,7 +15,7 @@ use yii\helpers\Html;
 			</tr>
 			<?php foreach ($tiempos as $tiempo): ?>
                 <tr>
-                    <td><?= Html::encode("{$tiempo->users->username}") ?></td>
+                    <td><?= Html::encode("{$tiempo->users->id}") ?></td>
                     <td><?= Html::encode("{$tiempo->entrada}") ?></td>
                     <td><?= Html::encode("{$tiempo->salida}") ?></td>
                     <td><?= Html::encode("{$tiempo->tiempo}") ?></td>

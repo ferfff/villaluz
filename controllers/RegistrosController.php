@@ -37,7 +37,7 @@ class RegistrosController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return !User::isUserEmpleado(Yii::$app->user->identity->username);
+                            return !User::isUserEmpleado(Yii::$app->user->identity->id);
                         }
                     ],
                     [
@@ -45,7 +45,7 @@ class RegistrosController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return User::isUserEmpleado(Yii::$app->user->identity->username);
+                            return User::isUserEmpleado(Yii::$app->user->identity->id);
                         }
                     ],
                     [
@@ -53,7 +53,7 @@ class RegistrosController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin(Yii::$app->user->identity->id);
                         }
                     ],
                 ],
@@ -109,7 +109,7 @@ class RegistrosController extends Controller
         $pacienteObj = Pacientes::findOne($id);
         if($pacienteObj){
             $this->setSession($pacienteObj);
-            if (User::isUserEmpleado(Yii::$app->user->identity->username) || User::isUserAdmin(Yii::$app->user->identity->username)) {
+            if (User::isUserEmpleado(Yii::$app->user->identity->id) || User::isUserAdmin(Yii::$app->user->identity->id)) {
                 return $this->redirect(['view', 'id' => $id]);
             } else {
                 return $this->redirect(['index']);
@@ -201,10 +201,8 @@ class RegistrosController extends Controller
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
             $model->fecha = $now;
-            if($model->save()) {
-                //\Yii::$app->session->setFlash('success', 'Registro creado correctamente');
-            }else {
-                //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
+            if(!$model->save()) {
+                \Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
             }
 
             return $this->redirect(['index']);
@@ -268,7 +266,10 @@ class RegistrosController extends Controller
     public function actionPdf(){
         Yii::$app->response->format = 'pdf';
         
-        $query = Registros::find();
+        $query = Registros::find()
+            ->innerJoin('pacientes','`registros`.`pacientes_id` = `pacientes`.`id`')
+            ->innerJoin('users','`registros`.`users_id` = `users`.`id`')
+            ->andWhere(['registros.pacientes_id' => Yii::$app->session['idPaciente']]);
         $registros = $query->all();
 
 		// Rotate the page

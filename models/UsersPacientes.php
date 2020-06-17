@@ -36,7 +36,7 @@ class UsersPacientes extends \yii\db\ActiveRecord
     {
         return [
             [['users_id', 'pacientes_id'], 'required'],
-            [['users_id', 'pacientes_id'], 'integer'],
+            [['pacientes_id'], 'integer'],
             [['pacientes_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pacientes::className(), 'targetAttribute' => ['pacientes_id' => 'id']],
             [['users_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['users_id' => 'id']],
         ];
@@ -48,7 +48,6 @@ class UsersPacientes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
             'users_id' => 'Users ID',
             'pacientes_id' => 'Pacientes ID',
         ];

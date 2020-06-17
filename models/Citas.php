@@ -37,7 +37,7 @@ class Citas extends \yii\db\ActiveRecord
             [['fecha', 'lugar', 'especialista', 'users_id', 'pacientes_id'], 'required'],
             [['fecha'], 'safe'],
             [['observaciones'], 'string'],
-            [['users_id', 'pacientes_id'], 'integer'],
+            [['pacientes_id'], 'integer'],
             [['lugar', 'especialista'], 'string', 'max' => 50],
             [['pacientes_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pacientes::className(), 'targetAttribute' => ['pacientes_id' => 'id']],
             [['users_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['users_id' => 'id']],

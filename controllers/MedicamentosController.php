@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use app\models\Medicamentos;
+use app\models\MedicamentosEventual;
 use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -35,7 +36,7 @@ class MedicamentosController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return !User::isUserEmpleado(Yii::$app->user->identity->username);
+                            return !User::isUserEmpleado(Yii::$app->user->identity->id);
                         }
                     ],
                     [
@@ -43,7 +44,7 @@ class MedicamentosController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return User::isUserEmpleado(Yii::$app->user->identity->username);
+                            return User::isUserEmpleado(Yii::$app->user->identity->id);
                         }
                     ],
                     [
@@ -51,7 +52,7 @@ class MedicamentosController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                            return User::isUserAdmin(Yii::$app->user->identity->id);
                         }
                     ],
                 ],
@@ -85,7 +86,6 @@ class MedicamentosController extends Controller
             'query' => Medicamentos::find()
                         ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`')
                         ->andWhere(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
-                        ->andWhere(['medicamentos.tipo' => 'base'])
         ]);
 
         $dataProvider->setPagination(['pageSize' => 5]);
@@ -103,10 +103,9 @@ class MedicamentosController extends Controller
     public function actionEventual()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Medicamentos::find()
+            'query' => MedicamentosEventual::find()
                         ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`')
                         ->andWhere(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
-                        ->andWhere(['medicamentos.tipo' => 'eventual'])
         ]);
 
         $dataProvider->setPagination(['pageSize' => 5]);
@@ -128,13 +127,9 @@ class MedicamentosController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
-            $model->tipo = 'base';
             
-            if($model->save()) {
-                //\Yii::$app->session->setFlash('success', 'Medicamento creado correctamente');
-            }else {
-                //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
-            }
+            $model->save();
+            
             return $this->redirect(['base']);
         }
 
@@ -150,17 +145,13 @@ class MedicamentosController extends Controller
      */
     public function actionCreateEventual()
     {
-        $model = new Medicamentos();
+        $model = new MedicamentosEventual();
 
         if ($model->load(Yii::$app->request->post())) {
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
             $model->tipo = 'eventual';
-            if($model->save()) {
-                //\Yii::$app->session->setFlash('success', 'Medicamento creado correctamente');
-            }else {
-                //\Yii::$app->session->setFlash('error', 'Algo falló, intente nuevamente');
-            }
+            $model->save();
 
             return $this->redirect(['eventual']);
         }
@@ -201,7 +192,7 @@ class MedicamentosController extends Controller
      */
     public function actionUpdateEventual($id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModelEventual($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //\Yii::$app->session->setFlash('success', 'Medicamento actualizado correctamente');
@@ -237,7 +228,7 @@ class MedicamentosController extends Controller
      */
     public function actionDeleteEventual($id)
     {
-        $this->findModel($id)->delete();
+        $this->findModelEventual($id)->delete();
         //\Yii::$app->session->setFlash('success', 'Medicamento eliminado correctamente');
         return $this->redirect(['eventual']);
     }
@@ -268,7 +259,7 @@ class MedicamentosController extends Controller
     public function actionPdfEventual(){
         Yii::$app->response->format = 'pdf';
         
-        $query = Medicamentos::find()
+        $query = MedicamentosEventual::find()
         ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`');
         $medicamentos = $query->where(['tipo' => 'eventual'])
         ->andWhere(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
@@ -297,6 +288,22 @@ class MedicamentosController extends Controller
     protected function findModel($id)
     {
         if (($model = Medicamentos::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Finds the Medicamentos model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return MedicamentosEventual the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModelEventual($id)
+    {
+        if (($model = MedicamentosEventual::findOne($id)) !== null) {
             return $model;
         }
 
