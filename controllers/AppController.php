@@ -204,7 +204,7 @@ class AppController extends Controller
                     Yii::$app->mailer->compose(['html' => '@app/mail/newuser'], ['password' => $passwordnormal, 'id' => $model->id, ])
                         ->setFrom('contacto@villaluz.com.mx')
                         ->setTo($model->email)
-                        ->setSubject('Email avanzado desde Villaluz prueba')
+                        ->setSubject('Nuevo usuario creado en Villaluz')
                         ->send();
                 } catch (\ErrorException $e) {
                     Yii::$app->session->setFlash('error', 'Usuario Creado pero el email no fue enviado'. $e->getMessage());
