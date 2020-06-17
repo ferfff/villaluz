@@ -201,13 +201,13 @@ class AppController extends Controller
             //Yii::$app->security->generatePasswordHash($password);
             if ($model->save()) {
                 try {
-                    Yii::$app->mailer->compose('@app/mail/email01', ['password' => $passwordnormal ])
-                        ->setFrom('contacto@villaluz.com.mx')
+                    Yii::$app->mailer->compose(['html' => '@app/mail/newuser'], ['password' => $passwordnormal, 'id' => $model->id, ])
+                        ->setFrom('temp@villaluz.com.mx')
                         ->setTo($model->email)
                         ->setSubject('Email avanzado desde Villaluz prueba')
                         ->send();
-                } catch (\Throwable $th) {
-                    Yii::$app->session->setFlash('error', 'Usuario Creado pero el email no fue enviado');
+                } catch (\ErrorException $e) {
+                    Yii::$app->session->setFlash('error', 'Usuario Creado pero el email no fue enviado'. $e->getMessage());
                 }
                 //\Yii::$app->session->setFlash('success', 'Usuario Creado correctamente');
                 return $this->redirect(['show']);

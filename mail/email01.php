@@ -15,7 +15,7 @@ use yii\helpers\Html;
 </head>
 <body>
     <?php $this->beginBody() ?>
-    Tu password es <?= $password ?>
+    El password para el usuario <?= $id ?> es <?= $password ?>
     <?php $this->endBody() ?>
 </body>
 </html>

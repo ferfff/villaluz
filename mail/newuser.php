@@ -34,7 +34,7 @@ use yii\helpers\Html;
 	</div>
 
     <?php $this->beginBody() ?>
-        Hola!! 
+        Hola  <?= $id ?>!! 
         Tu password es <?= $password ?>
     <?php $this->endBody() ?>
 

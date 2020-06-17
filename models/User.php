@@ -25,7 +25,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['id','nombre','paterno','materno','nacimiento','email','calle','numero','colonia','ciudad','password'], 'required'],
+            [['id','nombre','paterno','email','nacimiento','genero', 'nivel', 'password'], 'required'],
             [['id','nombre','paterno','materno'], 'string', 'max' => 50],
             [['calle','numero','colonia','ciudad','telefono','movil'], 'string', 'max' => 20],
             [['cp'], 'string', 'max' => 10],
@@ -34,7 +34,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['nivel', 'required', 'message' => 'Seleccione un nivel'],
             ['genero', 'required', 'message' => 'Seleccione un género'],
             ['nacimiento', 'date', 'format' => 'php:Y-m-d'],
-            ['id', 'unique'], 
+            [['id','email'], 'unique'], 
             ['email', 'email'],
             ['nivel', 'default', 'value' => 1],
             ['activo', 'in', 'range'=>['0','1']],

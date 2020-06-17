@@ -21,7 +21,7 @@ AppAsset::register($this);
 
 <body> 
     <div id="head">
-		<div class="logo"><img alt="logo villaluz" src="/img/logo_villaluz_color.jpg" width="180px"></div>
+		<div class="logo"><img alt="logo villaluz" src="img/logo_villaluz_color.jpg" width="180px"></div>
 	</div>
 
     <?= $content ?>
