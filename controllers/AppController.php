@@ -114,12 +114,12 @@ class AppController extends Controller
             'users_id' => $id,
         ]);
 
+        $pacientesQuery = (new \yii\db\Query())->select('id')->from('pacientes')
+            ->innerJoin('users_pacientes','`users_pacientes`.`pacientes_id` = `pacientes`.`id`')
+            ->where(['users_pacientes.users_id' => $id]);
+
         $notAssigned = Pacientes::find()
-            ->leftJoin('users_pacientes','`users_pacientes`.`pacientes_id` = `pacientes`.`id`')
-            ->andWhere(['or',
-                ['!=','users_pacientes.users_id', $id],
-                ['users_pacientes.users_id' => null]
-            ])
+            ->where(['NOT IN','id',$pacientesQuery])
             ->all();
 
         $user = $this->findModel($id);
