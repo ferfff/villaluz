@@ -29,23 +29,25 @@ use yii\helpers\Html;
 
         .password{
             background-color: #5EAAA9;
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 22px;
             text-align: center;
-            width: 450px;
+            width: 320px;
+            height: 300px
             color: #ffffff;
+            margin: 0 auto;
+            padding: 20px;
         }
     </style>
 
 <body>
     <div id="header">
-		<div class="logo"><img alt="logo villaluz" src="/img/logo_villaluz_color.jpg" width="200px"></div>
+		<div class="logo"><img alt="logo villaluz" src="img/logo_villaluz_color.jpg" width="200px"></div>
 	</div>
     
     <div class="password">
         <?php $this->beginBody() ?>
-            Hola  <?= $id ?><br><br> 
-            Tu password es <?= $password ?>
+            Hola <b>¡<?= $id ?>!</b><br><br> 
+            Tu password es <b><?= $password ?></b>
         <?php $this->endBody() ?>
     </div>
 
