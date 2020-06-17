@@ -32,17 +32,19 @@ use yii\helpers\Html;
             font-size: 18px;
             font-weight: bold;
             text-align: center;
+            width: 450px;
+            color: #ffffff;
         }
     </style>
 
 <body>
     <div id="header">
-		<div class="logo"><img alt="logo villaluz" src="img/logo_villaluz_color.jpg" width="180px"></div>
+		<div class="logo"><img alt="logo villaluz" src="/img/logo_villaluz_color.jpg" width="200px"></div>
 	</div>
     
     <div class="password">
         <?php $this->beginBody() ?>
-            Hola  <?= $id ?>!! 
+            Hola  <?= $id ?><br><br> 
             Tu password es <?= $password ?>
         <?php $this->endBody() ?>
     </div>
