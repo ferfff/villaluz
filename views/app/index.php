@@ -13,8 +13,8 @@ use yii\web\View;
 <div class="users-index">
     <div class="container-fluid px-4">
         <h5 class="my-4 font-weight-bold">Escoge un paciente en la lista</h5>
-        <div class="card rounded-0 cont-vh border-0">
-            <div class="card-body">
+        <div class="card rounded-0 border-0 mb-5">
+            <div class="card-body cont-vh">
                 <div class="form-inline mb-4 d-flex justify-content-center">
                     <form class="form-inline mb-3 d-flex">
                         <div class="d-flex align-items-center">
@@ -24,7 +24,7 @@ use yii\web\View;
                             <input id="findPacients" class="form-control mr-sm-2 border-0 input_search" type="search" aria-label="Search" onkeyup="buscarPacientes()">
                         </div>
                     </form>
-                    <table id="pacientesIndexTable" class="table table-striped table-hover">
+                    <table id="pacientesIndexTable" class="table table-striped table-hover table-vh">
                         <tbody>
                             <?php foreach ($pacientes as $key => $paciente) { ?>
                                 <tr>

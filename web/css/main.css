@@ -433,7 +433,7 @@ a.app_login{
 img.enfermera{
   margin-right: 30px;
   float: left;
-  width: 600px;
+  width: 560px;
 }
 
 .nosotros_container{
@@ -990,7 +990,11 @@ width: 205px;
   }
 
   .header_galery, .miservice, .nosotros, .servicio{
-  height: 200px;
+  min-height: auto;
+  }
+
+  .miservice{
+  background-size: inherit;
   }
 
   span.header_block{
@@ -1024,7 +1028,7 @@ width: 205px;
 
   .block_paralax{
   float: left;
-  width: 80%;
+  width: 100%;
   text-align: left;
   background-color: #82007e;
   padding: 40px;
@@ -1111,7 +1115,7 @@ width: 205px;
 
 .list_caract{
   width: 100%;
-  padding: 10px 0;
+  padding: 10px;
   margin: 0 0 10px 0;
   height: auto;
   }
