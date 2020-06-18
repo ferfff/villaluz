@@ -7,7 +7,6 @@ use yii\filters\AccessControl;
 use app\models\User;
 use app\models\ChangePasswordForm;
 use app\models\Pacientes;
-use app\models\PacientesSearch;
 use app\models\UsersPacientes;
 use Exception;
 use yii\data\ActiveDataProvider;
@@ -35,7 +34,7 @@ class AppController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['update','delete','view','asignar','desasignar','show','changepassword','create'],
+                        'actions' => ['update','delete','view','asignar','desasignar','show','changepassword','create','changeuserpass'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -198,7 +197,7 @@ class AppController extends Controller
             $model->authKey = $str.trim($model->id);
             $model->activo = 1;
             $model->password = Yii::$app->getSecurity()->generatePasswordHash($passwordnormal);
-            //Yii::$app->security->generatePasswordHash($password);
+            
             if ($model->save()) {
                 try {
                     Yii::$app->mailer->compose(['html' => '@app/mail/newuser'], ['password' => $passwordnormal, 'id' => $model->id, ])
@@ -209,7 +208,6 @@ class AppController extends Controller
                 } catch (\ErrorException $e) {
                     Yii::$app->session->setFlash('error', 'Usuario Creado pero el email no fue enviado'. $e->getMessage());
                 }
-                //\Yii::$app->session->setFlash('success', 'Usuario Creado correctamente');
                 return $this->redirect(['show']);
             }
         }  
@@ -229,9 +227,10 @@ class AppController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $modelPass = new ChangePasswordForm($id);
 
         if ($model->load(Yii::$app->request->post())){
-            //exit(var_dump(Yii::$app->request->post()));
+
             $model->nacimiento=Yii::$app->formatter->asDate($model->nacimiento, "yyyy-MM-dd");
             if($model->save()){
                 //\Yii::$app->session->setFlash('success', 'Usuario modificado correctamente');
@@ -241,6 +240,8 @@ class AppController extends Controller
         
         return $this->render('update', [
             'model' => $model,
+            'modelPass' => $modelPass,
+            'id' => $id,
         ]);
     }
 
@@ -270,6 +271,26 @@ class AppController extends Controller
             $transaction->rollBack();
             throw $e;
         }
+        return $this->redirect(['show']);
+    }
+
+    public function actionChangeuserpass()
+    {
+        $id = Yii::$app->request->post('id');
+
+        try {
+            $model = new ChangePasswordForm($id);
+        } catch (Exception $e) {
+            throw new \yii\web\BadRequestHttpException($e->getMessage());
+        }
+     
+        if ($model->load(\Yii::$app->request->post())) {
+            if($model->validate() && $model->changePassword()){
+                //\Yii::$app->session->setFlash('success', 'Password cambiado!');
+                return $this->redirect(['show']);
+            }
+        }
+        \Yii::$app->session->setFlash('error', 'Algo falló, por favor intente más tarde!');
         return $this->redirect(['show']);
     }
 
