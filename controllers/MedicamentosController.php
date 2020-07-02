@@ -150,7 +150,7 @@ class MedicamentosController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->pacientes_id = Yii::$app->session['idPaciente'];
             $model->users_id = Yii::$app->user->identity->id;
-            $model->tipo = 'eventual';
+            
             $model->save();
 
             return $this->redirect(['eventual']);
