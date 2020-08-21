@@ -109,9 +109,10 @@ class AppController extends Controller
      */
     public function actionView($id)
     {
-        $assigned = UsersPacientes::findAll([
-            'users_id' => $id,
-        ]);
+        $assigned = UsersPacientes::find()
+            ->innerJoin('pacientes','`users_pacientes`.`pacientes_id` = `pacientes`.`id`')
+            ->where(['users_id' => $id,])
+            ->all();
 
         $pacientesQuery = (new \yii\db\Query())->select('id')->from('pacientes')
             ->innerJoin('users_pacientes','`users_pacientes`.`pacientes_id` = `pacientes`.`id`')

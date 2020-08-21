@@ -236,13 +236,13 @@ class MedicamentosController extends Controller
     public function actionPdf(){
         Yii::$app->response->format = 'pdf';
         
-        $query = Medicamentos::find()
-            ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`');
-        $medicamentos = $query->where(['tipo' => 'base'])
-            ->andWhere(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
-            ->andWhere(['medicamentos.tipo' => 'base'])
+        $medicamentos = Medicamentos::find()
+            ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`')
+            ->innerJoin('users','`medicamentos`.`users_id` = `users`.`id`')
+            ->where(['medicamentos.pacientes_id' => Yii::$app->session['idPaciente']])
             ->all();
 
+            
 		// Rotate the page
 		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [
 			'format' => [216, 356], // Legal page size in mm
@@ -259,9 +259,11 @@ class MedicamentosController extends Controller
     public function actionPdfEventual(){
         Yii::$app->response->format = 'pdf';
         
-        $query = MedicamentosEventual::find()
-            ->innerJoin('pacientes','`medicamentos_eventuales`.`pacientes_id` = `pacientes`.`id`');
-        $medicamentos = $query->where(['medicamentos_eventuales.pacientes_id' => Yii::$app->session['idPaciente']])->all();
+        $medicamentos = MedicamentosEventual::find()
+        ->innerJoin('pacientes','`medicamentos`.`pacientes_id` = `pacientes`.`id`')
+        ->innerJoin('users','`medicamentos`.`users_id` = `users`.`id`')
+        ->where(['medicamentos_eventuales.pacientes_id' => Yii::$app->session['idPaciente']])
+        ->all();
 
 		// Rotate the page
 		Yii::$container->set(Yii::$app->response->formatters['pdf']['class'], [
