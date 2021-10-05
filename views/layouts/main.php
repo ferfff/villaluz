@@ -18,6 +18,12 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="description" content="Empresa dedicada al cuidado del adulto mayor en su domicilio"/>
     <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="personas mayores, cuidados especiales, cuidadores,
+    pacientes mayores, servicios domiciliarios, salud, seguridad, enfermeria, cuidadoras, atención
+    postoperatoria, medico geriatra, fisioterapeuta, podologia, servicios integrales de salud,
+    especialistas, cuidados irapuato, bajio adulto mayor, cuidados de adultos mayores,
+    asistencia geronto-geriátrica, cuidados domiciliarios,">
+    <meta name="author" content="Villaluz">
     <title>Villaluz - <?= Html::encode($this->title) ?></title>
     <link rel="shortcut icon" href="/img/villaluz.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
@@ -35,6 +41,8 @@ AppAsset::register($this);
     <link href="/css/owl.carousel.css" rel="stylesheet">
     <link href="/css/owl.theme.css" rel="stylesheet">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <script src="https://kit.fontawesome.com/91038794b5.js" crossorigin="anonymous"></script>
     
     <?php $this->registerCsrfMetaTags() ?>
     <?php $this->head() ?>
@@ -91,8 +99,6 @@ AppAsset::register($this);
 
     #owl-demo .item{
         margin: 3px;
-        background-color: #5eaead;
-        color: #fff;
         text-align: center;
         font-size: 16px;
         padding: 35px;
@@ -111,66 +117,70 @@ AppAsset::register($this);
 <body>
   
     <div id="barra_contacto">
-        <div class="wrapper">
-        <nav class="social">
-            <a href="https://es-la.facebook.com/Porelbienestardevivir"><img class="icon_social" src="/img/facebook.png"></a>
-            <!-- <a href=""><img class="icon_social" src="img/twitter.png"></a> -->
-            <a href="https://login.bluehost.com/cgi/webmail.com" target="blank"><img class="icon_social" src="/img/mail.png"></a>
-        </nav>
-        <div class="social">¿Tienes dudas? <b class="phone">01 (462) 624 5466</b></div>
+        <div class="wrapper sh">
+            <nav class="social_header">
+                <a href="https://www.facebook.com/Villaluzirapuato" class="icon_social"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/villaluz_salud/" class="icon_social"><i class="fab fa-instagram"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=46236739960&text=Gracias por comunicarte con el departamento de Atención a Clientes de Villaluz, ¿Cómo podemos ayudarte?" class="icon_social"><i class="fab fa-whatsapp"></i></a>
+                <!-- <a href="https://login.bluehost.com/cgi/webmail.com" target="blank" class="icon_social"><i class="fas fa-envelope"></i></a>-->
+            </nav>
+            <div class="social_header">¿Tienes dudas? <b class="phone">01 (462) 624 5466</b></div>
         </div>  
     </div>
-    
+
     <header class="header2">
         <div class="wrapper">
-        <div class="logo"><img class="logo_villaluz" src="/img/logotipo_villaluz.png"></div>
-        <nav>
-            <div class="topnav" id="myTopnav">
-            <a href="/">Inicio</a>
-            <a href="/site/nosotros">Nosotros</a>
-            <a href="/site/servicio">Servicio</a>
-            <a href="/site/miservicio">Mi Servicio</a>
-            <a href="/noticias/">De Inter&eacute;s</a>
-            <a href="/site/contacto">Contacto</a>
-            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+            <div class="logo">
+                <img class="logo_villaluz" src="/img/logotipo_villaluz.png">
             </div>
-        </nav>
+            <nav class="main_menu">
+                <div class="topnav" id="myTopnav">
+                    <a href="/">Inicio</a>
+                    <a href="/site/nosotros">Nosotros</a>
+                    <a href="/site/servicio">Servicio</a>
+                    <a href="/site/miservicio">Mi Servicio</a>
+                    <!-- <a href="/noticias/">De Inter&eacute;s</a>-->
+                    <a href="/site/contacto">Contacto</a>
+                    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+                </div>
+            </nav>
         </div>
     </header>
 
     <?= $content ?>
 
-
-
+   
     <footer>
         <div class="wrapper">
-        <div class="menu">
-            <nav class="social">
-            <a href="https://es-la.facebook.com/Porelbienestardevivir"><img class="icon_social" src="/img/facebook_white.png"></a>
-            <!-- <a href=""><img class="icon_social" src="img/twitter_white.png"></a> -->
-            <a href="https://login.bluehost.com/cgi/webmail.com" target="blank"><img class="icon_social" src="/img/mail_white.png"></a>
-            </nav>
-            <div class="social" style="font-size:10px;">¿Tienes dudas? <b>01 (462) 624 5466</b></div>
-        </div>
-        <nav>
-            <a href="/">Inicio</a>
-            <a href="/site/nosotros">Nosotros</a>
-            <a href="/site/servicio">Servicio</a>
-            <a href="/site/miservicio">Mi Servicio</a>
-            <a href="/site/contacto">Contacto</a>
-        </nav><br><br>
-        <nav>
-            <div class="logo"><img src="/img/logotipo_villaluz.png" width=100px; style="margin-bottom:10px;"></div>
-            Aviso de privacidad© 2017 Villaluz® Derechos Reservados
-        </nav>
-        <div class="menu">
-            <div class="social" style="font-size:10px;"></b></div>
-        </div>
+            <div class="menu my-3">
+                <nav class="social">
+                    <!-- <a href="https://login.bluehost.com/cgi/webmail.com" target="blank" class="social_footer"><i class="fas fa-envelope"></i></a> -->
+                    <a href="https://www.facebook.com/Villaluzirapuato" target="blank" class="social_footer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/villaluz_salud/" target="blank" class="social_footer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=46236739960&text=Gracias por comunicarte con el departamento de Atención a Clientes de Villaluz, ¿Cómo podemos ayudarte?" class="social_footer"><i class="fab fa-whatsapp"></i></a>
+                </nav>
+                <div class="social social_footer">¿Tienes dudas? <b>01 (462) 624 5466</b></div>
+            </div>
+            <div class="footer-logo">
+                <nav class="min_footer my-3">
+                    <a href="/" class="social_footer">Inicio</a>
+                    <a href="/site/nosotros" class="social_footer">Nosotros</a>
+                    <a href="/site/servicio" class="social_footer">Servicio</a>
+                    <a href="/site/miservicio" class="social_footer">Mi Servicio</a>
+                    <a href="/site/contacto" class="social_footer">Contacto</a>
+                </nav>
+                <nav class="logo_footer">
+                    <div class="logo my-3"><img src="/img/logotipo_villaluz.png" width=100px; style="margin-bottom:10px;"></div>
+                    Aviso de privacidad© 2017 Villaluz® Derechos Reservados
+                </nav>
+            </div>
         </div>
     </footer>
     
+    
     <script src="/js/jquery-1.9.1.min.js"></script> 
     <script src="/js/owl.carousel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
     <script>
         $(document).ready(function() {
