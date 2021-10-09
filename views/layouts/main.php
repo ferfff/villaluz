@@ -121,6 +121,7 @@ AppAsset::register($this);
             <nav class="social_header">
                 <a href="https://www.facebook.com/Villaluzirapuato" class="icon_social"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/villaluz_salud/" class="icon_social"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/VillaluzIrapuato" class="icon_social"><i class="fab fa-telegram-plane"></i></a>
                 <a href="https://api.whatsapp.com/send?phone=46236739960&text=Gracias por comunicarte con el departamento de Atención a Clientes de Villaluz, ¿Cómo podemos ayudarte?" class="icon_social"><i class="fab fa-whatsapp"></i></a>
                 <!-- <a href="https://login.bluehost.com/cgi/webmail.com" target="blank" class="icon_social"><i class="fas fa-envelope"></i></a>-->
             </nav>
@@ -157,6 +158,7 @@ AppAsset::register($this);
                     <!-- <a href="https://login.bluehost.com/cgi/webmail.com" target="blank" class="social_footer"><i class="fas fa-envelope"></i></a> -->
                     <a href="https://www.facebook.com/Villaluzirapuato" target="blank" class="social_footer"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/villaluz_salud/" target="blank" class="social_footer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/VillaluzIrapuato" class="social_footer"><i class="fab fa-telegram-plane"></i></a>
                     <a href="https://api.whatsapp.com/send?phone=46236739960&text=Gracias por comunicarte con el departamento de Atención a Clientes de Villaluz, ¿Cómo podemos ayudarte?" class="social_footer"><i class="fab fa-whatsapp"></i></a>
                 </nav>
                 <div class="social social_footer">¿Tienes dudas? <b>01 (462) 624 5466</b></div>

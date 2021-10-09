@@ -160,6 +160,7 @@
               <p>Calle Laguna #447 Col. Las Rosas, Irapuato, Gto.</p>
               <p>Oficina: <b>462 62 4 54 66</b></p>
               <p>WhastApp: <a href="https://api.whatsapp.com/send?phone=46236739960&text=Gracias por comunicarte con el departamento de Atención a Clientes de Villaluz, ¿Cómo podemos ayudarte?" target="_blank" class="text-light redes"><b>462 367 39 60</b></a></p>
+              <p>Telegram: <a href="https://t.me/VillaluzIrapuato" target="_blank" class="text-light redes"><b>@VillaluzIrapuato</b></a><p>
               <p>Facebook: <a href="https://www.facebook.com/Villaluzirapuato" target="_blank" class="text-light redes"><b>Villaluzirapuato</b></a><p>
               <p>Instagram: <a href="https://www.instagram.com/villaluz_salud/" target="_blank" class="text-light redes"><b>villaluz_salud</b></a></p>
             </div>
